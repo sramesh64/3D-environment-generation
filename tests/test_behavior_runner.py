@@ -220,6 +220,8 @@ def test_child_command_is_ephemeral_read_only_and_bound(tmp_path, monkeypatch) -
     scene_dir, _spec, plan = _prepared_scene(tmp_path)
     captured = {}
     monkeypatch.delenv("ENVIRONMENT_GENERATION_BEHAVIOR_TIMEOUT_SECONDS", raising=False)
+    monkeypatch.setenv("DISPLAY", ":99")
+    monkeypatch.setenv("XAUTHORITY", "/tmp/xvfb/Xauthority")
 
     class Completed:
         returncode = 0
@@ -249,6 +251,8 @@ def test_child_command_is_ephemeral_read_only_and_bound(tmp_path, monkeypatch) -
     assert "workspace-write" not in args
     assert any("ENVIRONMENT_GENERATION_BEHAVIOR_SCENE_DIR" in item for item in args)
     assert any("ENVIRONMENT_GENERATION_BEHAVIOR_TRIAL_JSON" in item for item in args)
+    assert any("mcp_servers.environment-generation.env.DISPLAY" in item for item in args)
+    assert any("mcp_servers.environment-generation.env.XAUTHORITY" in item for item in args)
     assert captured["kwargs"]["timeout"] == 600
 
 

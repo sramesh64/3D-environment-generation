@@ -372,6 +372,24 @@ def test_task_child_command_disables_non_task_tools(tmp_path: Path) -> None:
     assert '"id": "hidden"' not in args[-1]
 
 
+def test_task_child_command_forwards_virtual_display(tmp_path: Path) -> None:
+    args = _build_task_agent_codex_args(
+        task={"task_id": "visual-task", "instruction": "Reach the platform."},
+        model="",
+        command="/usr/bin/python3",
+        mcp_args=["-m", "environment_generation.mcp_server"],
+        mcp_env={
+            "DISPLAY": ":99",
+            "XAUTHORITY": "/tmp/xvfb/Xauthority",
+            "ENVIRONMENT_GENERATION_TASK_JSON": "{}",
+        },
+        output_path=tmp_path / "last-message.txt",
+    )
+
+    assert any("mcp_servers.environment-generation.env.DISPLAY" in item for item in args)
+    assert any("mcp_servers.environment-generation.env.XAUTHORITY" in item for item in args)
+
+
 def test_task_scene_frame_watcher_streams_only_valid_finite_transforms(tmp_path: Path) -> None:
     path = tmp_path / "scene_frames.jsonl"
     events: list[tuple[str, dict]] = []

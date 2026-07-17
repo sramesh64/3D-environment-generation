@@ -33,7 +33,7 @@ from .artifacts import (
 from .courtyard import courtyard_shell_spec
 from .codex_models import CODEX_MODEL_CATALOG
 from .mcp_server import MCP_SERVER_NAME, WORKFLOW_GUIDE
-from .runtime_config import runtime_env_key
+from .runtime_config import rendering_subprocess_env, runtime_env_key
 from .env_visual_review import (
     VISUAL_REVIEW_OUTPUT_SCHEMA_PATH,
     build_visual_review_error_report,
@@ -162,6 +162,7 @@ def _toml_value(value: Any) -> str:
 
 def mcp_command(output_root: Path) -> tuple[str, list[str], dict[str, str]]:
     env = {
+        **rendering_subprocess_env(),
         "PYTHONPATH": str(PROJECT_ROOT),
         runtime_env_key("OUTPUT_ROOT"): str(output_root),
     }

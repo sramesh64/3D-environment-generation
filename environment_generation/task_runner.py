@@ -27,7 +27,7 @@ from .env_tasks import (
     task_scene_hash,
     write_task,
 )
-from .runtime_config import runtime_env_key, runtime_env_value
+from .runtime_config import rendering_subprocess_env, runtime_env_key, runtime_env_value
 from .task_agent import TASK_AGENT_OBSERVATION_MODE
 from .task_oracle import replay_task_actions
 
@@ -757,6 +757,7 @@ def _run_codex_child(
         command = sys.executable
         mcp_args = ["-m", "environment_generation.mcp_server"]
         mcp_env = {
+            **rendering_subprocess_env(),
             "PYTHONPATH": str(PROJECT_ROOT),
             runtime_env_key("TASK_SCENE_DIR"): str(scene_dir),
             runtime_env_key("TASK_JSON"): json.dumps(task, separators=(",", ":")),

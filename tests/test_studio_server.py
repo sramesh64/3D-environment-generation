@@ -997,6 +997,16 @@ def test_revision_evidence_is_attached_without_polluting_user_history(tmp_path) 
     assert "Failed visual finding" not in history[-1]["content"]
 
 
+def test_generation_mcp_forwards_virtual_display(tmp_path, monkeypatch) -> None:
+    monkeypatch.setenv("DISPLAY", ":99")
+    monkeypatch.setenv("XAUTHORITY", "/tmp/xvfb/Xauthority")
+
+    args = build_codex_args(prompt="build", output_root=tmp_path)
+
+    assert any("mcp_servers.environment-generation.env.DISPLAY" in item for item in args)
+    assert any("mcp_servers.environment-generation.env.XAUTHORITY" in item for item in args)
+
+
 def test_invalid_revision_evidence_is_rejected_before_creating_a_turn(tmp_path) -> None:
     config = StudioConfig(host="127.0.0.1", port=3033, output_root=tmp_path, open_browser=False)
     builder = EnvSpec3DBuilder("repair_boundary", description="repair")
