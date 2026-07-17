@@ -173,11 +173,18 @@ def check_chromium(
             browser = playwright.chromium.launch(headless=True)
             browser.close()
     except Exception as exc:  # Playwright reports driver failures through several exception types.
+        detail = f"Could not launch the browser runtime: {exc}"
+        if "host system is missing dependencies" in str(exc).lower():
+            fix = (
+                "Run `uv run playwright install --with-deps chromium`, then retry."
+            )
+        else:
+            fix = "Run `uv run playwright install --force chromium`, then retry."
         return CheckResult(
             name="Chromium",
             passed=False,
-            detail=f"Could not launch the browser runtime: {exc}",
-            fix="Run `uv run playwright install --force chromium`, then retry.",
+            detail=detail,
+            fix=fix,
         )
     return CheckResult(
         name="Chromium",

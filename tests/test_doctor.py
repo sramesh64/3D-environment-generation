@@ -128,6 +128,33 @@ def test_chromium_check_reports_missing_runtime(tmp_path: Path) -> None:
     assert "missing" in result.detail.lower()
 
 
+def test_chromium_check_reports_linux_host_dependency_fix(tmp_path: Path) -> None:
+    executable = tmp_path / "chromium"
+    executable.touch()
+
+    class PlaywrightContext:
+        def __enter__(self) -> object:
+            def fail_to_launch(**_kwargs: object) -> None:
+                raise RuntimeError("Host system is missing dependencies to run browsers")
+
+            return SimpleNamespace(
+                chromium=SimpleNamespace(
+                    executable_path=str(executable),
+                    launch=fail_to_launch,
+                )
+            )
+
+        def __exit__(self, *_args: object) -> None:
+            return None
+
+    result = check_chromium(lambda: PlaywrightContext())
+
+    assert result.passed is False
+    assert result.fix == (
+        "Run `uv run playwright install --with-deps chromium`, then retry."
+    )
+
+
 def test_bundled_asset_check_matches_repository_layout() -> None:
     assert check_bundled_assets().passed is True
 

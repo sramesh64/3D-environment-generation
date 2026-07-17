@@ -16,14 +16,19 @@ Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and the
 codex login
 ```
 
-From the repository root, run the same command on macOS, Linux, or Windows:
+Clone the repository, install Chromium and its system dependencies, then start
+Studio:
 
 ```bash
+git clone https://github.com/sramesh64/3D-environment-generation.git
+cd 3D-environment-generation
+uv run playwright install --with-deps chromium
 uv run environment-generation
 ```
 
-The first launch installs the project Python, locked dependencies, and Chromium.
-Studio opens at `http://127.0.0.1:3033`.
+The Playwright command installs the project Python, locked dependencies,
+Chromium, and any required browser libraries. It may request administrator
+permission on Linux. Studio opens at `http://127.0.0.1:3033`.
 
 ## Try It
 
@@ -84,5 +89,5 @@ evidence, but they never replace code-level simulator truth.
 | Run the MCP server | `uv run environment-generation-mcp` |
 | Run all tests | `uv run --extra test pytest` |
 
-If Chromium installation fails, run
-`uv run playwright install --force chromium` and retry.
+If Chromium setup fails, rerun
+`uv run playwright install --with-deps chromium` and retry.
