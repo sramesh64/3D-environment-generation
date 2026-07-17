@@ -6,6 +6,10 @@ agent trajectories against deterministic code-level objectives.
 Codex constructs scenes through typed tools, we use the MuJoCo physics engine, and Three.js renders the styled view. Every task requires a passing
 human oracle before agent evaluation.
 
+![Generated courtyard demo environment](docs/example-environment-courtyard.png)
+
+*Included courtyard demo generated through a multi-turn conversation.*
+
 ![Environment Generation system design](docs/environment-generation-system.svg)
 
 ## Setup Instructions
