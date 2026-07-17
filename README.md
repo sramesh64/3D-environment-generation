@@ -1,4 +1,4 @@
-# Infinite 3D Environment Generation with Verifiable Agent Tasks
+# Infinite Environment Generation with Verifiable Agent Tasks
 
 Generate playable 3D environments from text, define benchmark tasks, and verify
 agent trajectories against deterministic code-level objectives.
