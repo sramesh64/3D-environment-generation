@@ -3,8 +3,7 @@
 Generate playable 3D environments from text, define benchmark tasks, and verify
 agent trajectories against deterministic code-level objectives.
 
-Codex constructs scenes through typed tools, MuJoCo provides authoritative
-physics, and Three.js renders the styled view. Every task requires a passing
+Codex constructs scenes through typed tools, we use the MuJoCo physics engine, and Three.js renders the styled view. Every task requires a passing
 human oracle before agent evaluation.
 
 ![Environment Generation system design](docs/environment-generation-system.svg)
