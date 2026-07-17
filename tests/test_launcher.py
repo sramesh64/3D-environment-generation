@@ -7,7 +7,11 @@ from types import SimpleNamespace
 import pytest
 
 from environment_generation import launcher
-from environment_generation.launcher import LauncherError, ensure_chromium
+from environment_generation.launcher import (
+    LauncherError,
+    ensure_chromium,
+    run_under_virtual_display,
+)
 
 
 class _PlaywrightContext:
@@ -77,10 +81,69 @@ def test_failed_chromium_install_has_actionable_error(tmp_path: Path) -> None:
         )
 
 
+def test_headless_linux_reexecs_under_xvfb() -> None:
+    calls: list[tuple[str, list[str]]] = []
+    messages: list[str] = []
+
+    started = run_under_virtual_display(
+        ["--host", "0.0.0.0"],
+        platform="linux",
+        environ={},
+        which=lambda _name: "/usr/bin/xvfb-run",
+        execv=lambda executable, args: calls.append((executable, args)),
+        announce=messages.append,
+    )
+
+    assert started is True
+    assert calls == [
+        (
+            "/usr/bin/xvfb-run",
+            [
+                "/usr/bin/xvfb-run",
+                "-a",
+                launcher.sys.executable,
+                "-m",
+                "environment_generation.launcher",
+                "--host",
+                "0.0.0.0",
+                "--no-open",
+            ],
+        )
+    ]
+    assert messages == [
+        "Headless Linux detected; starting a virtual display for MuJoCo rendering..."
+    ]
+
+
+@pytest.mark.parametrize(
+    "platform,environ",
+    [
+        ("darwin", {}),
+        ("linux", {"DISPLAY": ":0"}),
+        ("linux", {"MUJOCO_GL": "egl"}),
+        ("linux", {"ENVIRONMENT_GENERATION_MUJOCO_GL": "osmesa"}),
+    ],
+)
+def test_virtual_display_preserves_existing_rendering_configuration(
+    platform: str,
+    environ: dict[str, str],
+) -> None:
+    started = run_under_virtual_display(
+        [],
+        platform=platform,
+        environ=environ,
+        which=lambda _name: pytest.fail("xvfb should not be inspected"),
+        execv=lambda *_args: pytest.fail("process should not be replaced"),
+    )
+
+    assert started is False
+
+
 def test_main_runs_diagnostics_then_forwards_server_arguments(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     calls: list[tuple[str, object]] = []
+    monkeypatch.setattr(launcher, "run_under_virtual_display", lambda _args: False)
     monkeypatch.setattr(launcher, "ensure_chromium", lambda: False)
     monkeypatch.setattr(
         launcher,
@@ -105,6 +168,7 @@ def test_main_runs_diagnostics_then_forwards_server_arguments(
 def test_main_does_not_start_server_when_diagnostics_fail(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    monkeypatch.setattr(launcher, "run_under_virtual_display", lambda _args: False)
     monkeypatch.setattr(launcher, "ensure_chromium", lambda: False)
     monkeypatch.setattr(launcher, "doctor_main", lambda _args: 1)
     monkeypatch.setattr(
@@ -114,4 +178,3 @@ def test_main_does_not_start_server_when_diagnostics_fail(
     )
 
     assert launcher.main([]) == 1
-

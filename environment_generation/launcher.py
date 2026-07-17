@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
-from typing import Any, Callable, Sequence
+from typing import Any, Callable, Mapping, Sequence
 
 from .doctor import main as doctor_main
 from .studio_server import main as studio_main
@@ -13,6 +15,50 @@ from .studio_server import main as studio_main
 
 class LauncherError(RuntimeError):
     """Raised when a first-run dependency cannot be prepared."""
+
+
+def run_under_virtual_display(
+    argv: Sequence[str],
+    *,
+    platform: str | None = None,
+    environ: Mapping[str, str] | None = None,
+    which: Callable[[str], str | None] = shutil.which,
+    execv: Callable[[str, list[str]], Any] = os.execv,
+    announce: Callable[[str], None] = print,
+) -> bool:
+    """Re-exec headless Linux under Xvfb so MuJoCo can render offscreen."""
+
+    current_platform = platform or sys.platform
+    current_env = environ if environ is not None else os.environ
+    if (
+        not current_platform.startswith("linux")
+        or current_env.get("DISPLAY")
+        or current_env.get("MUJOCO_GL")
+        or current_env.get("ENVIRONMENT_GENERATION_MUJOCO_GL")
+    ):
+        return False
+
+    xvfb = which("xvfb-run")
+    if not xvfb:
+        return False
+
+    forwarded = list(argv)
+    if "--no-open" not in forwarded:
+        forwarded.append("--no-open")
+    command = [
+        xvfb,
+        "-a",
+        sys.executable,
+        "-m",
+        "environment_generation.launcher",
+        *forwarded,
+    ]
+    announce("Headless Linux detected; starting a virtual display for MuJoCo rendering...")
+    try:
+        execv(xvfb, command)
+    except OSError as exc:
+        raise LauncherError(f"Could not start the Xvfb virtual display: {exc}") from exc
+    return True
 
 
 def chromium_executable(
@@ -69,7 +115,10 @@ def ensure_chromium(
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    forwarded = list(argv) if argv is not None else list(sys.argv[1:])
     try:
+        if run_under_virtual_display(forwarded):
+            return 0
         ensure_chromium()
     except LauncherError as exc:
         print(f"Environment Generation could not start:\n{exc}", file=sys.stderr)
@@ -84,4 +133,3 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main(sys.argv[1:]))
-
