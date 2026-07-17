@@ -1,0 +1,1977 @@
+{
+  "schema_version": "1.0",
+  "task_id": "Open_the_center_gate_using_the_floor_switch_with",
+  "env_id": "Courtyard_Relay",
+  "instruction": "Open the center gate using the floor switch without entering the broken-paving hazard.",
+  "status": "validated",
+  "env_spec_hash": "d30a1027c245c3d505c688c55db029657cb0e79f6f018cc93768fb4592ba5ad7",
+  "controller_version": "task_controller_v1",
+  "created_at": "2026-07-17T05:43:09.363193+00:00",
+  "updated_at": "2026-07-17T08:25:52.217122+00:00",
+  "tests": [
+    {
+      "id": "open_gate_without_hazard",
+      "description": "The blue robot enters the floor switch, the linked center gate opens, and the robot never overlaps the broken-paving hazard.",
+      "mode": "all",
+      "conditions": [
+        {
+          "id": "activate_gate_switch",
+          "description": "The blue robot enters the gate switch.",
+          "temporal": "eventually",
+          "predicate": {
+            "type": "overlap",
+            "subject": {
+              "id": "blue_robot"
+            },
+            "subject_quantifier": "all",
+            "target": {
+              "id": "gate_switch"
+            }
+          }
+        },
+        {
+          "id": "center_gate_opens",
+          "description": "The switch-linked center gate reaches the open state.",
+          "temporal": "eventually",
+          "predicate": {
+            "type": "mechanism_state",
+            "mechanism_id": "gate_switch_link",
+            "state": "open",
+            "min_progress": 0.9
+          }
+        },
+        {
+          "id": "avoid_broken_paving",
+          "description": "The blue robot never enters the broken-paving hazard.",
+          "temporal": "never",
+          "predicate": {
+            "type": "overlap",
+            "subject": {
+              "id": "blue_robot"
+            },
+            "subject_quantifier": "all",
+            "target": {
+              "id": "broken_paving_hazard"
+            }
+          }
+        }
+      ],
+      "ordered_condition_ids": [
+        "activate_gate_switch",
+        "center_gate_opens"
+      ],
+      "source": "codex"
+    },
+    {
+      "id": "system_stay_in_bounds",
+      "description": "The agent must remain inside the playable environment.",
+      "mode": "all",
+      "conditions": [
+        {
+          "id": "always_in_bounds",
+          "description": "Agent remains within the play bounds.",
+          "temporal": "always",
+          "predicate": {
+            "type": "in_bounds",
+            "subject": {
+              "semantic_type": "agent"
+            },
+            "subject_quantifier": "any"
+          }
+        }
+      ],
+      "ordered_condition_ids": [],
+      "source": "system"
+    }
+  ],
+  "max_steps": 2400,
+  "oracle": {
+    "attempt_id": "attempt-0001-a31dd0b6",
+    "created_at": "2026-07-17T05:44:17.298521+00:00",
+    "passed": true,
+    "step_count": 830,
+    "report_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/attempts/attempt-0001-a31dd0b6/report.json?v=1784267057298455618",
+    "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/attempts/attempt-0001-a31dd0b6/trajectory.json?v=1784267057297617570",
+    "provenance": "human_recording",
+    "controller_version": "task_controller_v1",
+    "env_spec_hash": "d30a1027c245c3d505c688c55db029657cb0e79f6f018cc93768fb4592ba5ad7",
+    "task_definition_hash": "12a7b2eb257f5866d01663d7010bc65d2f035dd6451fd05eb19f25ecbe092fa3",
+    "action_count": 100,
+    "frames": 830,
+    "actions_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/attempts/attempt-0001-a31dd0b6/actions.json?v=1784267057294819090"
+  },
+  "last_validation": {
+    "status": "passed",
+    "passed": true,
+    "final": true,
+    "step_count": 830,
+    "simulation_time": 8.299999999999867,
+    "summary": {
+      "tests": 2,
+      "passed_tests": 2,
+      "conditions": 4,
+      "passed_conditions": 4
+    },
+    "tests": [
+      {
+        "id": "open_gate_without_hazard",
+        "description": "The blue robot enters the floor switch, the linked center gate opens, and the robot never overlaps the broken-paving hazard.",
+        "mode": "all",
+        "passed": true,
+        "status": "pass",
+        "conditions": [
+          {
+            "id": "activate_gate_switch",
+            "description": "The blue robot enters the gate switch.",
+            "temporal": "eventually",
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "id": "blue_robot"
+              },
+              "subject_quantifier": "all",
+              "target": {
+                "id": "gate_switch"
+              }
+            },
+            "predicate_type": "overlap",
+            "passed": true,
+            "status": "pass",
+            "provisional": false,
+            "first_satisfied_step": 459,
+            "first_satisfied_frame": 459,
+            "metrics": {
+              "frames_observed": 831,
+              "true_frames": 372,
+              "transition_count": 1,
+              "longest_true_streak": 372,
+              "currently_true": true,
+              "final_evaluation": true,
+              "operator": "eventually",
+              "overlapping_pairs": [
+                [
+                  "blue_robot",
+                  "gate_switch"
+                ]
+              ],
+              "matched_subject_ids": [
+                "blue_robot"
+              ],
+              "pair_transition_counts": {
+                "blue_robot->gate_switch": 1
+              },
+              "counts_by_subject": {
+                "blue_robot": 1
+              },
+              "counts_by_target": {
+                "gate_switch": 1
+              }
+            },
+            "witness": {
+              "overlapping_pairs": [
+                [
+                  "blue_robot",
+                  "gate_switch"
+                ]
+              ],
+              "matched_subject_ids": [
+                "blue_robot"
+              ]
+            }
+          },
+          {
+            "id": "center_gate_opens",
+            "description": "The switch-linked center gate reaches the open state.",
+            "temporal": "eventually",
+            "predicate": {
+              "type": "mechanism_state",
+              "mechanism_id": "gate_switch_link",
+              "state": "open",
+              "min_progress": 0.9
+            },
+            "predicate_type": "mechanism_state",
+            "passed": true,
+            "status": "pass",
+            "provisional": false,
+            "first_satisfied_step": 517,
+            "first_satisfied_frame": 517,
+            "metrics": {
+              "frames_observed": 831,
+              "true_frames": 314,
+              "transition_count": 1,
+              "longest_true_streak": 314,
+              "currently_true": true,
+              "final_evaluation": true,
+              "operator": "eventually",
+              "mechanism": {
+                "id": "gate_switch_link",
+                "trigger_id": "gate_switch",
+                "gate_id": "center_gate",
+                "active": true,
+                "progress": 1.0
+              }
+            },
+            "witness": {
+              "mechanism": {
+                "id": "gate_switch_link",
+                "trigger_id": "gate_switch",
+                "gate_id": "center_gate",
+                "active": true,
+                "progress": 0.9110903522054983
+              }
+            }
+          },
+          {
+            "id": "avoid_broken_paving",
+            "description": "The blue robot never enters the broken-paving hazard.",
+            "temporal": "never",
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "id": "blue_robot"
+              },
+              "subject_quantifier": "all",
+              "target": {
+                "id": "broken_paving_hazard"
+              }
+            },
+            "predicate_type": "overlap",
+            "passed": true,
+            "status": "pass",
+            "provisional": false,
+            "first_satisfied_step": 830,
+            "first_satisfied_frame": 830,
+            "metrics": {
+              "frames_observed": 831,
+              "true_frames": 0,
+              "transition_count": 0,
+              "longest_true_streak": 0,
+              "currently_true": false,
+              "final_evaluation": true,
+              "operator": "never",
+              "overlapping_pairs": [],
+              "matched_subject_ids": [],
+              "pair_transition_counts": {},
+              "counts_by_subject": {},
+              "counts_by_target": {}
+            },
+            "witness": {
+              "overlapping_pairs": [],
+              "matched_subject_ids": []
+            }
+          }
+        ],
+        "ordered_condition_ids": [
+          "activate_gate_switch",
+          "center_gate_opens"
+        ],
+        "ordered_steps": [
+          459,
+          517
+        ],
+        "ordered_frames": [
+          459,
+          517
+        ],
+        "order_passed": true
+      },
+      {
+        "id": "system_stay_in_bounds",
+        "description": "The agent must remain inside the playable environment.",
+        "mode": "all",
+        "passed": true,
+        "status": "pass",
+        "conditions": [
+          {
+            "id": "always_in_bounds",
+            "description": "Agent remains within the play bounds.",
+            "temporal": "always",
+            "predicate": {
+              "type": "in_bounds",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any"
+            },
+            "predicate_type": "in_bounds",
+            "passed": true,
+            "status": "pass",
+            "provisional": false,
+            "first_satisfied_step": 830,
+            "first_satisfied_frame": 830,
+            "metrics": {
+              "frames_observed": 831,
+              "true_frames": 831,
+              "transition_count": 1,
+              "longest_true_streak": 831,
+              "currently_true": true,
+              "final_evaluation": true,
+              "operator": "always",
+              "objects": {
+                "blue_robot": true
+              },
+              "bounds": [
+                24.0,
+                18.0,
+                8.0
+              ],
+              "matched_subject_ids": [
+                "blue_robot"
+              ]
+            },
+            "witness": {
+              "objects": {
+                "blue_robot": true
+              },
+              "bounds": [
+                24.0,
+                18.0,
+                8.0
+              ],
+              "matched_subject_ids": [
+                "blue_robot"
+              ]
+            }
+          }
+        ],
+        "ordered_condition_ids": [],
+        "ordered_steps": [],
+        "ordered_frames": [],
+        "order_passed": true
+      }
+    ],
+    "terminal_events": [],
+    "schema_version": "1.0",
+    "controller_version": "task_controller_v1",
+    "env_spec_hash": "d30a1027c245c3d505c688c55db029657cb0e79f6f018cc93768fb4592ba5ad7",
+    "task_definition_hash": "12a7b2eb257f5866d01663d7010bc65d2f035dd6451fd05eb19f25ecbe092fa3",
+    "action_count": 100
+  },
+  "run_summaries": [
+    {
+      "run_id": "run-0001-adc35d81",
+      "created_at": "2026-07-17T05:47:12.288886+00:00",
+      "completed_at": "2026-07-17T05:54:13.292213+00:00",
+      "status": "failed",
+      "passed": false,
+      "stale": false,
+      "step_count": 2139,
+      "action_count": 62,
+      "model": "gpt-5.6-sol",
+      "observation_mode": "styled_first_person_with_proprioception",
+      "report_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/report.json?v=1784267653297474317",
+      "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/trajectory.json?v=1784267653292089942",
+      "evidence_frames": [
+        {
+          "index": 0,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_000.png",
+          "step": 0,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -90.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 1,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_001.png",
+          "step": 738,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -30.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 2,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_002.png",
+          "step": 1204,
+          "reset_count": 1,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 0.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 3,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_003.png",
+          "step": 1751,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 0.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 4,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_004.png",
+          "step": 2047,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 60.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 5,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_005.png",
+          "step": 2139,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 60.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        }
+      ],
+      "activity_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/activity.json?v=1784267653296617935",
+      "activity_count": 199
+    },
+    {
+      "run_id": "run-0002-893fdba8",
+      "created_at": "2026-07-17T08:19:25.620047+00:00",
+      "completed_at": "2026-07-17T08:25:52.213074+00:00",
+      "status": "failed",
+      "passed": false,
+      "stale": false,
+      "step_count": 1499,
+      "action_count": 54,
+      "model": "gpt-5.6-sol",
+      "observation_mode": "styled_first_person_with_proprioception",
+      "report_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/report.json?v=1784276752217024929",
+      "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/trajectory.json?v=1784276752208358283",
+      "evidence_frames": [
+        {
+          "index": 0,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_000.png",
+          "step": 0,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -90.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 1,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_001.png",
+          "step": 249,
+          "reset_count": 1,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -90.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 2,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_002.png",
+          "step": 533,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -90.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 3,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_003.png",
+          "step": 1155,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 60.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 4,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_004.png",
+          "step": 1395,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 84.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 5,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_005.png",
+          "step": 1499,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 84.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        }
+      ],
+      "activity_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/activity.json?v=1784276752215957004",
+      "activity_count": 173
+    }
+  ],
+  "summary": "Activate the gate switch to open the center gate while never entering the broken-paving hazard.",
+  "task_definition_hash": "12a7b2eb257f5866d01663d7010bc65d2f035dd6451fd05eb19f25ecbe092fa3",
+  "compiler": {
+    "kind": "codex_typed_task_compiler",
+    "model": "gpt-5.6-sol",
+    "attempts": 1,
+    "repair_attempts": 0,
+    "validation_errors": []
+  },
+  "compiler_error": null,
+  "active_oracle_session": null,
+  "oracle_attempts": [
+    {
+      "attempt_id": "attempt-0001-a31dd0b6",
+      "created_at": "2026-07-17T05:44:17.298521+00:00",
+      "passed": true,
+      "step_count": 830,
+      "report_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/attempts/attempt-0001-a31dd0b6/report.json?v=1784267057298455618",
+      "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/attempts/attempt-0001-a31dd0b6/trajectory.json?v=1784267057297617570"
+    }
+  ],
+  "latest_run": {
+    "run_id": "run-0002-893fdba8",
+    "created_at": "2026-07-17T08:19:25.620047+00:00",
+    "completed_at": "2026-07-17T08:25:52.213074+00:00",
+    "status": "failed",
+    "passed": false,
+    "stale": false,
+    "step_count": 1499,
+    "action_count": 54,
+    "model": "gpt-5.6-sol",
+    "observation_mode": "styled_first_person_with_proprioception",
+    "report_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/report.json?v=1784276752217024929",
+    "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/trajectory.json?v=1784276752208358283",
+    "evidence_frames": [
+      {
+        "index": 0,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_000.png",
+        "step": 0,
+        "reset_count": 0,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": -90.0,
+          "elevation": -8.0,
+          "fov_y_degrees": 90.0
+        }
+      },
+      {
+        "index": 1,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_001.png",
+        "step": 249,
+        "reset_count": 1,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": -90.0,
+          "elevation": -8.0,
+          "fov_y_degrees": 90.0
+        }
+      },
+      {
+        "index": 2,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_002.png",
+        "step": 533,
+        "reset_count": 2,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": -90.0,
+          "elevation": -8.0,
+          "fov_y_degrees": 90.0
+        }
+      },
+      {
+        "index": 3,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_003.png",
+        "step": 1155,
+        "reset_count": 2,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": 60.0,
+          "elevation": -8.0,
+          "fov_y_degrees": 90.0
+        }
+      },
+      {
+        "index": 4,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_004.png",
+        "step": 1395,
+        "reset_count": 2,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": 84.0,
+          "elevation": -8.0,
+          "fov_y_degrees": 90.0
+        }
+      },
+      {
+        "index": 5,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_005.png",
+        "step": 1499,
+        "reset_count": 2,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": 84.0,
+          "elevation": -8.0,
+          "fov_y_degrees": 90.0
+        }
+      }
+    ],
+    "activity_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/activity.json?v=1784276752215957004",
+    "activity_count": 173,
+    "activity": [
+      {
+        "sequence": 94,
+        "timestamp": "2026-07-17T08:23:02.749469+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_32",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "look_x": 1,
+          "frames": 24
+        },
+        "step": 1019
+      },
+      {
+        "sequence": 95,
+        "timestamp": "2026-07-17T08:23:03.445788+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_32",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 24 frames · step 1043.",
+        "isError": false,
+        "step": 1043,
+        "summary": {
+          "status": "success",
+          "step": 1043,
+          "steps_remaining": 1357,
+          "resets_used": 2,
+          "frames_advanced": 24,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0030.png"
+        }
+      },
+      {
+        "sequence": 96,
+        "timestamp": "2026-07-17T08:23:03.445945+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0030.png",
+        "step": 1043,
+        "reset_count": 2
+      },
+      {
+        "sequence": 97,
+        "timestamp": "2026-07-17T08:23:10.633327+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_33",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "look_x": 1,
+          "frames": 12
+        },
+        "step": 1043
+      },
+      {
+        "sequence": 98,
+        "timestamp": "2026-07-17T08:23:11.045044+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_33",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 12 frames · step 1055.",
+        "isError": false,
+        "step": 1055,
+        "summary": {
+          "status": "success",
+          "step": 1055,
+          "steps_remaining": 1345,
+          "resets_used": 2,
+          "frames_advanced": 12,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0031.png"
+        }
+      },
+      {
+        "sequence": 99,
+        "timestamp": "2026-07-17T08:23:11.045211+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0031.png",
+        "step": 1055,
+        "reset_count": 2
+      },
+      {
+        "sequence": 100,
+        "timestamp": "2026-07-17T08:23:15.577204+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_34",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "frames": 100
+        },
+        "step": 1055
+      },
+      {
+        "sequence": 101,
+        "timestamp": "2026-07-17T08:23:18.492359+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_34",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 100 frames · step 1155.",
+        "isError": false,
+        "step": 1155,
+        "summary": {
+          "status": "success",
+          "step": 1155,
+          "steps_remaining": 1245,
+          "resets_used": 2,
+          "frames_advanced": 100,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0032.png"
+        }
+      },
+      {
+        "sequence": 102,
+        "timestamp": "2026-07-17T08:23:18.492518+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0032.png",
+        "step": 1155,
+        "reset_count": 2
+      },
+      {
+        "sequence": 103,
+        "timestamp": "2026-07-17T08:23:23.639092+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_35",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": -0.15,
+          "frames": 60
+        },
+        "step": 1155
+      },
+      {
+        "sequence": 104,
+        "timestamp": "2026-07-17T08:23:25.651763+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_35",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 60 frames · step 1215.",
+        "isError": false,
+        "step": 1215,
+        "summary": {
+          "status": "success",
+          "step": 1215,
+          "steps_remaining": 1185,
+          "resets_used": 2,
+          "frames_advanced": 60,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0033.png"
+        }
+      },
+      {
+        "sequence": 105,
+        "timestamp": "2026-07-17T08:23:25.651931+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0033.png",
+        "step": 1215,
+        "reset_count": 2
+      },
+      {
+        "sequence": 106,
+        "timestamp": "2026-07-17T08:23:33.876100+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_36",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "frames": 36
+        },
+        "step": 1215
+      },
+      {
+        "sequence": 107,
+        "timestamp": "2026-07-17T08:23:35.265847+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_36",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 36 frames · step 1251.",
+        "isError": false,
+        "step": 1251,
+        "summary": {
+          "status": "success",
+          "step": 1251,
+          "steps_remaining": 1149,
+          "resets_used": 2,
+          "frames_advanced": 36,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0034.png"
+        }
+      },
+      {
+        "sequence": 108,
+        "timestamp": "2026-07-17T08:23:35.266195+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0034.png",
+        "step": 1251,
+        "reset_count": 2
+      },
+      {
+        "sequence": 109,
+        "timestamp": "2026-07-17T08:23:40.911672+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_37",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "look_x": 1,
+          "frames": 6
+        },
+        "step": 1251
+      },
+      {
+        "sequence": 110,
+        "timestamp": "2026-07-17T08:23:41.227344+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_37",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 6 frames · step 1257.",
+        "isError": false,
+        "step": 1257,
+        "summary": {
+          "status": "success",
+          "step": 1257,
+          "steps_remaining": 1143,
+          "resets_used": 2,
+          "frames_advanced": 6,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0035.png"
+        }
+      },
+      {
+        "sequence": 111,
+        "timestamp": "2026-07-17T08:23:41.227531+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0035.png",
+        "step": 1257,
+        "reset_count": 2
+      },
+      {
+        "sequence": 112,
+        "timestamp": "2026-07-17T08:23:51.548184+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_38",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.35,
+          "look_x": -0.2,
+          "frames": 24
+        },
+        "step": 1257
+      },
+      {
+        "sequence": 113,
+        "timestamp": "2026-07-17T08:23:52.565868+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_38",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 24 frames · step 1281.",
+        "isError": false,
+        "step": 1281,
+        "summary": {
+          "status": "success",
+          "step": 1281,
+          "steps_remaining": 1119,
+          "resets_used": 2,
+          "frames_advanced": 24,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0036.png"
+        }
+      },
+      {
+        "sequence": 114,
+        "timestamp": "2026-07-17T08:23:52.566277+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0036.png",
+        "step": 1281,
+        "reset_count": 2
+      },
+      {
+        "sequence": 115,
+        "timestamp": "2026-07-17T08:23:59.636803+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_39",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.15,
+          "frames": 24
+        },
+        "step": 1281
+      },
+      {
+        "sequence": 116,
+        "timestamp": "2026-07-17T08:24:00.594612+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_39",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 24 frames · step 1305.",
+        "isError": false,
+        "step": 1305,
+        "summary": {
+          "status": "success",
+          "step": 1305,
+          "steps_remaining": 1095,
+          "resets_used": 2,
+          "frames_advanced": 24,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0037.png"
+        }
+      },
+      {
+        "sequence": 117,
+        "timestamp": "2026-07-17T08:24:00.594814+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0037.png",
+        "step": 1305,
+        "reset_count": 2
+      },
+      {
+        "sequence": 118,
+        "timestamp": "2026-07-17T08:24:05.540810+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_40",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.12,
+          "frames": 18
+        },
+        "step": 1305
+      },
+      {
+        "sequence": 119,
+        "timestamp": "2026-07-17T08:24:06.378436+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_40",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 18 frames · step 1323.",
+        "isError": false,
+        "step": 1323,
+        "summary": {
+          "status": "success",
+          "step": 1323,
+          "steps_remaining": 1077,
+          "resets_used": 2,
+          "frames_advanced": 18,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0038.png"
+        }
+      },
+      {
+        "sequence": 120,
+        "timestamp": "2026-07-17T08:24:06.378605+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0038.png",
+        "step": 1323,
+        "reset_count": 2
+      },
+      {
+        "sequence": 121,
+        "timestamp": "2026-07-17T08:24:12.732081+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_41",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.2,
+          "frames": 15
+        },
+        "step": 1323
+      },
+      {
+        "sequence": 122,
+        "timestamp": "2026-07-17T08:24:13.427886+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_41",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 15 frames · step 1338.",
+        "isError": false,
+        "step": 1338,
+        "summary": {
+          "status": "success",
+          "step": 1338,
+          "steps_remaining": 1062,
+          "resets_used": 2,
+          "frames_advanced": 15,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0039.png"
+        }
+      },
+      {
+        "sequence": 123,
+        "timestamp": "2026-07-17T08:24:13.428047+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0039.png",
+        "step": 1338,
+        "reset_count": 2
+      },
+      {
+        "sequence": 124,
+        "timestamp": "2026-07-17T08:24:17.473917+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_42",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.2,
+          "frames": 18
+        },
+        "step": 1338
+      },
+      {
+        "sequence": 125,
+        "timestamp": "2026-07-17T08:24:18.420362+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_42",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 18 frames · step 1356.",
+        "isError": false,
+        "step": 1356,
+        "summary": {
+          "status": "success",
+          "step": 1356,
+          "steps_remaining": 1044,
+          "resets_used": 2,
+          "frames_advanced": 18,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0040.png"
+        }
+      },
+      {
+        "sequence": 126,
+        "timestamp": "2026-07-17T08:24:18.420678+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0040.png",
+        "step": 1356,
+        "reset_count": 2
+      },
+      {
+        "sequence": 127,
+        "timestamp": "2026-07-17T08:24:23.253718+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_43",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.15,
+          "frames": 15
+        },
+        "step": 1356
+      },
+      {
+        "sequence": 128,
+        "timestamp": "2026-07-17T08:24:23.978651+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_43",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 15 frames · step 1371.",
+        "isError": false,
+        "step": 1371,
+        "summary": {
+          "status": "success",
+          "step": 1371,
+          "steps_remaining": 1029,
+          "resets_used": 2,
+          "frames_advanced": 15,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0041.png"
+        }
+      },
+      {
+        "sequence": 129,
+        "timestamp": "2026-07-17T08:24:23.978831+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0041.png",
+        "step": 1371,
+        "reset_count": 2
+      },
+      {
+        "sequence": 130,
+        "timestamp": "2026-07-17T08:24:30.889030+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_44",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.15,
+          "frames": 12
+        },
+        "step": 1371
+      },
+      {
+        "sequence": 131,
+        "timestamp": "2026-07-17T08:24:31.501483+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_44",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 12 frames · step 1383.",
+        "isError": false,
+        "step": 1383,
+        "summary": {
+          "status": "success",
+          "step": 1383,
+          "steps_remaining": 1017,
+          "resets_used": 2,
+          "frames_advanced": 12,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0042.png"
+        }
+      },
+      {
+        "sequence": 132,
+        "timestamp": "2026-07-17T08:24:31.501669+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0042.png",
+        "step": 1383,
+        "reset_count": 2
+      },
+      {
+        "sequence": 133,
+        "timestamp": "2026-07-17T08:24:38.306886+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_45",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.1,
+          "frames": 12
+        },
+        "step": 1383
+      },
+      {
+        "sequence": 134,
+        "timestamp": "2026-07-17T08:24:38.909135+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_45",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 12 frames · step 1395.",
+        "isError": false,
+        "step": 1395,
+        "summary": {
+          "status": "success",
+          "step": 1395,
+          "steps_remaining": 1005,
+          "resets_used": 2,
+          "frames_advanced": 12,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0043.png"
+        }
+      },
+      {
+        "sequence": 135,
+        "timestamp": "2026-07-17T08:24:38.909303+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0043.png",
+        "step": 1395,
+        "reset_count": 2
+      },
+      {
+        "sequence": 136,
+        "timestamp": "2026-07-17T08:24:42.608080+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_46",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.1,
+          "frames": 10
+        },
+        "step": 1395
+      },
+      {
+        "sequence": 137,
+        "timestamp": "2026-07-17T08:24:43.175010+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_46",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 10 frames · step 1405.",
+        "isError": false,
+        "step": 1405,
+        "summary": {
+          "status": "success",
+          "step": 1405,
+          "steps_remaining": 995,
+          "resets_used": 2,
+          "frames_advanced": 10,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0044.png"
+        }
+      },
+      {
+        "sequence": 138,
+        "timestamp": "2026-07-17T08:24:43.175167+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0044.png",
+        "step": 1405,
+        "reset_count": 2
+      },
+      {
+        "sequence": 139,
+        "timestamp": "2026-07-17T08:24:47.992509+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_47",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.1,
+          "frames": 8
+        },
+        "step": 1405
+      },
+      {
+        "sequence": 140,
+        "timestamp": "2026-07-17T08:24:48.492886+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_47",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 8 frames · step 1413.",
+        "isError": false,
+        "step": 1413,
+        "summary": {
+          "status": "success",
+          "step": 1413,
+          "steps_remaining": 987,
+          "resets_used": 2,
+          "frames_advanced": 8,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0045.png"
+        }
+      },
+      {
+        "sequence": 141,
+        "timestamp": "2026-07-17T08:24:48.493042+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0045.png",
+        "step": 1413,
+        "reset_count": 2
+      },
+      {
+        "sequence": 142,
+        "timestamp": "2026-07-17T08:24:52.386992+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_48",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.1,
+          "frames": 8
+        },
+        "step": 1413
+      },
+      {
+        "sequence": 143,
+        "timestamp": "2026-07-17T08:24:52.850929+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_48",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 8 frames · step 1421.",
+        "isError": false,
+        "step": 1421,
+        "summary": {
+          "status": "success",
+          "step": 1421,
+          "steps_remaining": 979,
+          "resets_used": 2,
+          "frames_advanced": 8,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0046.png"
+        }
+      },
+      {
+        "sequence": 144,
+        "timestamp": "2026-07-17T08:24:52.851102+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0046.png",
+        "step": 1421,
+        "reset_count": 2
+      },
+      {
+        "sequence": 145,
+        "timestamp": "2026-07-17T08:24:59.270423+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_49",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "right": 0.05,
+          "frames": 8
+        },
+        "step": 1421
+      },
+      {
+        "sequence": 146,
+        "timestamp": "2026-07-17T08:24:59.740744+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_49",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 8 frames · step 1429.",
+        "isError": false,
+        "step": 1429,
+        "summary": {
+          "status": "success",
+          "step": 1429,
+          "steps_remaining": 971,
+          "resets_used": 2,
+          "frames_advanced": 8,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0047.png"
+        }
+      },
+      {
+        "sequence": 147,
+        "timestamp": "2026-07-17T08:24:59.740904+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0047.png",
+        "step": 1429,
+        "reset_count": 2
+      },
+      {
+        "sequence": 148,
+        "timestamp": "2026-07-17T08:25:03.187820+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_50",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "frames": 6
+        },
+        "step": 1429
+      },
+      {
+        "sequence": 149,
+        "timestamp": "2026-07-17T08:25:03.556792+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_50",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 6 frames · step 1435.",
+        "isError": false,
+        "step": 1435,
+        "summary": {
+          "status": "success",
+          "step": 1435,
+          "steps_remaining": 965,
+          "resets_used": 2,
+          "frames_advanced": 6,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0048.png"
+        }
+      },
+      {
+        "sequence": 150,
+        "timestamp": "2026-07-17T08:25:03.556946+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0048.png",
+        "step": 1435,
+        "reset_count": 2
+      },
+      {
+        "sequence": 151,
+        "timestamp": "2026-07-17T08:25:07.797602+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_51",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "frames": 6
+        },
+        "step": 1435
+      },
+      {
+        "sequence": 152,
+        "timestamp": "2026-07-17T08:25:08.208603+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_51",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 6 frames · step 1441.",
+        "isError": false,
+        "step": 1441,
+        "summary": {
+          "status": "success",
+          "step": 1441,
+          "steps_remaining": 959,
+          "resets_used": 2,
+          "frames_advanced": 6,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0049.png"
+        }
+      },
+      {
+        "sequence": 153,
+        "timestamp": "2026-07-17T08:25:08.208797+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0049.png",
+        "step": 1441,
+        "reset_count": 2
+      },
+      {
+        "sequence": 154,
+        "timestamp": "2026-07-17T08:25:12.302190+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_52",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "frames": 8
+        },
+        "step": 1441
+      },
+      {
+        "sequence": 155,
+        "timestamp": "2026-07-17T08:25:12.791739+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_52",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 8 frames · step 1449.",
+        "isError": false,
+        "step": 1449,
+        "summary": {
+          "status": "success",
+          "step": 1449,
+          "steps_remaining": 951,
+          "resets_used": 2,
+          "frames_advanced": 8,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0050.png"
+        }
+      },
+      {
+        "sequence": 156,
+        "timestamp": "2026-07-17T08:25:12.791957+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0050.png",
+        "step": 1449,
+        "reset_count": 2
+      },
+      {
+        "sequence": 157,
+        "timestamp": "2026-07-17T08:25:17.218284+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_53",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "frames": 10
+        },
+        "step": 1449
+      },
+      {
+        "sequence": 158,
+        "timestamp": "2026-07-17T08:25:17.772763+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_53",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 10 frames · step 1459.",
+        "isError": false,
+        "step": 1459,
+        "summary": {
+          "status": "success",
+          "step": 1459,
+          "steps_remaining": 941,
+          "resets_used": 2,
+          "frames_advanced": 10,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0051.png"
+        }
+      },
+      {
+        "sequence": 159,
+        "timestamp": "2026-07-17T08:25:17.772925+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0051.png",
+        "step": 1459,
+        "reset_count": 2
+      },
+      {
+        "sequence": 160,
+        "timestamp": "2026-07-17T08:25:21.759708+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_54",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "frames": 10
+        },
+        "step": 1459
+      },
+      {
+        "sequence": 161,
+        "timestamp": "2026-07-17T08:25:22.362051+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_54",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 10 frames · step 1469.",
+        "isError": false,
+        "step": 1469,
+        "summary": {
+          "status": "success",
+          "step": 1469,
+          "steps_remaining": 931,
+          "resets_used": 2,
+          "frames_advanced": 10,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0052.png"
+        }
+      },
+      {
+        "sequence": 162,
+        "timestamp": "2026-07-17T08:25:22.362214+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0052.png",
+        "step": 1469,
+        "reset_count": 2
+      },
+      {
+        "sequence": 163,
+        "timestamp": "2026-07-17T08:25:28.139059+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_55",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "forward": 1,
+          "frames": 12
+        },
+        "step": 1469
+      },
+      {
+        "sequence": 164,
+        "timestamp": "2026-07-17T08:25:28.806765+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_55",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 12 frames · step 1481.",
+        "isError": false,
+        "step": 1481,
+        "summary": {
+          "status": "success",
+          "step": 1481,
+          "steps_remaining": 919,
+          "resets_used": 2,
+          "frames_advanced": 12,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0053.png"
+        }
+      },
+      {
+        "sequence": 165,
+        "timestamp": "2026-07-17T08:25:28.806955+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0053.png",
+        "step": 1481,
+        "reset_count": 2
+      },
+      {
+        "sequence": 166,
+        "timestamp": "2026-07-17T08:25:34.941170+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_56",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 18
+        },
+        "step": 1481
+      },
+      {
+        "sequence": 167,
+        "timestamp": "2026-07-17T08:25:36.008596+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_56",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 18 frames · step 1499.",
+        "isError": false,
+        "step": 1499,
+        "summary": {
+          "status": "success",
+          "step": 1499,
+          "steps_remaining": 901,
+          "resets_used": 2,
+          "frames_advanced": 18,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0054.png"
+        }
+      },
+      {
+        "sequence": 168,
+        "timestamp": "2026-07-17T08:25:36.008930+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/child_frames/frame_0054.png",
+        "step": 1499,
+        "reset_count": 2
+      },
+      {
+        "sequence": 169,
+        "timestamp": "2026-07-17T08:25:40.923346+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_57",
+        "name": "stop_task_run",
+        "label": "Action",
+        "message": "Checking the final task result...",
+        "input": {},
+        "step": 1499
+      },
+      {
+        "sequence": 170,
+        "timestamp": "2026-07-17T08:25:40.999240+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_57",
+        "name": "stop_task_run",
+        "label": "Result",
+        "message": "Task did not pass after 1499 steps.",
+        "isError": false,
+        "step": 1499,
+        "summary": {
+          "status": "failed",
+          "step": 1499,
+          "resets_used": 2,
+          "passed": false,
+          "terminal": false
+        }
+      },
+      {
+        "sequence": 171,
+        "timestamp": "2026-07-17T08:25:51.321621+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "Task failed. The hazard was avoided on the final attempt, and the floor switch visibly changed from red to illuminated yellow when stepped on, but the evaluator did not confirm the center gate as open.",
+        "step": 1499
+      },
+      {
+        "sequence": 172,
+        "timestamp": "2026-07-17T08:25:51.446620+00:00",
+        "event": "task_run",
+        "type": "phase",
+        "label": "Task run",
+        "message": "replaying",
+        "run_id": "run-0002-893fdba8",
+        "status": "replaying",
+        "step_count": null,
+        "action_count": 54,
+        "passed": null,
+        "step": 1499
+      },
+      {
+        "sequence": 173,
+        "timestamp": "2026-07-17T08:25:52.215558+00:00",
+        "event": "task_run",
+        "type": "phase",
+        "label": "Task run",
+        "message": "failed",
+        "run_id": "run-0002-893fdba8",
+        "status": "failed",
+        "step_count": 1499,
+        "action_count": 54,
+        "passed": false,
+        "step": 1499
+      }
+    ]
+  },
+  "effective_status": "validated"
+}

@@ -1,0 +1,3936 @@
+{
+  "schema_version": "2.0",
+  "controller_version": "controller_v3",
+  "env_id": "Courtyard_Relay",
+  "run_id": "run-0001-ea9f6a33",
+  "created_at": "2026-07-17T05:28:37.656805+00:00",
+  "status": "partial",
+  "passed": false,
+  "blocking": false,
+  "env_spec_hash": "9ae8a61412b9b4e3266768a0e957e88d59761a6648f3afc888cd93b7ee64c66a",
+  "behavior_plan_hash": "82eb5ff9943756ada0bdaa5fdbbd6611e93e90c8466b04ea94362dd7668e866e",
+  "model": "gpt-5.6-sol",
+  "summary": {
+    "total": 2,
+    "passed": 1,
+    "inconclusive": 0,
+    "failed": 0,
+    "invalid_setup": 0,
+    "errors": 0,
+    "not_run": 1
+  },
+  "results": [
+    {
+      "trial_id": "switch_gate_goal_sequence",
+      "instruction": "Touch the floor switch, pass through the opened center gate, ascend the ramp, and enter the charging goal.",
+      "expected_outcome": "should_succeed",
+      "severity": "critical",
+      "status": "passed",
+      "passed": true,
+      "non_failure": true,
+      "objective": {
+        "mode": "all",
+        "satisfied": true,
+        "passed_count": 2,
+        "total_count": 2,
+        "ordered_check_ids": [
+          "touch_gate_switch",
+          "enter_charging_goal"
+        ],
+        "ordered_steps": [
+          240,
+          827
+        ],
+        "order_satisfied": true,
+        "checks": [
+          {
+            "id": "touch_gate_switch",
+            "description": "The blue robot enters the gate switch region to open the gate.",
+            "temporal": "count",
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any",
+              "target": {
+                "id": "gate_switch"
+              }
+            },
+            "min_count": 1,
+            "predicate_type": "overlap",
+            "type": "overlap",
+            "passed": true,
+            "status": "pass",
+            "provisional": false,
+            "first_satisfied_step": 240,
+            "first_satisfied_frame": 240,
+            "metrics": {
+              "frames_observed": 828,
+              "true_frames": 96,
+              "transition_count": 1,
+              "longest_true_streak": 96,
+              "currently_true": false,
+              "final_evaluation": true,
+              "operator": "count",
+              "overlapping_pairs": [],
+              "matched_subject_ids": [],
+              "pair_transition_counts": {
+                "blue_robot->gate_switch": 1
+              },
+              "counts_by_subject": {
+                "blue_robot": 1
+              },
+              "counts_by_target": {
+                "gate_switch": 1
+              }
+            },
+            "witness": {
+              "overlapping_pairs": [
+                [
+                  "blue_robot",
+                  "gate_switch"
+                ]
+              ],
+              "matched_subject_ids": [
+                "blue_robot"
+              ]
+            }
+          },
+          {
+            "id": "enter_charging_goal",
+            "description": "The blue robot crosses the opened gate and enters the charging goal.",
+            "temporal": "count",
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any",
+              "target": {
+                "id": "charging_goal"
+              }
+            },
+            "min_count": 1,
+            "predicate_type": "overlap",
+            "type": "overlap",
+            "passed": true,
+            "status": "pass",
+            "provisional": false,
+            "first_satisfied_step": 827,
+            "first_satisfied_frame": 827,
+            "metrics": {
+              "frames_observed": 828,
+              "true_frames": 1,
+              "transition_count": 1,
+              "longest_true_streak": 1,
+              "currently_true": true,
+              "final_evaluation": true,
+              "operator": "count",
+              "overlapping_pairs": [
+                [
+                  "blue_robot",
+                  "charging_goal"
+                ]
+              ],
+              "matched_subject_ids": [
+                "blue_robot"
+              ],
+              "pair_transition_counts": {
+                "blue_robot->charging_goal": 1
+              },
+              "counts_by_subject": {
+                "blue_robot": 1
+              },
+              "counts_by_target": {
+                "charging_goal": 1
+              }
+            },
+            "witness": {
+              "overlapping_pairs": [
+                [
+                  "blue_robot",
+                  "charging_goal"
+                ]
+              ],
+              "matched_subject_ids": [
+                "blue_robot"
+              ]
+            }
+          }
+        ],
+        "raw_satisfied": true,
+        "disqualified_by_terminal_event": null
+      },
+      "constraints": {
+        "mode": "all",
+        "satisfied": true,
+        "passed_count": 0,
+        "total_count": 0,
+        "ordered_check_ids": [],
+        "ordered_steps": [],
+        "order_satisfied": true,
+        "checks": []
+      },
+      "reward": 1.0,
+      "termination_reason": "objective_satisfied",
+      "steps_used": 827,
+      "reset_count": 0,
+      "attempt_count": 1,
+      "settle_steps": [
+        3
+      ],
+      "actions": [
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.5102266666666667,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 1.450099930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 18
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0005433333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 1.433799930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 36
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00019666666666666666,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.427899930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 40
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.427899930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 44
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00017666666666666666,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.4225999304438248,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 48
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -3.9999999999999996e-05,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.4213999304438247,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 52
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00015666666666666666,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.4166999304438248,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 56
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.4166999304438248,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 60
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.4166999304438248,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 64
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -6e-05,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.4148999304438248,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 68
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00020333333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.4087999304438248,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 72
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -3.3333333333333335e-05,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.407799930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 76
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0003,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.398799930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 80
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -4.3333333333333334e-05,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.397499930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 84
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.397499930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 88
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -9.333333333333333e-05,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.394699930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 92
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00017333333333333334,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.389499930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 96
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.389499930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 100
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00031999999999999997,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.3798999304438249,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 104
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00043,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.366999930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 108
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0006633333333333334,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.347099930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 112
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0003533333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.336499930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 116
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00025333333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.328899930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 120
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00022333333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.322199930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 124
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00023333333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.315199930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 128
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00025,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.307699930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 132
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00026333333333333336,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.299799930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 136
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00028333333333333335,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.291299930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 140
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00030333333333333335,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.282199930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 144
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00032333333333333335,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.272499930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 148
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00035666666666666664,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.261799930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 152
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0003866666666666666,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.250199930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 156
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00043,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.237299930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 160
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0004766666666666667,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.222999930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 164
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0005466666666666668,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.206599930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 168
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0006333333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.1875999304438252,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 172
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0007566666666666667,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.1648999304438252,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 176
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0009466666666666667,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.1364999304438252,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 180
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00127,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 1.0983999304438252,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 184
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": 31.098399930443826,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 187
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.3720166666666667,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 42.258899930443825,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 191
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.005823333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 42.433599930443826,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 195
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.0009866666666666667,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 42.46319993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 199
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 8.333333333333333e-05,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 42.465699930443826,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 203
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0003333333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 42.45569993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 207
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.0003333333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 42.44569993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 211
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00037,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 42.43459993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 215
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00046,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 42.42079993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 219
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00010333333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 42.417699930443824,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 223
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00010333333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 4,
+          "camera_azimuth": 42.41459993044382,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 4,
+          "total_step": 227
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 42.41459993044382,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 233
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00025333333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 42.406999930443824,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 239
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.00015999999999999999,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 1,
+          "camera_azimuth": 42.40219993044382,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 1,
+          "total_step": 240
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 42.40219993044382,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 258
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 60,
+          "camera_azimuth": 42.40219993044382,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 60,
+          "total_step": 318
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": -1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": 12.402199930443821,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 321
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": -17.59780006955618,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 339
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.13716333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": -13.48290006955618,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 357
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.35093,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": -24.010800069556183,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 375
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.52003,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": -8.409900069556183,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 393
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.7933800000000001,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 15.391499930443818,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 411
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": -1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": -14.608500069556182,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 414
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 15.391499930443818,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 420
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.052403333333333336,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 16.963599930443817,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 426
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.01866,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 16.403799930443817,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 432
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": 46.40379993044382,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 435
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.2782866666666666,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 54.752399930443815,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 453
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.012326666666666668,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 55.12219993044381,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 471
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.008700000000000001,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 55.383199930443816,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 489
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.007180000000000001,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 55.59859993044382,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 507
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.007863333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 55.83449993044382,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 525
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.023726666666666667,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 56.546299930443816,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 531
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 56.546299930443816,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 537
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": -1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": 26.546299930443816,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 540
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.24648333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 19.151799930443815,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 558
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.020096666666666665,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 18.548899930443817,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 576
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.00033000000000000005,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 18.558799930443815,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 594
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.008006666666666667,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 18.318599930443813,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 612
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.013453333333333335,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 17.914999930443813,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 618
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.011373333333333334,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 17.573799930443812,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 636
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.03275666666666667,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 18,
+          "camera_azimuth": 16.59109993044381,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 18,
+          "total_step": 654
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.03852333333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 15.435399930443811,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 660
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.016296666666666668,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 14.946499930443812,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 666
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.013250000000000001,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 14.548999930443811,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 672
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.038623333333333336,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 13.390299930443812,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 678
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.051866666666666665,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 11.834299930443812,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 684
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.7684466666666666,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": -11.219100069556188,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 690
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": -1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": -41.21910006955619,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 693
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": -1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": -71.21910006955619,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 696
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": -1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": -101.21910006955619,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 699
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": -1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": -131.2191000695562,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 702
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": -1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": -161.2191000695562,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 705
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": -0.8744133333333333,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": -187.45150006955618,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 711
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.009966666666666667,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": -187.15250006955617,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 717
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": -157.15250006955617,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 720
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": -127.15250006955617,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 723
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": -97.15250006955617,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 726
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": -67.15250006955617,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 729
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": -37.15250006955617,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 732
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": -7.152500069556169,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 738
+        },
+        {
+          "action": "controller",
+          "forward": 1.0,
+          "right": 0.0,
+          "look_x": 0.0649,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": -5.205500069556169,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 744
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": 24.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 747
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": 54.794499930443834,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 750
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": 84.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 753
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": 114.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 756
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": 1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 2,
+          "camera_azimuth": 144.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 2,
+          "total_step": 758
+        },
+        {
+          "action": "controller",
+          "forward": 0.0,
+          "right": 0.0,
+          "look_x": -1.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 30,
+          "camera_azimuth": 114.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 30,
+          "total_step": 788
+        },
+        {
+          "action": "controller",
+          "forward": -0.2,
+          "right": 1.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 114.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 794
+        },
+        {
+          "action": "controller",
+          "forward": -0.2,
+          "right": 1.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 114.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 800
+        },
+        {
+          "action": "controller",
+          "forward": -0.2,
+          "right": 1.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 114.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 806
+        },
+        {
+          "action": "controller",
+          "forward": -0.2,
+          "right": 1.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 114.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 812
+        },
+        {
+          "action": "controller",
+          "forward": -0.2,
+          "right": 1.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 114.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 818
+        },
+        {
+          "action": "controller",
+          "forward": -0.2,
+          "right": 1.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 6,
+          "camera_azimuth": 114.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 6,
+          "total_step": 824
+        },
+        {
+          "action": "controller",
+          "forward": -0.2,
+          "right": 1.0,
+          "look_x": 0.0,
+          "look_y": 0.0,
+          "jump": false,
+          "frames": 3,
+          "camera_azimuth": 114.79449993044383,
+          "camera_elevation": -4.206029689347683,
+          "attempt": 1,
+          "frames_advanced": 3,
+          "total_step": 827
+        }
+      ],
+      "events": [
+        {
+          "type": "contact_started",
+          "step": 1,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 3,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 11,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 17,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 20,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 25,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 27,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 29,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 41,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 47,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 49,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 64,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 69,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 74,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 87,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 99,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 106,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 110,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 112,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 114,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 116,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 118,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 120,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 122,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 124,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 126,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 128,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 130,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 132,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 134,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 136,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 138,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 140,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 142,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 144,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 146,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 148,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 150,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 152,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 154,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 156,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 158,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 160,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 162,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 164,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 166,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 168,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 170,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 172,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 174,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 176,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 178,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 180,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 182,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 184,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 191,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 199,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 201,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 203,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 205,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 208,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 210,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 214,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 216,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 219,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 228,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 230,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 233,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "zone_entered",
+          "step": 240,
+          "attempt": 1,
+          "object_id": "gate_switch"
+        },
+        {
+          "type": "mechanism_activated",
+          "step": 240,
+          "attempt": 1,
+          "object_id": "gate_switch_link"
+        },
+        {
+          "type": "contact_started",
+          "step": 242,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 247,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 324,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 332,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 338,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 352,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 363,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 374,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 383,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 391,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 397,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 402,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 414,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 420,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 422,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 424,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 429,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 434,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 440,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 443,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 445,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 447,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 453,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 462,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 469,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 475,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 481,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 493,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 504,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 513,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 520,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 522,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 534,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 548,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 554,
+          "attempt": 1,
+          "object_id": "ground"
+        },
+        {
+          "type": "contact_started",
+          "step": 561,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 571,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 576,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 579,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 581,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 585,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 590,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 598,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 603,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 607,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 609,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 616,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 618,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 624,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 626,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 631,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 637,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 640,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 644,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 646,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 654,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 659,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 667,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 673,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 680,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 686,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 701,
+          "attempt": 1,
+          "object_id": "goal_platform"
+        },
+        {
+          "type": "contact_started",
+          "step": 701,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 722,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 739,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 742,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 754,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 795,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 797,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 809,
+          "attempt": 1,
+          "object_id": "goal_platform"
+        },
+        {
+          "type": "contact_started",
+          "step": 809,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "contact_started",
+          "step": 822,
+          "attempt": 1,
+          "object_id": "goal_platform"
+        },
+        {
+          "type": "contact_started",
+          "step": 822,
+          "attempt": 1,
+          "object_id": "goal_ramp"
+        },
+        {
+          "type": "zone_entered",
+          "step": 827,
+          "attempt": 1,
+          "object_id": "charging_goal"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "objective": {
+            "mode": "all",
+            "satisfied": true,
+            "passed_count": 2,
+            "total_count": 2,
+            "ordered_check_ids": [
+              "touch_gate_switch",
+              "enter_charging_goal"
+            ],
+            "ordered_steps": [
+              240,
+              827
+            ],
+            "order_satisfied": true,
+            "checks": [
+              {
+                "id": "touch_gate_switch",
+                "description": "The blue robot enters the gate switch region to open the gate.",
+                "temporal": "count",
+                "predicate": {
+                  "type": "overlap",
+                  "subject": {
+                    "semantic_type": "agent"
+                  },
+                  "subject_quantifier": "any",
+                  "target": {
+                    "id": "gate_switch"
+                  }
+                },
+                "min_count": 1,
+                "predicate_type": "overlap",
+                "type": "overlap",
+                "passed": true,
+                "status": "pass",
+                "provisional": false,
+                "first_satisfied_step": 240,
+                "first_satisfied_frame": 240,
+                "metrics": {
+                  "frames_observed": 828,
+                  "true_frames": 96,
+                  "transition_count": 1,
+                  "longest_true_streak": 96,
+                  "currently_true": false,
+                  "final_evaluation": true,
+                  "operator": "count",
+                  "overlapping_pairs": [],
+                  "matched_subject_ids": [],
+                  "pair_transition_counts": {
+                    "blue_robot->gate_switch": 1
+                  },
+                  "counts_by_subject": {
+                    "blue_robot": 1
+                  },
+                  "counts_by_target": {
+                    "gate_switch": 1
+                  }
+                },
+                "witness": {
+                  "overlapping_pairs": [
+                    [
+                      "blue_robot",
+                      "gate_switch"
+                    ]
+                  ],
+                  "matched_subject_ids": [
+                    "blue_robot"
+                  ]
+                }
+              },
+              {
+                "id": "enter_charging_goal",
+                "description": "The blue robot crosses the opened gate and enters the charging goal.",
+                "temporal": "count",
+                "predicate": {
+                  "type": "overlap",
+                  "subject": {
+                    "semantic_type": "agent"
+                  },
+                  "subject_quantifier": "any",
+                  "target": {
+                    "id": "charging_goal"
+                  }
+                },
+                "min_count": 1,
+                "predicate_type": "overlap",
+                "type": "overlap",
+                "passed": true,
+                "status": "pass",
+                "provisional": false,
+                "first_satisfied_step": 827,
+                "first_satisfied_frame": 827,
+                "metrics": {
+                  "frames_observed": 828,
+                  "true_frames": 1,
+                  "transition_count": 1,
+                  "longest_true_streak": 1,
+                  "currently_true": true,
+                  "final_evaluation": true,
+                  "operator": "count",
+                  "overlapping_pairs": [
+                    [
+                      "blue_robot",
+                      "charging_goal"
+                    ]
+                  ],
+                  "matched_subject_ids": [
+                    "blue_robot"
+                  ],
+                  "pair_transition_counts": {
+                    "blue_robot->charging_goal": 1
+                  },
+                  "counts_by_subject": {
+                    "blue_robot": 1
+                  },
+                  "counts_by_target": {
+                    "charging_goal": 1
+                  }
+                },
+                "witness": {
+                  "overlapping_pairs": [
+                    [
+                      "blue_robot",
+                      "charging_goal"
+                    ]
+                  ],
+                  "matched_subject_ids": [
+                    "blue_robot"
+                  ]
+                }
+              }
+            ],
+            "raw_satisfied": true,
+            "disqualified_by_terminal_event": null
+          },
+          "constraints": {
+            "mode": "all",
+            "satisfied": true,
+            "passed_count": 0,
+            "total_count": 0,
+            "ordered_check_ids": [],
+            "ordered_steps": [],
+            "order_satisfied": true,
+            "checks": []
+          },
+          "terminal_outcome": null,
+          "terminal_event_accepted": true,
+          "reset_reason": null,
+          "jump_count": 0,
+          "zone_entry_counts": {
+            "gate_switch": 1,
+            "charging_goal": 1
+          },
+          "contact_counts": {
+            "ground": 103,
+            "goal_ramp": 35,
+            "goal_platform": 3
+          },
+          "terminal_event_counts": {},
+          "reset_counts_by_reason": {},
+          "max_agent_displacement_xy": 14.34977,
+          "max_agent_displacement_xyz": 14.37875,
+          "max_agent_height_gain": 0.91843
+        }
+      ],
+      "final_state": {
+        "simulation_time": 8.299999999999867,
+        "status": "In goal",
+        "grounded": false,
+        "objects": [
+          {
+            "id": "blue_robot",
+            "position": [
+              -4.456954672406687,
+              -6.348090247275581,
+              1.4620162929444327
+            ],
+            "rotation_matrix": [
+              0.9724327633294803,
+              0.2331834488195746,
+              -7.246028941936557e-21,
+              -0.2331834488195746,
+              0.9724327633294803,
+              -3.0217736219455284e-20,
+              0.0,
+              3.107437075237344e-20,
+              1.0
+            ]
+          },
+          {
+            "id": "center_gate",
+            "position": [
+              0.0,
+              0.0,
+              2.999999999917201
+            ],
+            "rotation_matrix": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          },
+          {
+            "id": "supply_crate",
+            "position": [
+              5.0,
+              2.0,
+              0.5498922445797838
+            ],
+            "rotation_matrix": [
+              1.0,
+              6.880321005526525e-20,
+              -1.5852572904354452e-19,
+              -6.880321005526525e-20,
+              1.0,
+              -3.402200453639492e-17,
+              1.5852572904354452e-19,
+              3.402200453639492e-17,
+              1.0
+            ]
+          },
+          {
+            "id": "goal_side_barrel",
+            "position": [
+              -7.199999810117068,
+              -5.799999532890565,
+              0.5499094968949645
+            ],
+            "rotation_matrix": [
+              0.9999999999992888,
+              1.1656663606521957e-06,
+              2.5361147882241983e-07,
+              -1.1656665572022618e-06,
+              0.9999999999990206,
+              7.750058448354905e-07,
+              -2.5361057542392874e-07,
+              -7.750061404613584e-07,
+              0.9999999999996678
+            ]
+          },
+          {
+            "id": "goal_side_yard_ball",
+            "position": [
+              -8.14,
+              -3.48,
+              0.4796328181575398
+            ],
+            "rotation_matrix": [
+              1.0,
+              -2.841493366509713e-29,
+              5.995256586078413e-15,
+              2.580648795203941e-31,
+              1.0,
+              4.6965243907925165e-15,
+              -5.995256586078413e-15,
+              -4.6965243907925165e-15,
+              1.0
+            ]
+          }
+        ],
+        "mechanisms": [
+          {
+            "id": "gate_switch_link",
+            "trigger_id": "gate_switch",
+            "gate_id": "center_gate",
+            "active": true,
+            "progress": 0.9999999999448007
+          }
+        ],
+        "camera": {
+          "azimuth": 114.79449993044383,
+          "elevation": -4.206029689347683
+        }
+      },
+      "repair_hints": [],
+      "preflight": {
+        "schema_version": "1.0",
+        "controller_version": "controller_v3",
+        "status": "ready",
+        "configured_steps_per_attempt": 900,
+        "effective_steps_per_attempt": 900,
+        "max_attempts": 1,
+        "navigation": {
+          "primary_target_id": "gate_switch",
+          "target_ids": [
+            "gate_switch",
+            "charging_goal"
+          ],
+          "initial_camera_azimuth": 16.756899930443826,
+          "initial_camera_elevation": -4.206029689347683,
+          "initial_distance_xy": 5.71293,
+          "estimated_trial_travel_distance_xy": 13.13259,
+          "minimum_travel_steps": 470,
+          "recommended_steps_per_attempt": 900,
+          "effective_steps_per_attempt": 900,
+          "primary_target": {
+            "id": "gate_switch",
+            "semantic_type": "floor_switch",
+            "body_type": "sensor",
+            "position": [
+              -2.2,
+              1.0,
+              0.06
+            ],
+            "size": [
+              1.2,
+              1.2,
+              0.12
+            ]
+          }
+        },
+        "stability": {
+          "probe_steps": 0,
+          "seconds": 0.0,
+          "targets": []
+        },
+        "issues": [],
+        "warnings": [],
+        "repair_hints": []
+      },
+      "child_summary": "Trial passed in 827 steps. The robot touched the gate switch at step 240, crossed the opened gate, ascended the ramp, and entered the charging goal at step 827. Reward: 1.",
+      "child_exit_code": 0,
+      "child_stderr": [
+        "2026-07-17T05:27:31.128483Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back",
+        "2026-07-17T05:27:31.129178Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back",
+        "2026-07-17T05:27:31.129963Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back",
+        "2026-07-17T05:27:31.130577Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back",
+        "2026-07-17T05:27:31.132001Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back",
+        "2026-07-17T05:27:31.132765Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back",
+        "2026-07-17T05:27:31.133603Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back",
+        "2026-07-17T05:27:31.134575Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back",
+        "2026-07-17T05:27:35.293408Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+        "2026-07-17T05:27:38.096431Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+        "2026-07-17T05:27:43.510944Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+        "2026-07-17T05:27:48.412631Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+        "2026-07-17T05:27:54.407440Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+        "2026-07-17T05:27:59.599031Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+        "2026-07-17T05:28:04.972167Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+        "2026-07-17T05:28:10.497708Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+        "2026-07-17T05:28:15.252461Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+        "2026-07-17T05:28:21.442866Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+        "2026-07-17T05:28:25.342981Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+        "2026-07-17T05:28:28.477944Z  WARN codex_core::shell_snapshot: Failed to delete shell snapshot at AbsolutePathBuf(\"$HOME/.codex/shell_snapshots/019f6e8b-4dfe-7031-a5c3-1089a92bb002.1784266051108363000.sh\"): Os { code: 2, kind: NotFound, message: \"No such file or directory\" }"
+      ],
+      "child_observation_count": 15,
+      "child_observations_url": "/generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/child_observations.jsonl",
+      "trajectory_url": "/generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/trajectory.json",
+      "evidence_schema_version": 2,
+      "evidence_source": "authoritative_replay",
+      "evidence_replay_verified": true,
+      "evidence_frames": [
+        {
+          "index": 0,
+          "path": "generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_000.png",
+          "url": "/generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_000.png",
+          "step": 0,
+          "attempt": 1,
+          "kind": "attempt",
+          "label": "Attempt 1 started",
+          "focus_ids": [
+            "blue_robot",
+            "gate_switch"
+          ],
+          "source": "authoritative_replay",
+          "replay_verified": true,
+          "events": [],
+          "camera": {
+            "azimuth": 16.7569,
+            "elevation": -4.20603
+          },
+          "agent": {
+            "id": "blue_robot",
+            "position": [
+              -0.279,
+              7.38,
+              0.54953
+            ],
+            "velocity": [
+              -7e-05,
+              1e-05,
+              0.00315
+            ],
+            "grounded": true,
+            "status": "Exploring"
+          },
+          "navigation": {
+            "primary_target_id": "gate_switch",
+            "available": true,
+            "distance_xy": 5.71293,
+            "center_distance_xy": 6.66293,
+            "progress_xy": 0.0,
+            "desired_camera_azimuth": 16.75691,
+            "heading_error_degrees": 1e-05,
+            "within_interaction_range": false,
+            "target_position": [
+              -2.2,
+              1.0,
+              0.06
+            ],
+            "target_size": [
+              1.2,
+              1.2,
+              0.12
+            ],
+            "relative": {
+              "forward": 6.66293,
+              "right": -0.0,
+              "up": -0.48953
+            }
+          },
+          "objective_focus": {
+            "check_id": "touch_gate_switch",
+            "type": "overlap",
+            "description": "The blue robot enters the gate switch region to open the gate.",
+            "temporal": "count",
+            "relation": null,
+            "subject_ids": [
+              "blue_robot"
+            ],
+            "target_ids": [
+              "gate_switch"
+            ],
+            "navigation_target_ids": [
+              "gate_switch"
+            ],
+            "subject_semantic_types": [
+              "agent"
+            ],
+            "target_semantic_types": [
+              "floor_switch"
+            ],
+            "interaction_kind": null,
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any",
+              "target": {
+                "id": "gate_switch"
+              }
+            },
+            "capabilities": [
+              "navigate",
+              "enter_zone"
+            ],
+            "current_metrics": {
+              "frames_observed": 1,
+              "true_frames": 0,
+              "transition_count": 0,
+              "longest_true_streak": 0,
+              "currently_true": false,
+              "final_evaluation": false,
+              "operator": "count",
+              "overlapping_pairs": [],
+              "matched_subject_ids": [],
+              "pair_transition_counts": {},
+              "counts_by_subject": {},
+              "counts_by_target": {}
+            },
+            "authoritative_check": {
+              "passed": false,
+              "status": "fail",
+              "provisional": false
+            },
+            "satisfied": false,
+            "objective_mode": "all",
+            "expected_outcome": "should_succeed",
+            "alternatives": []
+          },
+          "interaction_guidance": {
+            "applicable": false,
+            "advisory_only": true,
+            "reason": "The current assertion does not require moving another object to a target."
+          },
+          "objective": {
+            "mode": "all",
+            "satisfied": false,
+            "raw_satisfied": false,
+            "disqualified_by_terminal_event": null,
+            "passed_count": 0,
+            "total_count": 2,
+            "ordered_check_ids": [
+              "touch_gate_switch",
+              "enter_charging_goal"
+            ],
+            "ordered_steps": [
+              null,
+              null
+            ],
+            "order_satisfied": false,
+            "checks": [
+              {
+                "id": "touch_gate_switch",
+                "type": "overlap",
+                "description": "The blue robot enters the gate switch region to open the gate.",
+                "passed": false,
+                "status": "fail",
+                "first_satisfied_step": null
+              },
+              {
+                "id": "enter_charging_goal",
+                "type": "overlap",
+                "description": "The blue robot crosses the opened gate and enters the charging goal.",
+                "passed": false,
+                "status": "fail",
+                "first_satisfied_step": null
+              }
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "path": "generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_001.png",
+          "url": "/generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_001.png",
+          "step": 239,
+          "attempt": 1,
+          "kind": "approach",
+          "label": "Closest approach: gate switch",
+          "focus_ids": [
+            "blue_robot",
+            "gate_switch"
+          ],
+          "source": "authoritative_replay",
+          "replay_verified": true,
+          "events": [],
+          "camera": {
+            "azimuth": 42.407,
+            "elevation": -4.20603
+          },
+          "agent": {
+            "id": "blue_robot",
+            "position": [
+              -1.27369,
+              1.77633,
+              0.55667
+            ],
+            "velocity": [
+              -1.8883,
+              -2.06744,
+              -0.14624
+            ],
+            "grounded": false,
+            "status": "Exploring"
+          },
+          "navigation": {
+            "primary_target_id": "gate_switch",
+            "available": true,
+            "distance_xy": 0.25861,
+            "center_distance_xy": 1.20861,
+            "progress_xy": 5.45432,
+            "desired_camera_azimuth": 50.03375,
+            "heading_error_degrees": 7.62675,
+            "within_interaction_range": true,
+            "target_position": [
+              -2.2,
+              1.0,
+              0.06
+            ],
+            "target_size": [
+              1.2,
+              1.2,
+              0.12
+            ],
+            "relative": {
+              "forward": 1.19792,
+              "right": -0.16041,
+              "up": -0.49667
+            }
+          },
+          "objective_focus": {
+            "check_id": "touch_gate_switch",
+            "type": "overlap",
+            "description": "The blue robot enters the gate switch region to open the gate.",
+            "temporal": "count",
+            "relation": null,
+            "subject_ids": [
+              "blue_robot"
+            ],
+            "target_ids": [
+              "gate_switch"
+            ],
+            "navigation_target_ids": [
+              "gate_switch"
+            ],
+            "subject_semantic_types": [
+              "agent"
+            ],
+            "target_semantic_types": [
+              "floor_switch"
+            ],
+            "interaction_kind": null,
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any",
+              "target": {
+                "id": "gate_switch"
+              }
+            },
+            "capabilities": [
+              "navigate",
+              "enter_zone"
+            ],
+            "current_metrics": {
+              "frames_observed": 240,
+              "true_frames": 0,
+              "transition_count": 0,
+              "longest_true_streak": 0,
+              "currently_true": false,
+              "final_evaluation": false,
+              "operator": "count",
+              "overlapping_pairs": [],
+              "matched_subject_ids": [],
+              "pair_transition_counts": {},
+              "counts_by_subject": {},
+              "counts_by_target": {}
+            },
+            "authoritative_check": {
+              "passed": false,
+              "status": "fail",
+              "provisional": false
+            },
+            "satisfied": false,
+            "objective_mode": "all",
+            "expected_outcome": "should_succeed",
+            "alternatives": []
+          },
+          "interaction_guidance": {
+            "applicable": false,
+            "advisory_only": true,
+            "reason": "The current assertion does not require moving another object to a target."
+          },
+          "objective": {
+            "mode": "all",
+            "satisfied": false,
+            "raw_satisfied": false,
+            "disqualified_by_terminal_event": null,
+            "passed_count": 0,
+            "total_count": 2,
+            "ordered_check_ids": [
+              "touch_gate_switch",
+              "enter_charging_goal"
+            ],
+            "ordered_steps": [
+              null,
+              null
+            ],
+            "order_satisfied": false,
+            "checks": [
+              {
+                "id": "touch_gate_switch",
+                "type": "overlap",
+                "description": "The blue robot enters the gate switch region to open the gate.",
+                "passed": false,
+                "status": "fail",
+                "first_satisfied_step": null
+              },
+              {
+                "id": "enter_charging_goal",
+                "type": "overlap",
+                "description": "The blue robot crosses the opened gate and enters the charging goal.",
+                "passed": false,
+                "status": "fail",
+                "first_satisfied_step": null
+              }
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "path": "generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_002.png",
+          "url": "/generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_002.png",
+          "step": 240,
+          "attempt": 1,
+          "kind": "objective",
+          "label": "Completed: The blue robot enters the gate switch region to open the gate",
+          "focus_ids": [
+            "blue_robot",
+            "gate_switch"
+          ],
+          "source": "authoritative_replay",
+          "replay_verified": true,
+          "events": [
+            {
+              "type": "zone_entered",
+              "step": 240,
+              "attempt": 1,
+              "object_id": "gate_switch",
+              "semantic_type": "floor_switch",
+              "objective_relevant": false,
+              "routine": false
+            },
+            {
+              "type": "mechanism_activated",
+              "step": 240,
+              "attempt": 1,
+              "object_id": "gate_switch_link",
+              "semantic_type": "",
+              "objective_relevant": false,
+              "routine": false
+            }
+          ],
+          "camera": {
+            "azimuth": 42.4022,
+            "elevation": -4.20603
+          },
+          "agent": {
+            "id": "blue_robot",
+            "position": [
+              -1.29257,
+              1.75566,
+              0.55472
+            ],
+            "velocity": [
+              -1.88813,
+              -2.0676,
+              -0.24434
+            ],
+            "grounded": false,
+            "status": "Exploring"
+          },
+          "navigation": {
+            "primary_target_id": "charging_goal",
+            "available": true,
+            "distance_xy": 8.66934,
+            "center_distance_xy": 9.71934,
+            "progress_xy": 0.0,
+            "desired_camera_azimuth": 19.95744,
+            "heading_error_degrees": -22.44476,
+            "within_interaction_range": false,
+            "target_position": [
+              -4.61,
+              -7.38,
+              1.5
+            ],
+            "target_size": [
+              1.4,
+              1.4,
+              1.2
+            ],
+            "relative": {
+              "forward": 8.98308,
+              "right": 3.71077,
+              "up": 0.94528
+            }
+          },
+          "objective_focus": {
+            "check_id": "enter_charging_goal",
+            "type": "overlap",
+            "description": "The blue robot crosses the opened gate and enters the charging goal.",
+            "temporal": "count",
+            "relation": null,
+            "subject_ids": [
+              "blue_robot"
+            ],
+            "target_ids": [
+              "charging_goal"
+            ],
+            "navigation_target_ids": [
+              "charging_goal"
+            ],
+            "subject_semantic_types": [
+              "agent"
+            ],
+            "target_semantic_types": [
+              "goal"
+            ],
+            "interaction_kind": null,
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any",
+              "target": {
+                "id": "charging_goal"
+              }
+            },
+            "capabilities": [
+              "navigate",
+              "enter_zone"
+            ],
+            "current_metrics": {
+              "frames_observed": 241,
+              "true_frames": 0,
+              "transition_count": 0,
+              "longest_true_streak": 0,
+              "currently_true": false,
+              "final_evaluation": false,
+              "operator": "count",
+              "overlapping_pairs": [],
+              "matched_subject_ids": [],
+              "pair_transition_counts": {},
+              "counts_by_subject": {},
+              "counts_by_target": {}
+            },
+            "authoritative_check": {
+              "passed": false,
+              "status": "fail",
+              "provisional": false
+            },
+            "satisfied": false,
+            "objective_mode": "all",
+            "expected_outcome": "should_succeed",
+            "alternatives": []
+          },
+          "interaction_guidance": {
+            "applicable": false,
+            "advisory_only": true,
+            "reason": "The current assertion does not require moving another object to a target."
+          },
+          "objective": {
+            "mode": "all",
+            "satisfied": false,
+            "raw_satisfied": false,
+            "disqualified_by_terminal_event": null,
+            "passed_count": 1,
+            "total_count": 2,
+            "ordered_check_ids": [
+              "touch_gate_switch",
+              "enter_charging_goal"
+            ],
+            "ordered_steps": [
+              240,
+              null
+            ],
+            "order_satisfied": false,
+            "checks": [
+              {
+                "id": "touch_gate_switch",
+                "type": "overlap",
+                "description": "The blue robot enters the gate switch region to open the gate.",
+                "passed": true,
+                "status": "pass",
+                "first_satisfied_step": 240
+              },
+              {
+                "id": "enter_charging_goal",
+                "type": "overlap",
+                "description": "The blue robot crosses the opened gate and enters the charging goal.",
+                "passed": false,
+                "status": "fail",
+                "first_satisfied_step": null
+              }
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "path": "generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_003.png",
+          "url": "/generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_003.png",
+          "step": 666,
+          "attempt": 1,
+          "kind": "progress",
+          "label": "Progress: The blue robot crosses the opened gate and enters the charging goal.",
+          "focus_ids": [
+            "blue_robot",
+            "charging_goal"
+          ],
+          "source": "authoritative_replay",
+          "replay_verified": true,
+          "events": [],
+          "camera": {
+            "azimuth": 14.9465,
+            "elevation": -4.20603
+          },
+          "agent": {
+            "id": "blue_robot",
+            "position": [
+              -4.14529,
+              -5.04655,
+              1.27507
+            ],
+            "velocity": [
+              -0.60574,
+              -1.7255,
+              0.33154
+            ],
+            "grounded": false,
+            "status": "Exploring"
+          },
+          "navigation": {
+            "primary_target_id": "charging_goal",
+            "available": true,
+            "distance_xy": 1.32928,
+            "center_distance_xy": 2.37928,
+            "progress_xy": 7.34006,
+            "desired_camera_azimuth": 11.26312,
+            "heading_error_degrees": -3.68338,
+            "within_interaction_range": false,
+            "target_position": [
+              -4.61,
+              -7.38,
+              1.5
+            ],
+            "target_size": [
+              1.4,
+              1.4,
+              1.2
+            ],
+            "relative": {
+              "forward": 2.37436,
+              "right": 0.15285,
+              "up": 0.22493
+            }
+          },
+          "objective_focus": {
+            "check_id": "enter_charging_goal",
+            "type": "overlap",
+            "description": "The blue robot crosses the opened gate and enters the charging goal.",
+            "temporal": "count",
+            "relation": null,
+            "subject_ids": [
+              "blue_robot"
+            ],
+            "target_ids": [
+              "charging_goal"
+            ],
+            "navigation_target_ids": [
+              "charging_goal"
+            ],
+            "subject_semantic_types": [
+              "agent"
+            ],
+            "target_semantic_types": [
+              "goal"
+            ],
+            "interaction_kind": null,
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any",
+              "target": {
+                "id": "charging_goal"
+              }
+            },
+            "capabilities": [
+              "navigate",
+              "enter_zone"
+            ],
+            "current_metrics": {
+              "frames_observed": 667,
+              "true_frames": 0,
+              "transition_count": 0,
+              "longest_true_streak": 0,
+              "currently_true": false,
+              "final_evaluation": false,
+              "operator": "count",
+              "overlapping_pairs": [],
+              "matched_subject_ids": [],
+              "pair_transition_counts": {},
+              "counts_by_subject": {},
+              "counts_by_target": {}
+            },
+            "authoritative_check": {
+              "passed": false,
+              "status": "fail",
+              "provisional": false
+            },
+            "satisfied": false,
+            "objective_mode": "all",
+            "expected_outcome": "should_succeed",
+            "alternatives": []
+          },
+          "interaction_guidance": {
+            "applicable": false,
+            "advisory_only": true,
+            "reason": "The current assertion does not require moving another object to a target."
+          },
+          "objective": {
+            "mode": "all",
+            "satisfied": false,
+            "raw_satisfied": false,
+            "disqualified_by_terminal_event": null,
+            "passed_count": 1,
+            "total_count": 2,
+            "ordered_check_ids": [
+              "touch_gate_switch",
+              "enter_charging_goal"
+            ],
+            "ordered_steps": [
+              240,
+              null
+            ],
+            "order_satisfied": false,
+            "checks": [
+              {
+                "id": "touch_gate_switch",
+                "type": "overlap",
+                "description": "The blue robot enters the gate switch region to open the gate.",
+                "passed": true,
+                "status": "pass",
+                "first_satisfied_step": 240
+              },
+              {
+                "id": "enter_charging_goal",
+                "type": "overlap",
+                "description": "The blue robot crosses the opened gate and enters the charging goal.",
+                "passed": false,
+                "status": "fail",
+                "first_satisfied_step": null
+              }
+            ]
+          }
+        },
+        {
+          "index": 4,
+          "path": "generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_004.png",
+          "url": "/generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_004.png",
+          "step": 824,
+          "attempt": 1,
+          "kind": "approach",
+          "label": "Closest approach: charging goal",
+          "focus_ids": [
+            "blue_robot",
+            "charging_goal"
+          ],
+          "source": "authoritative_replay",
+          "replay_verified": true,
+          "events": [],
+          "camera": {
+            "azimuth": 114.7945,
+            "elevation": -4.20603
+          },
+          "agent": {
+            "id": "blue_robot",
+            "position": [
+              -4.43754,
+              -6.26823,
+              1.45451
+            ],
+            "velocity": [
+              -0.60929,
+              -2.26868,
+              0.39744
+            ],
+            "grounded": false,
+            "status": "Exploring"
+          },
+          "navigation": {
+            "primary_target_id": "charging_goal",
+            "available": true,
+            "distance_xy": 0.07507,
+            "center_distance_xy": 1.12507,
+            "progress_xy": 8.59427,
+            "desired_camera_azimuth": 8.81743,
+            "heading_error_degrees": -105.97707,
+            "within_interaction_range": true,
+            "target_position": [
+              -4.61,
+              -7.38,
+              1.5
+            ],
+            "target_size": [
+              1.4,
+              1.4,
+              1.2
+            ],
+            "relative": {
+              "forward": -0.30968,
+              "right": 1.08161,
+              "up": 0.04549
+            }
+          },
+          "objective_focus": {
+            "check_id": "enter_charging_goal",
+            "type": "overlap",
+            "description": "The blue robot crosses the opened gate and enters the charging goal.",
+            "temporal": "count",
+            "relation": null,
+            "subject_ids": [
+              "blue_robot"
+            ],
+            "target_ids": [
+              "charging_goal"
+            ],
+            "navigation_target_ids": [
+              "charging_goal"
+            ],
+            "subject_semantic_types": [
+              "agent"
+            ],
+            "target_semantic_types": [
+              "goal"
+            ],
+            "interaction_kind": null,
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any",
+              "target": {
+                "id": "charging_goal"
+              }
+            },
+            "capabilities": [
+              "navigate",
+              "enter_zone"
+            ],
+            "current_metrics": {
+              "frames_observed": 825,
+              "true_frames": 0,
+              "transition_count": 0,
+              "longest_true_streak": 0,
+              "currently_true": false,
+              "final_evaluation": false,
+              "operator": "count",
+              "overlapping_pairs": [],
+              "matched_subject_ids": [],
+              "pair_transition_counts": {},
+              "counts_by_subject": {},
+              "counts_by_target": {}
+            },
+            "authoritative_check": {
+              "passed": false,
+              "status": "fail",
+              "provisional": false
+            },
+            "satisfied": false,
+            "objective_mode": "all",
+            "expected_outcome": "should_succeed",
+            "alternatives": []
+          },
+          "interaction_guidance": {
+            "applicable": false,
+            "advisory_only": true,
+            "reason": "The current assertion does not require moving another object to a target."
+          },
+          "objective": {
+            "mode": "all",
+            "satisfied": false,
+            "raw_satisfied": false,
+            "disqualified_by_terminal_event": null,
+            "passed_count": 1,
+            "total_count": 2,
+            "ordered_check_ids": [
+              "touch_gate_switch",
+              "enter_charging_goal"
+            ],
+            "ordered_steps": [
+              240,
+              null
+            ],
+            "order_satisfied": false,
+            "checks": [
+              {
+                "id": "touch_gate_switch",
+                "type": "overlap",
+                "description": "The blue robot enters the gate switch region to open the gate.",
+                "passed": true,
+                "status": "pass",
+                "first_satisfied_step": 240
+              },
+              {
+                "id": "enter_charging_goal",
+                "type": "overlap",
+                "description": "The blue robot crosses the opened gate and enters the charging goal.",
+                "passed": false,
+                "status": "fail",
+                "first_satisfied_step": null
+              }
+            ]
+          }
+        },
+        {
+          "index": 5,
+          "path": "generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_005.png",
+          "url": "/generated/Courtyard_Relay/behavior_trials/run-0001-ea9f6a33/switch_gate_goal_sequence/evidence/frame_005.png",
+          "step": 827,
+          "attempt": 1,
+          "kind": "final",
+          "label": "Completed: The blue robot crosses the opened gate and enters the charging goal",
+          "focus_ids": [
+            "charging_goal"
+          ],
+          "source": "authoritative_replay",
+          "replay_verified": true,
+          "events": [
+            {
+              "type": "zone_entered",
+              "step": 827,
+              "attempt": 1,
+              "object_id": "charging_goal",
+              "semantic_type": "goal",
+              "objective_relevant": false,
+              "routine": false
+            }
+          ],
+          "camera": {
+            "azimuth": 114.7945,
+            "elevation": -4.20603
+          },
+          "agent": {
+            "id": "blue_robot",
+            "position": [
+              -4.45695,
+              -6.34809,
+              1.46202
+            ],
+            "velocity": [
+              -0.65291,
+              -2.72281,
+              0.10314
+            ],
+            "grounded": false,
+            "status": "In goal"
+          },
+          "navigation": {
+            "primary_target_id": null,
+            "available": false,
+            "status": "objective_satisfied"
+          },
+          "objective_focus": {
+            "satisfied": true,
+            "check_id": null,
+            "type": null,
+            "subject_ids": [],
+            "target_ids": [],
+            "navigation_target_ids": [],
+            "interaction_kind": null,
+            "capabilities": [],
+            "predicate": {},
+            "authoritative_check": {
+              "passed": true,
+              "status": "pass",
+              "provisional": false
+            },
+            "alternatives": []
+          },
+          "interaction_guidance": {
+            "applicable": false,
+            "advisory_only": true,
+            "reason": "The current assertion does not require moving another object to a target."
+          },
+          "objective": {
+            "mode": "all",
+            "satisfied": true,
+            "raw_satisfied": true,
+            "disqualified_by_terminal_event": null,
+            "passed_count": 2,
+            "total_count": 2,
+            "ordered_check_ids": [
+              "touch_gate_switch",
+              "enter_charging_goal"
+            ],
+            "ordered_steps": [
+              240,
+              827
+            ],
+            "order_satisfied": true,
+            "checks": [
+              {
+                "id": "touch_gate_switch",
+                "type": "overlap",
+                "description": "The blue robot enters the gate switch region to open the gate.",
+                "passed": true,
+                "status": "pass",
+                "first_satisfied_step": 240
+              },
+              {
+                "id": "enter_charging_goal",
+                "type": "overlap",
+                "description": "The blue robot crosses the opened gate and enters the charging goal.",
+                "passed": true,
+                "status": "pass",
+                "first_satisfied_step": 827
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "next_action": "Run the remaining agent tests for this scene snapshot.",
+  "stale": false
+}

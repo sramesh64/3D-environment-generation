@@ -1,0 +1,830 @@
+{
+  "schema_version": "1.0",
+  "source_env_id": "Courtyard_Relay",
+  "theme": "robot_courtyard",
+  "world_size": [
+    30.0,
+    24.0,
+    10.0
+  ],
+  "units": "meters",
+  "environment": {
+    "sky": {
+      "style": "courtyard_daylight",
+      "sun": true
+    },
+    "set_dressing": {
+      "placement": "perimeter_only",
+      "clear_play_area": true,
+      "grounding": "continuous_meadow"
+    }
+  },
+  "camera": {
+    "target": [
+      0.0,
+      0.0,
+      0.5
+    ],
+    "distance": 22.799999999999997,
+    "azimuth": -42.0,
+    "elevation": 38.0,
+    "min_distance": 8.399999999999999,
+    "max_distance": 39.599999999999994
+  },
+  "palette": {
+    "sky_top": "#78C9F1",
+    "sky_bottom": "#E9F6FF",
+    "grass": "#69B85D",
+    "grass_light": "#8FD277",
+    "grass_dark": "#397B48",
+    "meadow": "#63A957",
+    "meadow_dark": "#4E8947",
+    "clearing": "#7BCB67",
+    "clearing_alt": "#A8DD82",
+    "path": "#C9B27C",
+    "wood": "#A96D3B",
+    "wood_dark": "#5D3525",
+    "stone": "#B8B6A9",
+    "stone_dark": "#686D70",
+    "leaf": "#4AA35A",
+    "leaf_light": "#7ED16A",
+    "agent": "#3A7BFF",
+    "goal": "#FFD166",
+    "goal_core": "#66E3FF",
+    "target": "#70D6E8",
+    "switch": "#4AC7E8",
+    "hazard": "#E95858",
+    "shadow": "#172019"
+  },
+  "objects": [
+    {
+      "id": "visual_ground",
+      "source_id": "ground",
+      "physics_backed": true,
+      "semantic_type": "ground",
+      "visual_type": "terrain_grass",
+      "position": [
+        0.0,
+        0.0,
+        -0.1
+      ],
+      "size": [
+        24.0,
+        18.0,
+        0.2
+      ],
+      "yaw": 0.0,
+      "body_type": "static",
+      "tags": [
+        "floor",
+        "walkable"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_ground",
+        "variant": "grass_pavers"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "visual_north_boundary",
+      "source_id": "north_boundary",
+      "physics_backed": true,
+      "semantic_type": "wall",
+      "visual_type": "plain_wall",
+      "position": [
+        0.0,
+        9.0,
+        0.8
+      ],
+      "size": [
+        24.0,
+        0.3,
+        1.6
+      ],
+      "yaw": 0.0,
+      "body_type": "static",
+      "tags": [
+        "barrier",
+        "boundary"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_boundary",
+        "variant": "plain"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "visual_south_boundary",
+      "source_id": "south_boundary",
+      "physics_backed": true,
+      "semantic_type": "wall",
+      "visual_type": "plain_wall",
+      "position": [
+        0.0,
+        -9.0,
+        0.8
+      ],
+      "size": [
+        24.0,
+        0.3,
+        1.6
+      ],
+      "yaw": 0.0,
+      "body_type": "static",
+      "tags": [
+        "barrier",
+        "boundary"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_boundary",
+        "variant": "plain"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "visual_west_boundary",
+      "source_id": "west_boundary",
+      "physics_backed": true,
+      "semantic_type": "wall",
+      "visual_type": "plain_wall",
+      "position": [
+        -12.0,
+        0.0,
+        0.8
+      ],
+      "size": [
+        0.3,
+        18.0,
+        1.6
+      ],
+      "yaw": 0.0,
+      "body_type": "static",
+      "tags": [
+        "barrier",
+        "boundary"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_boundary",
+        "variant": "plain"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "visual_east_boundary",
+      "source_id": "east_boundary",
+      "physics_backed": true,
+      "semantic_type": "wall",
+      "visual_type": "plain_wall",
+      "position": [
+        12.0,
+        0.0,
+        0.8
+      ],
+      "size": [
+        0.3,
+        18.0,
+        1.6
+      ],
+      "yaw": 0.0,
+      "body_type": "static",
+      "tags": [
+        "barrier",
+        "boundary"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_boundary",
+        "variant": "plain"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "visual_blue_robot",
+      "source_id": "blue_robot",
+      "physics_backed": true,
+      "semantic_type": "agent",
+      "visual_type": "agent_hero",
+      "position": [
+        -0.279,
+        7.38,
+        0.55
+      ],
+      "size": [
+        0.7,
+        0.7,
+        1.1
+      ],
+      "yaw": 0.0,
+      "body_type": "dynamic",
+      "tags": [
+        "agent",
+        "spawn"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_robot",
+        "variant": null
+      },
+      "metadata": {}
+    },
+    {
+      "id": "visual_charging_goal",
+      "source_id": "charging_goal",
+      "physics_backed": true,
+      "semantic_type": "goal",
+      "visual_type": "goal_pad",
+      "position": [
+        -4.61,
+        -7.38,
+        0.6
+      ],
+      "size": [
+        1.4,
+        1.4,
+        1.2
+      ],
+      "yaw": 0.0,
+      "body_type": "sensor",
+      "tags": [
+        "goal",
+        "sensor"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_goal_pad",
+        "variant": null
+      },
+      "metadata": {}
+    },
+    {
+      "id": "decor_tree_00",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "tree",
+      "position": [
+        -9.098419939709576,
+        -10.45,
+        0.0
+      ],
+      "size": [
+        1.0484017197054345,
+        0.9115552188022854,
+        3.1784696146156595
+      ],
+      "yaw": 0.09898870650011071,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "tree"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_tree",
+        "variant": "pine"
+      },
+      "metadata": {
+        "seed": 2608091927458718176,
+        "variant": "pine"
+      }
+    },
+    {
+      "id": "decor_tree_01",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "tree",
+      "position": [
+        -1.1156213153218728,
+        -10.85,
+        0.0
+      ],
+      "size": [
+        1.239196791297097,
+        1.1706721286897368,
+        2.7063881212191507
+      ],
+      "yaw": 0.268378550572534,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "tree"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_tree",
+        "variant": "pine"
+      },
+      "metadata": {
+        "seed": 383846183454386817,
+        "variant": "pine"
+      }
+    },
+    {
+      "id": "decor_tree_02",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "tree",
+      "position": [
+        8.616880559025592,
+        -10.35,
+        0.0
+      ],
+      "size": [
+        1.1847693513301198,
+        1.17001000982164,
+        2.8650219968447574
+      ],
+      "yaw": -1.6478882294611295,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "tree"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_tree",
+        "variant": "round"
+      },
+      "metadata": {
+        "seed": 9948360655786358587,
+        "variant": "round"
+      }
+    },
+    {
+      "id": "decor_tree_03",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "tree",
+      "position": [
+        -7.347990187068639,
+        10.7,
+        0.0
+      ],
+      "size": [
+        0.9883152762485209,
+        0.956612395474555,
+        2.864189364551022
+      ],
+      "yaw": -1.627810747877986,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "tree"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_tree",
+        "variant": "round"
+      },
+      "metadata": {
+        "seed": 1108636944753601481,
+        "variant": "round"
+      }
+    },
+    {
+      "id": "decor_tree_04",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "tree",
+      "position": [
+        9.826479734408185,
+        10.5,
+        0.0
+      ],
+      "size": [
+        1.0902078503780417,
+        1.3301832933191098,
+        2.936440517671183
+      ],
+      "yaw": -2.6987786097546578,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "tree"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_tree",
+        "variant": "round"
+      },
+      "metadata": {
+        "seed": 5157728416334399623,
+        "variant": "round"
+      }
+    },
+    {
+      "id": "decor_tree_05",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "tree",
+      "position": [
+        -13.55,
+        -4.261842994960383,
+        0.0
+      ],
+      "size": [
+        0.9880481178639313,
+        0.9253965120313176,
+        2.5375638210588707
+      ],
+      "yaw": 1.748669269341078,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "tree"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_tree",
+        "variant": "round"
+      },
+      "metadata": {
+        "seed": 7182553594433368543,
+        "variant": "round"
+      }
+    },
+    {
+      "id": "decor_tree_06",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "tree",
+      "position": [
+        -13.8,
+        6.594317397468511,
+        0.0
+      ],
+      "size": [
+        0.9848744947875855,
+        1.3277102308567432,
+        2.825071029641195
+      ],
+      "yaw": -0.46171306155279,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "tree"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_tree",
+        "variant": "pine"
+      },
+      "metadata": {
+        "seed": 7918368138267408752,
+        "variant": "pine"
+      }
+    },
+    {
+      "id": "decor_tree_07",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "tree",
+      "position": [
+        13.55,
+        2.207559998494601,
+        0.0
+      ],
+      "size": [
+        1.2447934068273865,
+        1.3371241048270583,
+        3.1543204407946077
+      ],
+      "yaw": -0.15254915000744385,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "tree"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_tree",
+        "variant": "pine"
+      },
+      "metadata": {
+        "seed": 837878295212276102,
+        "variant": "pine"
+      }
+    },
+    {
+      "id": "decor_shrub_00",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "shrub",
+      "position": [
+        -5.231800895880639,
+        -9.8,
+        0.0
+      ],
+      "size": [
+        0.7082128948538833,
+        0.7573846196496157,
+        0.5560165288811907
+      ],
+      "yaw": 1.1964975435375091,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "shrub"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_shrub"
+      },
+      "metadata": {
+        "seed": 2918962107261857469
+      }
+    },
+    {
+      "id": "decor_shrub_01",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "shrub",
+      "position": [
+        6.320613774414113,
+        -9.9,
+        0.0
+      ],
+      "size": [
+        0.7786552335201379,
+        0.6562221552824781,
+        0.5233240313986363
+      ],
+      "yaw": 2.457606678881902,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "shrub"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_shrub"
+      },
+      "metadata": {
+        "seed": 7076700763480972443
+      }
+    },
+    {
+      "id": "decor_shrub_02",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "shrub",
+      "position": [
+        -3.221080111795593,
+        9.8,
+        0.0
+      ],
+      "size": [
+        0.86715143024435,
+        0.7465073953373951,
+        0.5977450311039533
+      ],
+      "yaw": 1.9778900458081106,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "shrub"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_shrub"
+      },
+      "metadata": {
+        "seed": 69579306552662717
+      }
+    },
+    {
+      "id": "decor_shrub_03",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "shrub",
+      "position": [
+        9.922220018327785,
+        9.95,
+        0.0
+      ],
+      "size": [
+        0.6523136385001944,
+        0.7677901249110979,
+        0.5050807652620701
+      ],
+      "yaw": -0.5640989956376004,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "shrub"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_shrub"
+      },
+      "metadata": {
+        "seed": 8729655492640747580
+      }
+    },
+    {
+      "id": "decor_shrub_04",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "shrub",
+      "position": [
+        -12.85,
+        1.0099046379530847,
+        0.0
+      ],
+      "size": [
+        0.7433360285465477,
+        0.7077228202281746,
+        0.6307400465898667
+      ],
+      "yaw": -2.2619870928765597,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "shrub"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_shrub"
+      },
+      "metadata": {
+        "seed": 14383320484855000698
+      }
+    },
+    {
+      "id": "decor_shrub_05",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "shrub",
+      "position": [
+        12.9,
+        -5.0764960763304705,
+        0.0
+      ],
+      "size": [
+        0.8239223080250031,
+        0.7960728057477142,
+        0.45616960131827394
+      ],
+      "yaw": 0.07420173005680608,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "shrub"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_shrub"
+      },
+      "metadata": {
+        "seed": 8962177702360408547
+      }
+    },
+    {
+      "id": "decor_stone_00",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "stone",
+      "position": [
+        -12.55,
+        0.41016600497272526,
+        0.0
+      ],
+      "size": [
+        0.5030056825222996,
+        0.5318440412199017,
+        0.3273760650677549
+      ],
+      "yaw": 2.9277167616162183,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "stone"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_rock"
+      },
+      "metadata": {
+        "seed": 16534151823886780309
+      }
+    },
+    {
+      "id": "decor_stone_01",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "stone",
+      "position": [
+        -12.55,
+        4.692936873408682,
+        0.0
+      ],
+      "size": [
+        0.4229962451332896,
+        0.41989383948590564,
+        0.3000232320860887
+      ],
+      "yaw": 0.5586051809279184,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "stone"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_rock"
+      },
+      "metadata": {
+        "seed": 14987973897381314663
+      }
+    },
+    {
+      "id": "decor_stone_02",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "stone",
+      "position": [
+        5.557998300296481,
+        9.55,
+        0.0
+      ],
+      "size": [
+        0.44834977621579575,
+        0.5174832495213152,
+        0.2616027259649014
+      ],
+      "yaw": 1.388996240233161,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "stone"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_rock"
+      },
+      "metadata": {
+        "seed": 15644381757854420944
+      }
+    },
+    {
+      "id": "decor_stone_03",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "stone",
+      "position": [
+        -12.55,
+        0.7917313573553513,
+        0.0
+      ],
+      "size": [
+        0.5412134497845859,
+        0.3203600712666936,
+        0.3350643474577181
+      ],
+      "yaw": 2.189429865271067,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "stone"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_rock"
+      },
+      "metadata": {
+        "seed": 17870764463826755804
+      }
+    },
+    {
+      "id": "decor_stone_04",
+      "source_id": null,
+      "physics_backed": false,
+      "semantic_type": "decoration",
+      "visual_type": "stone",
+      "position": [
+        -12.55,
+        4.129019153962908,
+        0.0
+      ],
+      "size": [
+        0.3899011949697949,
+        0.3324893014657663,
+        0.2211698438316594
+      ],
+      "yaw": 2.3277229525483927,
+      "body_type": "visual",
+      "tags": [
+        "visual_only",
+        "stone"
+      ],
+      "appearance": {
+        "asset_id": "courtyard_rock"
+      },
+      "metadata": {
+        "seed": 16427090566675218890
+      }
+    }
+  ],
+  "metadata": {
+    "source": "env_spec_3d.json",
+    "derived": true,
+    "decorations_are_visual_only": true,
+    "visual_decorations_avoid_play_area": true
+  }
+}

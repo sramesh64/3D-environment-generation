@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "controller_version": "controller_v3",
+  "run_id": "run-0002-9c22fc43",
+  "env_id": "Courtyard_Relay",
+  "created_at": "2026-07-17T05:27:30.501059+00:00",
+  "pid": null,
+  "status": "passed",
+  "env_spec_hash": "9ae8a61412b9b4e3266768a0e957e88d59761a6648f3afc888cd93b7ee64c66a",
+  "behavior_plan_hash": "82eb5ff9943756ada0bdaa5fdbbd6611e93e90c8466b04ea94362dd7668e866e",
+  "trial_ids": [
+    "closed_gate_blocks_goal"
+  ],
+  "model": "gpt-5.6-sol",
+  "completed_at": "2026-07-17T05:29:16.828591+00:00",
+  "stale": false
+}

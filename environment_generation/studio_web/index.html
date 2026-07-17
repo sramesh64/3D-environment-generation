@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Environment Generation</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <button id="homeLink" class="brand" type="button">
+          <span class="brand-mark">3D</span>
+          <span>
+            <strong>Environment Generation</strong>
+            <span id="sceneCount">0 environments</span>
+          </span>
+        </button>
+        <div class="top-actions">
+          <label id="modelPicker" class="model-picker is-loading" title="Used for new Codex generations, reviews, agent tests, and task runs">
+            <span class="model-picker-label">Model</span>
+            <select id="modelSelect" aria-label="Codex model" disabled>
+              <option value="">Loading models...</option>
+            </select>
+          </label>
+          <div id="topStatus" class="status hidden">Idle</div>
+          <button id="primitiveBrowserButton" class="primitive-browser-button" type="button" aria-expanded="false" aria-controls="primitiveBrowser" title="Browse available objects and see how they look">Primitives</button>
+          <button id="newEnvButton" class="hidden" type="button">New Environment</button>
+        </div>
+      </header>
+
+      <section id="homePage" class="page home-page">
+        <div class="home-head">
+          <div>
+            <h1>Environments</h1>
+            <p>Open an environment to inspect or continue editing.</p>
+          </div>
+          <button id="homeCreateButton" class="hidden" type="button"><span aria-hidden="true">+</span> New Environment</button>
+        </div>
+
+        <div id="sceneGrid" class="scene-grid"></div>
+
+        <div id="emptyLibrary" class="empty-library hidden">
+          <div class="empty-art" aria-hidden="true">
+            <span class="empty-ground"></span>
+            <span class="empty-tree tree-a"></span>
+            <span class="empty-tree tree-b"></span>
+            <span class="empty-tree tree-c"></span>
+            <span class="empty-courtyard"></span>
+          </div>
+          <h2>No environments yet</h2>
+          <p>Start with an empty courtyard.</p>
+          <button id="emptyCreateButton" type="button"><span aria-hidden="true">+</span> New Environment</button>
+        </div>
+      </section>
+
+      <section id="createPage" class="page create-page hidden">
+        <div class="create-layout">
+          <section class="panel create-panel">
+            <div class="panel-header">
+              <div>
+                <h2>Create Environment</h2>
+            <span>Describe a robot courtyard level.</span>
+              </div>
+            </div>
+            <form id="generateForm" class="create-form" novalidate>
+              <div class="form-field">
+                <label for="envName">Environment Name</label>
+                <input id="envName" name="name" autocomplete="off" placeholder="Boxes and targets" required aria-describedby="envNameError">
+                <span id="envNameError" class="form-field-error hidden" role="alert">Environment must have a name.</span>
+              </div>
+              <label>
+                Description
+                <textarea id="prompt" name="prompt" rows="8" placeholder="Place an agent in the bottom-right corner, a box in the middle, and a target region in the top-left."></textarea>
+              </label>
+              <div class="form-actions">
+                <button id="cancelCreateButton" class="ghost" type="button">Cancel</button>
+                <button id="generateButton" type="submit">Generate</button>
+              </div>
+            </form>
+          </section>
+
+          <aside class="panel guide-panel">
+            <div class="panel-header">
+              <div>
+                <h2>Starting Courtyard</h2>
+                <span>Empty play area</span>
+              </div>
+            </div>
+            <div id="createPreviewStage" class="guide-preview has-visual" tabindex="0" aria-label="Interactive empty courtyard preview"></div>
+            <div class="create-primitive-action">
+              <button id="createPrimitiveBrowserButton" class="primitive-browser-button create-primitive-browser-button" type="button" aria-expanded="false" aria-controls="primitiveBrowser">
+                View Primitives
+              </button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="envPage" class="page env-page hidden">
+        <div class="env-head">
+          <div class="env-identity">
+            <button id="backHomeButton" class="ghost env-back" type="button">Environments</button>
+            <div>
+              <h1 id="activeTitle">Environment</h1>
+              <p id="sceneLabel">No environment selected</p>
+            </div>
+          </div>
+          <div class="env-head-actions">
+            <div id="levelMeta" class="level-meta"></div>
+            <button id="variationButton" class="ghost" type="button">New Variation</button>
+            <button id="playEnvButton" class="env-play" type="button" disabled>Play</button>
+          </div>
+        </div>
+
+        <div class="env-layout">
+          <div class="workspace-main">
+            <section class="panel stage-panel">
+              <div id="previewStage" class="preview-stage" tabindex="0" aria-label="Environment preview">
+                <div class="empty-preview">Select an environment to render a preview.</div>
+                <div id="movementHelp" class="movement-help hidden" role="note" aria-label="Movement controls">
+                  <strong id="movementHelpMode">Play controls</strong>
+                  <span class="movement-help-item">
+                    <span class="movement-help-keys"><kbd>WASD</kbd><span>or</span><kbd>Arrows</kbd></span>
+                    <span>Move</span>
+                  </span>
+                  <span class="movement-help-item"><kbd>Space</kbd><span>Jump</span></span>
+                  <span class="movement-help-item"><kbd>R</kbd><span>Reset</span></span>
+                  <span class="movement-help-item"><kbd>Esc</kbd><span id="movementHelpExit">Exit</span></span>
+                </div>
+                <div id="gameOverlay" class="game-overlay hidden" role="status">
+                  <strong id="gameOverlayTitle">Run stopped</strong>
+                  <span id="gameOverlayDetail"></span>
+                  <button id="gameOverlayAction" type="button">Reset</button>
+                </div>
+                <div id="playEventNotice" class="play-event-notice hidden" role="status" aria-live="polite"></div>
+                <div id="taskRunOverlay" class="task-run-overlay hidden" role="status" aria-live="polite">
+                  <div class="task-run-overlay-head">
+                    <strong id="taskRunOverlayTitle">Task agent</strong>
+                    <span id="taskRunOverlayStatus" class="task-run-overlay-status"></span>
+                  </div>
+                  <div id="taskRunOverlayLog" class="task-run-overlay-log"></div>
+                  <span id="taskRunOverlayDetail" class="task-run-overlay-detail"></span>
+                </div>
+              </div>
+              <div id="behaviorReplayControls" class="behavior-replay-controls hidden" aria-label="Trajectory replay controls">
+                <button id="behaviorReplayToggle" class="preview-tool" type="button" aria-label="Play replay" title="Play replay">Play</button>
+                <input id="behaviorReplaySlider" type="range" min="0" max="0" value="0" aria-label="Behavior replay position">
+                <span id="behaviorReplayLabel">0 / 0</span>
+                <button id="behaviorReplayExit" class="ghost" type="button">Exit Replay</button>
+              </div>
+              <div id="taskOracleControls" class="task-oracle-controls hidden" aria-label="Task oracle recording controls">
+                <div class="task-oracle-identity">
+                  <span class="recording-dot" aria-hidden="true"></span>
+                  <div>
+                    <strong>Recording Solution</strong>
+                    <span id="taskOracleInstruction">Complete the task using the normal controls.</span>
+                  </div>
+                </div>
+                <div class="task-oracle-progress">
+                  <span id="taskOracleChecks">0 of 0 tests passed</span>
+                </div>
+                <div class="task-oracle-actions">
+                  <button id="taskOracleReset" class="ghost" type="button">Reset Attempt</button>
+                  <button id="taskOracleCancel" class="ghost" type="button">Cancel</button>
+                  <button id="taskOracleFinish" type="button" disabled>Finish Recording</button>
+                </div>
+                <div id="taskOracleChecklist" class="task-oracle-checklist"></div>
+              </div>
+            </section>
+
+            <section class="panel inspector-panel">
+              <div class="inspector-tabs" role="tablist" aria-label="Environment details">
+                <button class="inspector-tab active" type="button" role="tab" aria-selected="true" aria-describedby="checksTabHelp" data-inspector-tab="checks">
+                  Env Checks
+                  <span class="tab-info" aria-hidden="true" data-tooltip="Runs deterministic checks against the scene specification and MuJoCo physics.">i</span>
+                  <span id="checkTabBadge" class="tab-count">0</span>
+                  <span id="checksTabHelp" class="visually-hidden">Runs deterministic checks against the scene specification and MuJoCo physics.</span>
+                </button>
+                <button class="inspector-tab" type="button" role="tab" aria-selected="false" aria-describedby="visualTabHelp" data-inspector-tab="visual">
+                  VLM Review
+                  <span class="tab-info" aria-hidden="true" data-tooltip="Uses a vision-language model to review the styled scene from multiple camera angles.">i</span>
+                  <span id="visualTabBadge" class="tab-count">0</span>
+                  <span id="visualTabHelp" class="visually-hidden">Uses a vision-language model to review the styled scene from multiple camera angles.</span>
+                </button>
+                <button class="inspector-tab" type="button" role="tab" aria-selected="false" aria-describedby="behaviorTabHelp" data-inspector-tab="behavior">
+                  Agent Tests
+                  <span class="tab-info" aria-hidden="true" data-tooltip="Runs autonomous attempts to check whether intended environment behaviors can be demonstrated.">i</span>
+                  <span id="behaviorTabBadge" class="tab-count">0</span>
+                  <span id="behaviorTabHelp" class="visually-hidden">Runs autonomous attempts to check whether intended environment behaviors can be demonstrated.</span>
+                </button>
+                <button class="inspector-tab" type="button" role="tab" aria-selected="false" aria-describedby="tasksTabHelp" data-inspector-tab="tasks">
+                  Tasks
+                  <span class="tab-info" aria-hidden="true" data-tooltip="Contains benchmark objectives, deterministic trajectory tests, oracle solutions, and saved agent runs.">i</span>
+                  <span id="taskTabBadge" class="tab-count">0</span>
+                  <span id="tasksTabHelp" class="visually-hidden">Contains benchmark objectives, deterministic trajectory tests, oracle solutions, and saved agent runs.</span>
+                </button>
+                <button class="inspector-tab" type="button" role="tab" aria-selected="false" aria-describedby="objectsTabHelp" data-inspector-tab="objects">
+                  Objects
+                  <span class="tab-info" aria-hidden="true" data-tooltip="Lists the authored physics objects and their properties.">i</span>
+                  <span id="objectTabBadge" class="tab-count">0</span>
+                  <span id="objectsTabHelp" class="visually-hidden">Lists the authored physics objects and their properties.</span>
+                </button>
+                <button class="inspector-tab" type="button" role="tab" aria-selected="false" aria-describedby="activityTabHelp" data-inspector-tab="activity">
+                  Activity
+                  <span class="tab-info" aria-hidden="true" data-tooltip="Shows recent generation steps, tool calls, and review progress.">i</span>
+                  <span id="activityTabBadge" class="tab-count">0</span>
+                  <span id="activityTabHelp" class="visually-hidden">Shows recent generation steps, tool calls, and review progress.</span>
+                </button>
+              </div>
+
+              <div class="inspector-body">
+                <section class="inspector-pane active" role="tabpanel" data-inspector-pane="checks">
+                  <div class="inspector-pane-head">
+                    <div>
+                      <h3>Deterministic Environment Checks</h3>
+                      <span id="envCheckSummary">Not defined</span>
+                    </div>
+                    <div id="envCheckStats" class="check-stats"></div>
+                  </div>
+                  <div id="envCheckList" class="env-check-list"></div>
+                </section>
+
+                <section class="inspector-pane hidden visual-review-section" role="tabpanel" data-inspector-pane="visual" aria-labelledby="visualReviewTitle">
+                  <div class="inspector-pane-head visual-review-head">
+                    <div>
+                      <h3 id="visualReviewTitle">VLM Review</h3>
+                      <span id="visualReviewSummary">Not run</span>
+                    </div>
+                    <div class="visual-review-actions">
+                      <div id="visualReviewStats" class="check-stats"></div>
+                      <button id="visualReviewRepair" class="primary compact hidden" type="button">Fix With Codex</button>
+                      <button id="visualReviewRetry" class="ghost visual-review-retry hidden" type="button">Retry Review</button>
+                    </div>
+                  </div>
+                  <div id="visualReviewBody" class="visual-review-body"></div>
+                </section>
+
+                <section class="inspector-pane hidden behavior-trials-section" role="tabpanel" data-inspector-pane="behavior" aria-labelledby="behaviorTrialsTitle">
+                  <div class="inspector-pane-head behavior-trials-head">
+                    <div>
+                      <h3 id="behaviorTrialsTitle">Agent Tests</h3>
+                      <span id="behaviorTrialsSummary">Not applicable</span>
+                    </div>
+                    <div class="behavior-trial-actions">
+                      <div id="behaviorTrialStats" class="check-stats"></div>
+                      <button id="behaviorRunAll" class="primary compact hidden" type="button">Run All</button>
+                      <button id="behaviorDismissAll" class="ghost hidden" type="button">Dismiss</button>
+                      <button id="behaviorRepair" class="ghost hidden" type="button">Repair With Codex</button>
+                    </div>
+                  </div>
+                  <div id="behaviorTrialsBody" class="behavior-trials-body"></div>
+                </section>
+
+                <section class="inspector-pane hidden task-section" role="tabpanel" data-inspector-pane="tasks" aria-labelledby="tasksTitle">
+                  <div class="inspector-pane-head task-pane-head">
+                    <div>
+                      <h3 id="tasksTitle">Tasks</h3>
+                      <span id="taskSummary">No tasks yet</span>
+                    </div>
+                    <button id="newTaskButton" class="primary compact" type="button">New Task</button>
+                  </div>
+                  <form id="taskCreateForm" class="task-create-form hidden">
+                    <div>
+                      <strong>Describe the benchmark objective</strong>
+                      <span>Codex will turn it into deterministic trajectory tests.</span>
+                    </div>
+                    <textarea id="taskInstruction" rows="3" maxlength="4000" placeholder="Move the crate into the cyan target region without touching the hazard."></textarea>
+                    <div class="task-create-actions">
+                      <button id="taskCreateCancel" class="ghost" type="button">Cancel</button>
+                      <button id="taskCreateSubmit" type="submit">Generate Tests</button>
+                    </div>
+                  </form>
+                  <div id="taskNotice" class="task-notice hidden" role="status"></div>
+                  <div id="taskList" class="task-list"></div>
+                </section>
+
+                <section class="inspector-pane hidden" role="tabpanel" data-inspector-pane="objects">
+                  <div class="inspector-pane-head">
+                    <div>
+                      <h3>Scene Objects</h3>
+                      <span id="objectSummary">0 objects</span>
+                    </div>
+                  </div>
+                  <div id="objectList" class="object-list"></div>
+                </section>
+
+                <section class="inspector-pane hidden" role="tabpanel" data-inspector-pane="activity">
+                  <div class="inspector-pane-head">
+                    <div>
+                      <h3>Codex Activity</h3>
+                      <span id="envActivityState">Ready</span>
+                    </div>
+                  </div>
+                  <div id="envActivityLog" class="activity-log inspector-activity-log"></div>
+                </section>
+
+              </div>
+            </section>
+          </div>
+
+          <aside class="inspect-column">
+            <section class="panel conversation-panel">
+              <div class="agent-header">
+                <div>
+                  <h3 id="conversationTitle">Edit With Agent</h3>
+                  <span id="conversationSubtitle">Ask for changes to this environment.</span>
+                </div>
+                <span id="agentState" class="agent-state" role="status" aria-live="polite">Ready</span>
+              </div>
+              <div id="revisionMessages" class="messages" aria-live="polite" aria-relevant="additions text">
+                <div class="message assistant">
+                  <div class="role">Codex</div>
+                  <div class="content">Select an environment, then ask for changes here.</div>
+                </div>
+              </div>
+              <form id="revisionForm" class="composer">
+                <textarea id="revisionPrompt" rows="2" aria-label="Describe the next environment change" placeholder="Describe the next change..."></textarea>
+                <button id="revisionButton" type="submit" aria-label="Apply environment change" aria-busy="false">Apply</button>
+              </form>
+            </section>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <div id="primitiveBrowser" class="primitive-browser hidden">
+      <div id="primitiveBrowserBackdrop" class="primitive-browser-backdrop"></div>
+      <section class="primitive-browser-shell" role="dialog" aria-modal="true" aria-labelledby="primitiveBrowserTitle">
+        <header class="primitive-browser-head">
+          <div>
+            <h2 id="primitiveBrowserTitle">Primitive Library</h2>
+            <span>Available environment building blocks</span>
+          </div>
+          <button id="primitiveBrowserClose" class="primitive-browser-close" type="button" aria-label="Close primitive library" title="Close">&times;</button>
+        </header>
+        <div class="primitive-browser-body">
+          <nav id="primitiveCatalogList" class="primitive-catalog-list" aria-label="Supported primitives"></nav>
+          <section class="primitive-detail" aria-live="polite">
+            <div class="primitive-preview-wrap">
+              <div id="primitivePreviewStage" class="primitive-preview-stage" aria-label="Selected primitive 3D preview"></div>
+              <button id="primitivePreviewReset" class="preview-tool reset primitive-preview-reset" type="button" aria-label="Reset primitive preview" title="Reset view">1:1</button>
+            </div>
+            <div class="primitive-detail-copy">
+              <div class="primitive-title-row">
+                <div>
+                  <span id="primitiveCategory" class="primitive-category">Objects</span>
+                  <h3 id="primitiveName">Pushable Box</h3>
+                </div>
+                <div id="primitiveTraits" class="primitive-traits"></div>
+              </div>
+              <p id="primitiveDescription"></p>
+              <div class="primitive-use">
+                <strong>Typical role</strong>
+                <span id="primitiveUse"></span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <div id="inspectorTooltip" class="inspector-tooltip" role="tooltip" hidden></div>
+
+    <script type="module" src="/studio.js"></script>
+  </body>
+</html>

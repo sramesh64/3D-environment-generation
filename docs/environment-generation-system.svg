@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820" role="img" aria-labelledby="title description">
+  <title id="title">Environment generation pipeline</title>
+  <desc id="description">A technical architecture diagram showing user intent entering a Codex and MCP generation harness, updating EnvSpec3D, compiling to MuJoCo physics and Three.js visuals, passing deterministic checks, and producing a versioned environment that can be reviewed and tested.</desc>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#5e6e64"/>
+    </marker>
+    <marker id="arrow-feedback" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#9a6d2f"/>
+    </marker>
+    <style>
+      .title { font: 700 28px Arial, Helvetica, sans-serif; fill: #1f2d25; }
+      .subtitle { font: 400 16px Arial, Helvetica, sans-serif; fill: #627067; }
+      .section { font: 700 12px Arial, Helvetica, sans-serif; letter-spacing: 1px; fill: #68756d; }
+      .section-green { font: 700 12px Arial, Helvetica, sans-serif; letter-spacing: 1px; fill: #2f6645; }
+      .heading { font: 700 20px Arial, Helvetica, sans-serif; fill: #1f2d25; }
+      .heading-small { font: 700 17px Arial, Helvetica, sans-serif; fill: #1f2d25; }
+      .body { font: 400 14px Arial, Helvetica, sans-serif; fill: #56645b; }
+      .body-dark { font: 400 14px Arial, Helvetica, sans-serif; fill: #334239; }
+      .code { font: 600 14px Menlo, Consolas, monospace; fill: #2f6645; }
+      .note { font: 400 13px Arial, Helvetica, sans-serif; fill: #6d786f; }
+      .box { fill: #ffffff; stroke: #c9d0cb; stroke-width: 1.5; }
+      .box-soft { fill: #f1f5f1; stroke: #b9c6bc; stroke-width: 1.5; }
+      .box-source { fill: #e4eee5; stroke: #719079; stroke-width: 1.5; }
+      .box-physics { fill: #f5efe6; stroke: #c3a97e; stroke-width: 1.5; }
+      .box-visual { fill: #edf4f5; stroke: #8eafb3; stroke-width: 1.5; }
+      .box-output { fill: #edf3ed; stroke: #829b87; stroke-width: 1.5; }
+      .line { fill: none; stroke: #5e6e64; stroke-width: 1.75; marker-end: url(#arrow); }
+      .line-plain { fill: none; stroke: #5e6e64; stroke-width: 1.75; }
+      .feedback { fill: none; stroke: #9a6d2f; stroke-width: 1.75; stroke-dasharray: 6 5; marker-end: url(#arrow-feedback); }
+      .bullet { fill: #5e8067; }
+    </style>
+  </defs>
+
+  <rect x="0.75" y="0.75" width="1438.5" height="818.5" fill="#fafaf7" stroke="#d5d9d5" stroke-width="1.5"/>
+
+  <text x="54" y="45" class="section">SYSTEM OVERVIEW</text>
+  <text x="54" y="77" class="title">Environment generation pipeline</text>
+  <text x="530" y="76" class="subtitle">One structured scene drives physics, visuals, verification, and replay.</text>
+  <line x1="54" y1="101" x2="1386" y2="101" stroke="#d5d9d5" stroke-width="1"/>
+
+  <!-- Authoring pipeline -->
+  <text x="54" y="132" class="section">AUTHORING</text>
+
+  <rect x="54" y="150" width="238" height="190" rx="4" class="box"/>
+  <text x="76" y="179" class="section">INPUT</text>
+  <text x="76" y="210" class="heading">User intent</text>
+  <circle cx="80" cy="242" r="3" class="bullet"/>
+  <text x="92" y="247" class="body">Natural-language request</text>
+  <circle cx="80" cy="274" r="3" class="bullet"/>
+  <text x="92" y="279" class="body">Submitted camera + anchors</text>
+  <circle cx="80" cy="306" r="3" class="bullet"/>
+  <text x="92" y="311" class="body">Current scene + history</text>
+
+  <path d="M 292 245 H 326" class="line"/>
+
+  <rect x="338" y="150" width="266" height="190" rx="4" class="box-soft"/>
+  <text x="360" y="179" class="section-green">GENERATION HARNESS</text>
+  <text x="360" y="210" class="heading">Codex + MCP</text>
+  <circle cx="364" cy="242" r="3" class="bullet"/>
+  <text x="376" y="247" class="body-dark">Inspect or resume the draft</text>
+  <circle cx="364" cy="274" r="3" class="bullet"/>
+  <text x="376" y="279" class="body-dark">Apply typed catalog operations</text>
+  <circle cx="364" cy="306" r="3" class="bullet"/>
+  <text x="376" y="311" class="body-dark">Render, check, revise</text>
+
+  <path d="M 604 245 H 638" class="line"/>
+
+  <rect x="650" y="150" width="256" height="190" rx="4" class="box-source"/>
+  <text x="672" y="179" class="section-green">SOURCE OF TRUTH</text>
+  <text x="672" y="210" class="heading">EnvSpec3D</text>
+  <text x="672" y="238" class="code">env_spec_3d.json</text>
+  <text x="672" y="273" class="body-dark">Geometry, body roles, semantics,</text>
+  <text x="672" y="296" class="body-dark">mechanisms, appearance, cameras,</text>
+  <text x="672" y="319" class="body-dark">and stable object IDs.</text>
+
+  <path d="M 906 210 H 940" class="line"/>
+  <path d="M 922 210 V 294 H 940" class="line"/>
+
+  <rect x="952" y="136" width="434" height="108" rx="4" class="box-physics"/>
+  <rect x="952" y="136" width="6" height="108" fill="#a57b44"/>
+  <text x="976" y="163" class="section">AUTHORITATIVE PHYSICS</text>
+  <text x="976" y="192" class="heading-small">MuJoCo</text>
+  <text x="1068" y="192" class="code">world.xml</text>
+  <text x="976" y="220" class="body">Colliders, joints, sensors, and simulation</text>
+
+  <rect x="952" y="260" width="434" height="108" rx="4" class="box-visual"/>
+  <rect x="952" y="260" width="6" height="108" fill="#548e96"/>
+  <text x="976" y="287" class="section">STYLED GAME VIEW</text>
+  <text x="976" y="316" class="heading-small">Three.js</text>
+  <text x="1068" y="316" class="code">visual_scene.json</text>
+  <text x="976" y="344" class="body">Local assets, appearance, lighting, and cameras</text>
+
+  <!-- Verification and persistence -->
+  <text x="54" y="407" class="section">FINALIZATION</text>
+
+  <path d="M 1386 190 H 1404 V 390 H 748 V 434" class="line"/>
+  <path d="M 1386 314 H 1404" class="line-plain"/>
+
+  <rect x="488" y="446" width="520" height="156" rx="4" class="box"/>
+  <text x="514" y="476" class="section">BLOCKING GATE</text>
+  <text x="514" y="508" class="heading">Deterministic environment checks</text>
+  <text x="514" y="539" class="body">Counts, spatial relations, support, routes, mechanisms,</text>
+  <text x="514" y="562" class="body">hash freshness, and successful MJCF loading.</text>
+  <text x="514" y="585" class="note">Critical failures return the draft for repair.</text>
+
+  <path d="M 488 528 H 440 V 386 H 471 V 340" class="feedback"/>
+  <text x="337" y="411" class="note" style="fill:#8a642f">repair + re-check</text>
+
+  <path d="M 1008 524 H 1042" class="line"/>
+
+  <rect x="1054" y="446" width="332" height="156" rx="4" class="box-output"/>
+  <text x="1080" y="476" class="section-green">VERSIONED OUTPUT</text>
+  <text x="1080" y="508" class="heading">Saved scene bundle</text>
+  <text x="1080" y="539" class="body-dark">Spec + physics + visuals + checks</text>
+  <text x="1080" y="562" class="body-dark">+ conversation history</text>
+  <text x="1080" y="585" class="note">Provides Play and exact replay.</text>
+
+  <!-- Evaluation -->
+  <text x="54" y="655" class="section">POST-FINALIZATION EVALUATION</text>
+  <path d="M 1220 602 V 666 H 698 V 686" class="line"/>
+  <path d="M 1220 666 H 1157 V 686" class="line"/>
+
+  <rect x="488" y="686" width="420" height="92" rx="4" class="box-visual"/>
+  <text x="512" y="714" class="section">AUTOMATIC · ADVISORY</text>
+  <text x="512" y="743" class="heading-small">Multi-view VLM review</text>
+  <text x="512" y="765" class="body">Checks three styled views for visible regressions.</text>
+
+  <rect x="928" y="686" width="458" height="92" rx="4" class="box-physics"/>
+  <text x="952" y="714" class="section">OPTIONAL · USER-APPROVED</text>
+  <text x="952" y="743" class="heading-small">Agent affordance tests</text>
+  <text x="952" y="765" class="body">Runs bounded policies and verifies MuJoCo trajectories.</text>
+
+  <text x="54" y="796" class="note">A fixed primitive vocabulary stays compositional: objects can be arranged, resized, linked, and revised into many distinct environments.</text>
+</svg>

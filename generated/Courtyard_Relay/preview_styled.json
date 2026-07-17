@@ -1,0 +1,25 @@
+{
+  "path": "preview_styled.png",
+  "url": "/generated/Courtyard_Relay/preview_styled.png?v=1784265887817687953",
+  "mime_type": "image/png",
+  "width": 960,
+  "height": 540,
+  "bytes": 181154,
+  "sha256": "f764873c62f37b3eef06d71ecb7856353a812ae50962f041bfdbb52e766b20f1",
+  "spec_hash": "9ae8a61412b9b4e3266768a0e957e88d59761a6648f3afc888cd93b7ee64c66a",
+  "visual_scene_hash": "78c38e5f1a64bae0256817ff12efb24ed21efd94254ca70d8c48baf538ade539",
+  "source_review_id": "turn-0013-aba10511",
+  "camera": {
+    "target": [
+      0.0,
+      0.0,
+      0.5
+    ],
+    "distance": 22.8,
+    "azimuth": -42.0,
+    "elevation": 38.0,
+    "panX": 0.0,
+    "panY": 0.0
+  },
+  "created_at": "2026-07-17T05:24:47.817936+00:00"
+}

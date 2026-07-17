@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.0",
+  "review_id": "turn-0001-a41cf938",
+  "env_id": "Courtyard_Relay",
+  "turn_index": 1,
+  "kind": "initial",
+  "renderer": "threejs_local_asset_scene",
+  "model": "gpt-5.6-sol",
+  "created_at": "2026-07-17T04:39:27.366568+00:00",
+  "status": "passed",
+  "blocking": false,
+  "needs_attention": false,
+  "before": {
+    "spec_hash": "0c15edf5b12e02c6cf4306a6f51711eb1ca286cb88b7de0ec2ec24062cd98141",
+    "visual_scene_hash": "e59796beed7ead0474dfa4e305abbb109f2f67cc3585dd4c15ca4a8d16434917",
+    "visual_scene_path": "visual_reviews/turn-0001-a41cf938/before_visual_scene.json",
+    "visual_scene_url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/before_visual_scene.json?v=1784263002340624850"
+  },
+  "after": {
+    "spec_hash": "f0e9c512dfc7e545c313c563aa78852f195879729c128745727114d3a76e034a",
+    "visual_scene_hash": "d2893afeac8e7c483c94eabb8a352662d03d2692d7c527f35c6070f4ad05e175"
+  },
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "critical_failures": 0,
+    "advisory_failures": 0,
+    "message": "The edit clearly communicates the requested courtyard setup: a blue robot and charging goal occupy opposite quarters, remain far apart, and leave the center visually open. Both additions are readable, appropriately scaled, unclipped, and cohesive with the sunny low-poly scene, with no visible environmental regressions."
+  },
+  "checks": [
+    {
+      "id": "prompt-placement",
+      "category": "prompt fidelity",
+      "passed": true,
+      "severity": "critical",
+      "message": "The robot is visibly placed in the bottom-right courtyard area and the charging goal in the top-left area, matching the requested spatial composition.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "The blue robot appears in the lower-right portion of the courtyard while the glowing charging goal appears in the upper-left portion."
+        },
+        {
+          "view_id": "layout",
+          "phase": "after",
+          "observation": "The elevated view clearly confirms both additions occupy opposing courtyard quarters."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "separation-center",
+      "category": "layout readability",
+      "passed": true,
+      "severity": "critical",
+      "message": "The two gameplay elements are well separated across the courtyard, and the central area remains visually empty.",
+      "evidence": [
+        {
+          "view_id": "layout",
+          "phase": "after",
+          "observation": "The robot and goal sit near opposite sides of the courtyard with a broad, unobstructed central field between them."
+        },
+        {
+          "view_id": "reverse",
+          "phase": "after",
+          "observation": "The reverse angle confirms the separation and shows no new element occupying the center."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "essential-visibility",
+      "category": "visibility and affordance readability",
+      "passed": true,
+      "severity": "critical",
+      "message": "Both essential additions are clearly visible and recognizable from the supplied views.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "The saturated blue robot silhouette and bright ringed charging marker stand out clearly against the green courtyard."
+        },
+        {
+          "view_id": "reverse",
+          "phase": "after",
+          "observation": "Both assets remain visible from the opposing camera without meaningful occlusion."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "scale-clipping",
+      "category": "asset presentation",
+      "passed": true,
+      "severity": "critical",
+      "message": "The additions have plausible visual scale and show no obvious clipping, floating appearance, or intersection with the courtyard walls.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "The robot and charging goal appear seated within the open courtyard with clear space around them."
+        },
+        {
+          "view_id": "layout",
+          "phase": "after",
+          "observation": "The elevated view shows both assets fully contained inside the boundary and separated from the walls."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "scene-cohesion",
+      "category": "cohesion and regression",
+      "passed": true,
+      "severity": "advisory",
+      "message": "The additions fit the established sunny low-poly courtyard style, and the surrounding walls, terrain, and dressing remain visually unchanged.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "before",
+          "observation": "The baseline courtyard contains an open green interior bounded by pale walls."
+        },
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "The original courtyard presentation is preserved while the two colorful gameplay elements integrate cleanly into it."
+        },
+        {
+          "view_id": "reverse",
+          "phase": "after",
+          "observation": "No visible damage, accidental occlusion, or unrelated environmental addition is apparent from the reverse view."
+        }
+      ],
+      "repair_hint": ""
+    }
+  ],
+  "reviewed_views": [
+    {
+      "id": "primary",
+      "label": "Submitted camera",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          0.5
+        ],
+        "distance": 22.8,
+        "azimuth": -42.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "primary",
+          "label": "Before - Submitted camera",
+          "path": "visual_reviews/turn-0001-a41cf938/01_before_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/01_before_primary.png?v=1784263149419022096",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 111213,
+          "sha256": "0e1ff70c83626eda46a6b36cd2c8ca83c9442e3bcd2af1325c2258847bdc7b6b"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "primary",
+          "label": "After - Submitted camera",
+          "path": "visual_reviews/turn-0001-a41cf938/02_after_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/02_after_primary.png?v=1784263149421276530",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 115423,
+          "sha256": "eec6eb413b0f6042ab7660c806c8fad1df42c60f8b583ac7762968ee82a0e82e"
+        }
+      }
+    },
+    {
+      "id": "reverse",
+      "label": "Reverse oblique",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 32.4,
+        "azimuth": 138.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "reverse",
+          "label": "Before - Reverse oblique",
+          "path": "visual_reviews/turn-0001-a41cf938/03_before_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/03_before_reverse.png?v=1784263149423697548",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 106345,
+          "sha256": "2964977265757a77c2326e0e0148d67e9373597ba9ab2e55fd8e28dc29963e52"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "reverse",
+          "label": "After - Reverse oblique",
+          "path": "visual_reviews/turn-0001-a41cf938/04_after_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/04_after_reverse.png?v=1784263149425563146",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 108737,
+          "sha256": "6cde2d0a451ec6b2d432f23bae9f6928cb9b2f7fe73a72c77904eca4f4d7c280"
+        }
+      }
+    },
+    {
+      "id": "layout",
+      "label": "Elevated layout",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 34.992,
+        "azimuth": -42.0,
+        "elevation": 68.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "layout",
+          "label": "Before - Elevated layout",
+          "path": "visual_reviews/turn-0001-a41cf938/05_before_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/05_before_layout.png?v=1784263149427654620",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 96137,
+          "sha256": "401590bf47d1fa376dffc8266395bbc52ece1d9f11d4b3cc665c16cde2734f21"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "layout",
+          "label": "After - Elevated layout",
+          "path": "visual_reviews/turn-0001-a41cf938/06_after_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/06_after_layout.png?v=1784263149429820303",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 98040,
+          "sha256": "a071319c82652881152521c293ab7378c39b3b35b628f6d90c2a5ee6ac34d65e"
+        }
+      }
+    }
+  ],
+  "intent_context": {
+    "initial_request": "Add exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.",
+    "latest_request": "Add exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.",
+    "prior_user_requests": [],
+    "context_truncated": false
+  },
+  "prompt": "You are the visual reviewer for a generated Environment Generation environment.\n\nEnvironment ID: Courtyard_Relay\nReview ID: turn-0001-a41cf938\n\nInitial request under review:\nAdd exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.\n\nAttached images, in this exact order:\n1. Before - Submitted camera (view_id=primary, phase=before)\n2. After - Submitted camera (view_id=primary, phase=after)\n3. Before - Reverse oblique (view_id=reverse, phase=before)\n4. After - Reverse oblique (view_id=reverse, phase=after)\n5. Before - Elevated layout (view_id=layout, phase=before)\n6. After - Elevated layout (view_id=layout, phase=after)\n\nThis is an initial-generation review. Images are attached as adjacent blank-before/generated-after pairs using identical cameras. Judge what the first request added to the courtyard and whether the generated result communicates the requested environment as one coherent 3D scene.\n\nJudge only what styled renders can establish: prompt and edit fidelity, visibility of essential\nelements, readable 3D layout, plausible visual scale and placement, obvious clipping or floating,\naffordance readability, charging-pad and hazard readability when those objects are present, accidental occlusion, visual regressions,\nasset clipping, hidden-looking blockers, and cohesion with the sunny low-poly robot courtyard universe.\nUse the reverse and elevated views to resolve occlusion in the primary view.\n\nDo not use checks for exact object counts, exact coordinates, simple axis relations, support-contact\nphysics, movement, task solvability, or navigation. Deterministic checks cover those. Do not claim\nthat an image proves physics behavior. Visual-only trees, shrubs, stones, sky, and terrain dressing\nare intentional and should be judged as presentation rather than physics objects.\n\nReturn JSON matching the supplied schema. Use critical severity only for a clear prompt\ncontradiction, missing essential element, unusable-looking scale or placement, major clipping, or\nan edit that visibly failed. Use advisory for polish. Every failed check needs a concrete repair_hint,\nand every evidence entry must name one of primary, reverse, or layout and before or after.\n",
+  "raw_output": "{\"status\":\"passed\",\"summary\":\"The edit clearly communicates the requested courtyard setup: a blue robot and charging goal occupy opposite quarters, remain far apart, and leave the center visually open. Both additions are readable, appropriately scaled, unclipped, and cohesive with the sunny low-poly scene, with no visible environmental regressions.\",\"checks\":[{\"id\":\"prompt-placement\",\"category\":\"prompt fidelity\",\"passed\":true,\"severity\":\"critical\",\"message\":\"The robot is visibly placed in the bottom-right courtyard area and the charging goal in the top-left area, matching the requested spatial composition.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"The blue robot appears in the lower-right portion of the courtyard while the glowing charging goal appears in the upper-left portion.\"},{\"view_id\":\"layout\",\"phase\":\"after\",\"observation\":\"The elevated view clearly confirms both additions occupy opposing courtyard quarters.\"}],\"repair_hint\":\"\"},{\"id\":\"separation-center\",\"category\":\"layout readability\",\"passed\":true,\"severity\":\"critical\",\"message\":\"The two gameplay elements are well separated across the courtyard, and the central area remains visually empty.\",\"evidence\":[{\"view_id\":\"layout\",\"phase\":\"after\",\"observation\":\"The robot and goal sit near opposite sides of the courtyard with a broad, unobstructed central field between them.\"},{\"view_id\":\"reverse\",\"phase\":\"after\",\"observation\":\"The reverse angle confirms the separation and shows no new element occupying the center.\"}],\"repair_hint\":\"\"},{\"id\":\"essential-visibility\",\"category\":\"visibility and affordance readability\",\"passed\":true,\"severity\":\"critical\",\"message\":\"Both essential additions are clearly visible and recognizable from the supplied views.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"The saturated blue robot silhouette and bright ringed charging marker stand out clearly against the green courtyard.\"},{\"view_id\":\"reverse\",\"phase\":\"after\",\"observation\":\"Both assets remain visible from the opposing camera without meaningful occlusion.\"}],\"repair_hint\":\"\"},{\"id\":\"scale-clipping\",\"category\":\"asset presentation\",\"passed\":true,\"severity\":\"critical\",\"message\":\"The additions have plausible visual scale and show no obvious clipping, floating appearance, or intersection with the courtyard walls.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"The robot and charging goal appear seated within the open courtyard with clear space around them.\"},{\"view_id\":\"layout\",\"phase\":\"after\",\"observation\":\"The elevated view shows both assets fully contained inside the boundary and separated from the walls.\"}],\"repair_hint\":\"\"},{\"id\":\"scene-cohesion\",\"category\":\"cohesion and regression\",\"passed\":true,\"severity\":\"advisory\",\"message\":\"The additions fit the established sunny low-poly courtyard style, and the surrounding walls, terrain, and dressing remain visually unchanged.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"before\",\"observation\":\"The baseline courtyard contains an open green interior bounded by pale walls.\"},{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"The original courtyard presentation is preserved while the two colorful gameplay elements integrate cleanly into it.\"},{\"view_id\":\"reverse\",\"phase\":\"after\",\"observation\":\"No visible damage, accidental occlusion, or unrelated environmental addition is apparent from the reverse view.\"}],\"repair_hint\":\"\"}]}"
+}

@@ -1,0 +1,266 @@
+{
+  "schema_version": "1.0",
+  "review_id": "turn-0009-54fc73f8",
+  "env_id": "Courtyard_Relay",
+  "turn_index": 9,
+  "kind": "revision",
+  "renderer": "threejs_local_asset_scene",
+  "model": "gpt-5.6-sol",
+  "created_at": "2026-07-17T05:07:38.694716+00:00",
+  "status": "passed",
+  "blocking": false,
+  "needs_attention": false,
+  "before": {
+    "spec_hash": "5a0fec48da21b941bed157fa78937807940e537be24423a4659004b6a972800a",
+    "visual_scene_hash": "17a0a99b1ce280a7d2214c71a53f37235473888e08905c6744dc143f16edba8d",
+    "visual_scene_path": "visual_reviews/turn-0009-54fc73f8/before_visual_scene.json",
+    "visual_scene_url": "/generated/Courtyard_Relay/visual_reviews/turn-0009-54fc73f8/before_visual_scene.json?v=1784264680315383598"
+  },
+  "after": {
+    "spec_hash": "f70c63767178ddaf0f0de6bee2ae0dd1ca4435e84db8a12622bec202cbf466db",
+    "visual_scene_hash": "20acd586584b8043e1c76b82e0a16a2df388d31eeac96759ed950b52529e85ad"
+  },
+  "summary": {
+    "total": 4,
+    "passed": 3,
+    "critical_failures": 0,
+    "advisory_failures": 1,
+    "message": "The barrel and a second small obstacle were added on the goal side with good separation and no visible scene regressions. However, the intended yard ball is visually ambiguous and reads more like a pale faceted rock than a ball."
+  },
+  "checks": [
+    {
+      "id": "latest_revision_barrel",
+      "category": "prompt_fidelity",
+      "passed": true,
+      "severity": "critical",
+      "message": "One low-poly barrel is clearly visible on the goal side and matches the courtyard’s existing art style.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "A brown banded barrel appears in the open goal-side lawn."
+        },
+        {
+          "view_id": "layout",
+          "phase": "after",
+          "observation": "The elevated view clearly confirms the barrel as a distinct newly added prop."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "latest_revision_yard_ball_readability",
+      "category": "affordance_readability",
+      "passed": false,
+      "severity": "advisory",
+      "message": "The second added obstacle is present, but its pale irregular faceting makes it resemble a small stone rather than a recognizable yard ball.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "The small pale object above the barrel has an angular, rock-like silhouette and no ball-like color or surface cue."
+        },
+        {
+          "view_id": "reverse",
+          "phase": "after",
+          "observation": "From the reverse view, the object still reads as a beige faceted stone."
+        },
+        {
+          "view_id": "layout",
+          "phase": "after",
+          "observation": "The elevated view confirms the object is visible but does not improve its yard-ball identity."
+        }
+      ],
+      "repair_hint": "Replace or restyle the pale object as a clearly spherical low-poly yard ball, using a recognizable colored surface or simple panel/stripe detailing while preserving its current general placement."
+    },
+    {
+      "id": "slalom_spacing_and_clearance",
+      "category": "layout",
+      "passed": true,
+      "severity": "critical",
+      "message": "The two new obstacles are comfortably separated and visibly clear of the ramp, platform, charging goal, gate, and courtyard walls.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "Both props occupy open lawn on the goal side with substantial clearance from the ramp/platform cluster and center gate."
+        },
+        {
+          "view_id": "layout",
+          "phase": "after",
+          "observation": "The overhead view shows readable spacing between the two obstacles and surrounding structures."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "visible_regressions",
+      "category": "regression",
+      "passed": true,
+      "severity": "critical",
+      "message": "No visible regressions, clipping, accidental occlusion, or unrelated added props are apparent in the after views.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "before",
+          "observation": "The existing wall, gate, switch, hazard, robot, target, crate, ramp, platform, goal, and step boxes establish the baseline scene."
+        },
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "Those existing elements retain their appearance and placement while only the two requested obstacles visibly appear."
+        },
+        {
+          "view_id": "reverse",
+          "phase": "after",
+          "observation": "The reverse view shows no new clipping or obstruction around the gate and platform area."
+        }
+      ],
+      "repair_hint": ""
+    }
+  ],
+  "reviewed_views": [
+    {
+      "id": "primary",
+      "label": "Submitted camera",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          0.5
+        ],
+        "distance": 22.8,
+        "azimuth": -42.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "primary",
+          "label": "Before - Submitted camera",
+          "path": "visual_reviews/turn-0009-54fc73f8/01_before_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0009-54fc73f8/01_before_primary.png?v=1784264840217198672",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 172265,
+          "sha256": "24ddd8cdcb853996c3a9dd720e8df8f62b7a21ba791e57c2a1f2c7cbb05d3eea"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "primary",
+          "label": "After - Submitted camera",
+          "path": "visual_reviews/turn-0009-54fc73f8/02_after_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0009-54fc73f8/02_after_primary.png?v=1784264840223490053",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 175278,
+          "sha256": "5465609f914198d335e0f2ee46dd3234d13df9a7998bf322933b17b4575500af"
+        }
+      }
+    },
+    {
+      "id": "reverse",
+      "label": "Reverse oblique",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 32.4,
+        "azimuth": 138.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "reverse",
+          "label": "Before - Reverse oblique",
+          "path": "visual_reviews/turn-0009-54fc73f8/03_before_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0009-54fc73f8/03_before_reverse.png?v=1784264840228047296",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 140745,
+          "sha256": "a44c415f4b20dc9d6a6ffc09c01785d9ae986fe8fe9c8acc89971f06cb764599"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "reverse",
+          "label": "After - Reverse oblique",
+          "path": "visual_reviews/turn-0009-54fc73f8/04_after_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0009-54fc73f8/04_after_reverse.png?v=1784264840232203578",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 143767,
+          "sha256": "2e9a12f228ef5595d294c78aed6f63cc555ddf727098a349c9993dd9ce340f92"
+        }
+      }
+    },
+    {
+      "id": "layout",
+      "label": "Elevated layout",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 34.992,
+        "azimuth": -42.0,
+        "elevation": 68.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "layout",
+          "label": "Before - Elevated layout",
+          "path": "visual_reviews/turn-0009-54fc73f8/05_before_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0009-54fc73f8/05_before_layout.png?v=1784264840235810313",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 132988,
+          "sha256": "7c835a66e23ed0faa58c32a1d00dcf14269352de512659cb690af1b91a9d2c4e"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "layout",
+          "label": "After - Elevated layout",
+          "path": "visual_reviews/turn-0009-54fc73f8/06_after_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0009-54fc73f8/06_after_layout.png?v=1784264840239088630",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 134686,
+          "sha256": "f65facb490dd107b1955f0e471dcae187a95213f7f6fcf29ca636b7226057e58"
+        }
+      }
+    }
+  ],
+  "intent_context": {
+    "initial_request": "Add exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.",
+    "latest_request": "Add one barrel and one yard ball on the goal side as slalom obstacles. Keep them comfortably separated and away from the ramp, gate, platform, and charging pad. Match the existing courtyard art style and add no other props.",
+    "prior_user_requests": [
+      "Add a continuous waist-high wall across the middle of the courtyard, from the left boundary to the right boundary, separating the robot from the goal. Leave one centered opening wide enough for the robot to pass through comfortably. The robot must not be able to walk around either end. Do not move the robot or goal.",
+      "Fix the VLM review issues: The wall’s left endpoint passes through the perimeter wall and protrudes outside the courtyard, producing conspicuous geometry clipping.",
+      "Put a vertically sliding gate in the center opening. Add one floor switch on the robot's side, a short distance in front of the gate and slightly to its left. Link the switch to the gate so touching the switch permanently opens the gate. Change nothing else.",
+      "Add a broken-paving hazard between the robot and the switch. Leave a clearly traversable, comfortably wide route around the right side of the hazard. The hazard must not overlap the robot, switch, gate, or walls.",
+      "On the goal side of the wall, add a raised brown platform beneath the charging goal and a brown ramp ascending to it from the gate side. Make the platform high enough to feel meaningfully elevated but comfortably reachable by the ramp. Move the goal only as needed to center it on the platform. Preserve a clear route from the gate to the ramp and goal.",
+      "On the robot's side, add one pushable supply crate and one cyan target region. Put the target region to the left of the switch and the crate well to the right of the target region. Reserve a straight, unobstructed pushing lane between them that does not cross the hazard.",
+      "Beside the ramp, add two static boxes as a climbable two-step tower. Make the lower step an easy first jump and the upper step a second reachable jump. The robot should be able to jump from the ground to the lower step and then to the upper step. Do not block the ramp."
+    ],
+    "context_truncated": false
+  },
+  "prompt": "You are the visual reviewer for a generated Environment Generation environment.\n\nEnvironment ID: Courtyard_Relay\nReview ID: turn-0009-54fc73f8\n\nOriginal environment request:\nAdd exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.\n\nPrior user revisions, oldest to newest:\n- Add a continuous waist-high wall across the middle of the courtyard, from the left boundary to the right boundary, separating the robot from the goal. Leave one centered opening wide enough for the robot to pass through comfortably. The robot must not be able to walk around either end. Do not move the robot or goal.\n- Fix the VLM review issues: The wall’s left endpoint passes through the perimeter wall and protrudes outside the courtyard, producing conspicuous geometry clipping.\n- Put a vertically sliding gate in the center opening. Add one floor switch on the robot's side, a short distance in front of the gate and slightly to its left. Link the switch to the gate so touching the switch permanently opens the gate. Change nothing else.\n- Add a broken-paving hazard between the robot and the switch. Leave a clearly traversable, comfortably wide route around the right side of the hazard. The hazard must not overlap the robot, switch, gate, or walls.\n- On the goal side of the wall, add a raised brown platform beneath the charging goal and a brown ramp ascending to it from the gate side. Make the platform high enough to feel meaningfully elevated but comfortably reachable by the ramp. Move the goal only as needed to center it on the platform. Preserve a clear route from the gate to the ramp and goal.\n- On the robot's side, add one pushable supply crate and one cyan target region. Put the target region to the left of the switch and the crate well to the right of the target region. Reserve a straight, unobstructed pushing lane between them that does not cross the hazard.\n- Beside the ramp, add two static boxes as a climbable two-step tower. Make the lower step an easy first jump and the upper step a second reachable jump. The robot should be able to jump from the ground to the lower step and then to the upper step. Do not block the ramp.\n\nLatest revision under review:\nAdd one barrel and one yard ball on the goal side as slalom obstacles. Keep them comfortably separated and away from the ramp, gate, platform, and charging pad. Match the existing courtyard art style and add no other props.\n\nAttached images, in this exact order:\n1. Before - Submitted camera (view_id=primary, phase=before)\n2. After - Submitted camera (view_id=primary, phase=after)\n3. Before - Reverse oblique (view_id=reverse, phase=before)\n4. After - Reverse oblique (view_id=reverse, phase=after)\n5. Before - Elevated layout (view_id=layout, phase=before)\n6. After - Elevated layout (view_id=layout, phase=after)\n\nThis is a revision review. Images are attached as adjacent before/after pairs. Within each pair the camera is identical. Judge whether the latest requested change appeared and whether the after scene introduced visible regressions. Later user instructions override conflicting earlier instructions.\n\nJudge only what styled renders can establish: prompt and edit fidelity, visibility of essential\nelements, readable 3D layout, plausible visual scale and placement, obvious clipping or floating,\naffordance readability, charging-pad and hazard readability when those objects are present, accidental occlusion, visual regressions,\nasset clipping, hidden-looking blockers, and cohesion with the sunny low-poly robot courtyard universe.\nUse the reverse and elevated views to resolve occlusion in the primary view.\n\nDo not use checks for exact object counts, exact coordinates, simple axis relations, support-contact\nphysics, movement, task solvability, or navigation. Deterministic checks cover those. Do not claim\nthat an image proves physics behavior. Visual-only trees, shrubs, stones, sky, and terrain dressing\nare intentional and should be judged as presentation rather than physics objects.\n\nReturn JSON matching the supplied schema. Use critical severity only for a clear prompt\ncontradiction, missing essential element, unusable-looking scale or placement, major clipping, or\nan edit that visibly failed. Use advisory for polish. Every failed check needs a concrete repair_hint,\nand every evidence entry must name one of primary, reverse, or layout and before or after.\n",
+  "raw_output": "{\"status\":\"failed\",\"summary\":\"The barrel and a second small obstacle were added on the goal side with good separation and no visible scene regressions. However, the intended yard ball is visually ambiguous and reads more like a pale faceted rock than a ball.\",\"checks\":[{\"id\":\"latest_revision_barrel\",\"category\":\"prompt_fidelity\",\"passed\":true,\"severity\":\"critical\",\"message\":\"One low-poly barrel is clearly visible on the goal side and matches the courtyard’s existing art style.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"A brown banded barrel appears in the open goal-side lawn.\"},{\"view_id\":\"layout\",\"phase\":\"after\",\"observation\":\"The elevated view clearly confirms the barrel as a distinct newly added prop.\"}],\"repair_hint\":\"\"},{\"id\":\"latest_revision_yard_ball_readability\",\"category\":\"affordance_readability\",\"passed\":false,\"severity\":\"advisory\",\"message\":\"The second added obstacle is present, but its pale irregular faceting makes it resemble a small stone rather than a recognizable yard ball.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"The small pale object above the barrel has an angular, rock-like silhouette and no ball-like color or surface cue.\"},{\"view_id\":\"reverse\",\"phase\":\"after\",\"observation\":\"From the reverse view, the object still reads as a beige faceted stone.\"},{\"view_id\":\"layout\",\"phase\":\"after\",\"observation\":\"The elevated view confirms the object is visible but does not improve its yard-ball identity.\"}],\"repair_hint\":\"Replace or restyle the pale object as a clearly spherical low-poly yard ball, using a recognizable colored surface or simple panel/stripe detailing while preserving its current general placement.\"},{\"id\":\"slalom_spacing_and_clearance\",\"category\":\"layout\",\"passed\":true,\"severity\":\"critical\",\"message\":\"The two new obstacles are comfortably separated and visibly clear of the ramp, platform, charging goal, gate, and courtyard walls.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"Both props occupy open lawn on the goal side with substantial clearance from the ramp/platform cluster and center gate.\"},{\"view_id\":\"layout\",\"phase\":\"after\",\"observation\":\"The overhead view shows readable spacing between the two obstacles and surrounding structures.\"}],\"repair_hint\":\"\"},{\"id\":\"visible_regressions\",\"category\":\"regression\",\"passed\":true,\"severity\":\"critical\",\"message\":\"No visible regressions, clipping, accidental occlusion, or unrelated added props are apparent in the after views.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"before\",\"observation\":\"The existing wall, gate, switch, hazard, robot, target, crate, ramp, platform, goal, and step boxes establish the baseline scene.\"},{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"Those existing elements retain their appearance and placement while only the two requested obstacles visibly appear.\"},{\"view_id\":\"reverse\",\"phase\":\"after\",\"observation\":\"The reverse view shows no new clipping or obstruction around the gate and platform area.\"}],\"repair_hint\":\"\"}]}"
+}

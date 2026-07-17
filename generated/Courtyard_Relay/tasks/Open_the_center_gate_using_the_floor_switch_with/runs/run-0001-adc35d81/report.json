@@ -1,0 +1,336 @@
+{
+  "status": "failed",
+  "passed": false,
+  "final": true,
+  "step_count": 2139,
+  "simulation_time": 8.67999999999986,
+  "summary": {
+    "tests": 2,
+    "passed_tests": 1,
+    "conditions": 4,
+    "passed_conditions": 2
+  },
+  "tests": [
+    {
+      "id": "open_gate_without_hazard",
+      "description": "The blue robot enters the floor switch, the linked center gate opens, and the robot never overlaps the broken-paving hazard.",
+      "mode": "all",
+      "passed": false,
+      "status": "fail",
+      "conditions": [
+        {
+          "id": "activate_gate_switch",
+          "description": "The blue robot enters the gate switch.",
+          "temporal": "eventually",
+          "predicate": {
+            "type": "overlap",
+            "subject": {
+              "id": "blue_robot"
+            },
+            "subject_quantifier": "all",
+            "target": {
+              "id": "gate_switch"
+            }
+          },
+          "predicate_type": "overlap",
+          "passed": false,
+          "status": "fail",
+          "provisional": false,
+          "first_satisfied_step": null,
+          "first_satisfied_frame": null,
+          "metrics": {
+            "frames_observed": 869,
+            "true_frames": 0,
+            "transition_count": 0,
+            "longest_true_streak": 0,
+            "currently_true": false,
+            "final_evaluation": true,
+            "operator": "eventually",
+            "overlapping_pairs": [],
+            "matched_subject_ids": [],
+            "pair_transition_counts": {},
+            "counts_by_subject": {},
+            "counts_by_target": {}
+          },
+          "witness": {
+            "overlapping_pairs": [],
+            "matched_subject_ids": []
+          }
+        },
+        {
+          "id": "center_gate_opens",
+          "description": "The switch-linked center gate reaches the open state.",
+          "temporal": "eventually",
+          "predicate": {
+            "type": "mechanism_state",
+            "mechanism_id": "gate_switch_link",
+            "state": "open",
+            "min_progress": 0.9
+          },
+          "predicate_type": "mechanism_state",
+          "passed": false,
+          "status": "fail",
+          "provisional": false,
+          "first_satisfied_step": null,
+          "first_satisfied_frame": null,
+          "metrics": {
+            "frames_observed": 869,
+            "true_frames": 0,
+            "transition_count": 0,
+            "longest_true_streak": 0,
+            "currently_true": false,
+            "final_evaluation": true,
+            "operator": "eventually",
+            "mechanism": {
+              "id": "gate_switch_link",
+              "trigger_id": "gate_switch",
+              "gate_id": "center_gate",
+              "active": false,
+              "progress": 0.0
+            }
+          },
+          "witness": {
+            "mechanism": {
+              "id": "gate_switch_link",
+              "trigger_id": "gate_switch",
+              "gate_id": "center_gate",
+              "active": false,
+              "progress": 0.0
+            }
+          }
+        },
+        {
+          "id": "avoid_broken_paving",
+          "description": "The blue robot never enters the broken-paving hazard.",
+          "temporal": "never",
+          "predicate": {
+            "type": "overlap",
+            "subject": {
+              "id": "blue_robot"
+            },
+            "subject_quantifier": "all",
+            "target": {
+              "id": "broken_paving_hazard"
+            }
+          },
+          "predicate_type": "overlap",
+          "passed": true,
+          "status": "pass",
+          "provisional": false,
+          "first_satisfied_step": 2139,
+          "first_satisfied_frame": 868,
+          "metrics": {
+            "frames_observed": 869,
+            "true_frames": 0,
+            "transition_count": 0,
+            "longest_true_streak": 0,
+            "currently_true": false,
+            "final_evaluation": true,
+            "operator": "never",
+            "overlapping_pairs": [],
+            "matched_subject_ids": [],
+            "pair_transition_counts": {},
+            "counts_by_subject": {},
+            "counts_by_target": {}
+          },
+          "witness": {
+            "overlapping_pairs": [],
+            "matched_subject_ids": []
+          }
+        }
+      ],
+      "ordered_condition_ids": [
+        "activate_gate_switch",
+        "center_gate_opens"
+      ],
+      "ordered_steps": [
+        null,
+        null
+      ],
+      "ordered_frames": [
+        null,
+        null
+      ],
+      "order_passed": false
+    },
+    {
+      "id": "system_stay_in_bounds",
+      "description": "The agent must remain inside the playable environment.",
+      "mode": "all",
+      "passed": true,
+      "status": "pass",
+      "conditions": [
+        {
+          "id": "always_in_bounds",
+          "description": "Agent remains within the play bounds.",
+          "temporal": "always",
+          "predicate": {
+            "type": "in_bounds",
+            "subject": {
+              "semantic_type": "agent"
+            },
+            "subject_quantifier": "any"
+          },
+          "predicate_type": "in_bounds",
+          "passed": true,
+          "status": "pass",
+          "provisional": false,
+          "first_satisfied_step": 2139,
+          "first_satisfied_frame": 868,
+          "metrics": {
+            "frames_observed": 869,
+            "true_frames": 869,
+            "transition_count": 1,
+            "longest_true_streak": 869,
+            "currently_true": true,
+            "final_evaluation": true,
+            "operator": "always",
+            "objects": {
+              "blue_robot": true
+            },
+            "bounds": [
+              24.0,
+              18.0,
+              8.0
+            ],
+            "matched_subject_ids": [
+              "blue_robot"
+            ]
+          },
+          "witness": {
+            "objects": {
+              "blue_robot": true
+            },
+            "bounds": [
+              24.0,
+              18.0,
+              8.0
+            ],
+            "matched_subject_ids": [
+              "blue_robot"
+            ]
+          }
+        }
+      ],
+      "ordered_condition_ids": [],
+      "ordered_steps": [],
+      "ordered_frames": [],
+      "order_passed": true
+    }
+  ],
+  "terminal_events": [],
+  "schema_version": "1.0",
+  "controller_version": "task_controller_v1",
+  "env_spec_hash": "d30a1027c245c3d505c688c55db029657cb0e79f6f018cc93768fb4592ba5ad7",
+  "task_definition_hash": "12a7b2eb257f5866d01663d7010bc65d2f035dd6451fd05eb19f25ecbe092fa3",
+  "action_count": 62,
+  "child_summary": "I’ll begin by observing the first-person view, then navigate to the floor switch while keeping clear of the warning-marked broken paving.\nThe hazard is now visible along the left side, with the low yellow switch at its near corner. I’m approaching that corner from the surrounding green floor so the warning-marked paving stays outside the path.\nThat attempt failed because the jump carried the character over the hazard boundary; the delayed landing triggered the forbidden zone. I’m resetting and using a ground-only approach from the switch’s green-floor side.",
+  "child_exit_code": 124,
+  "child_stderr": [
+    "2026-07-17T05:52:10.080524Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:52:17.056004Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:52:22.331227Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:52:28.305800Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:52:33.447519Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:52:38.264071Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:52:44.823180Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:52:50.906997Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:52:56.157870Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:53:01.898062Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:53:05.582481Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:53:10.064792Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:53:27.814732Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:53:34.573118Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:53:39.666303Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:53:47.769180Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:53:54.695139Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:53:59.254435Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T05:54:04.359063Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "Child task run exceeded 420 seconds."
+  ],
+  "run_id": "run-0001-adc35d81",
+  "task_id": "Open_the_center_gate_using_the_floor_switch_with",
+  "env_id": "Courtyard_Relay",
+  "model": "gpt-5.6-sol",
+  "observation_mode": "styled_first_person_with_proprioception",
+  "completed_at": "2026-07-17T05:54:13.292213+00:00",
+  "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/trajectory.json?v=1784267653292089942",
+  "actions_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/actions.json?v=1784267652310225296",
+  "evidence_frames": [
+    {
+      "index": 0,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_000.png",
+      "step": 0,
+      "reset_count": 0,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": -90.0,
+        "elevation": -8.0,
+        "fov_y_degrees": 90.0
+      }
+    },
+    {
+      "index": 1,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_001.png",
+      "step": 738,
+      "reset_count": 0,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": -30.0,
+        "elevation": -8.0,
+        "fov_y_degrees": 90.0
+      }
+    },
+    {
+      "index": 2,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_002.png",
+      "step": 1204,
+      "reset_count": 1,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": 0.0,
+        "elevation": -8.0,
+        "fov_y_degrees": 90.0
+      }
+    },
+    {
+      "index": 3,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_003.png",
+      "step": 1751,
+      "reset_count": 2,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": 0.0,
+        "elevation": -8.0,
+        "fov_y_degrees": 90.0
+      }
+    },
+    {
+      "index": 4,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_004.png",
+      "step": 2047,
+      "reset_count": 2,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": 60.0,
+        "elevation": -8.0,
+        "fov_y_degrees": 90.0
+      }
+    },
+    {
+      "index": 5,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_005.png",
+      "step": 2139,
+      "reset_count": 2,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": 60.0,
+        "elevation": -8.0,
+        "fov_y_degrees": 90.0
+      }
+    }
+  ],
+  "activity_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/activity.json?v=1784267653296617935",
+  "activity_count": 199,
+  "stale": false
+}

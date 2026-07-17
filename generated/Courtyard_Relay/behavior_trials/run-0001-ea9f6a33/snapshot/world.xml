@@ -1,0 +1,79 @@
+<mujoco model="Courtyard_Relay">
+  <compiler angle="radian" coordinate="local" autolimits="true" />
+  <option timestep="0.01" gravity="0 0 -9.81" integrator="RK4" />
+  <visual>
+    <global offwidth="1280" offheight="820" />
+    <quality shadowsize="4096" offsamples="4" />
+    <headlight diffuse="0.45 0.48 0.38" ambient="0.18 0.16 0.12" specular="0.24 0.22 0.18" />
+    <rgba haze="0.48 0.67 0.82 1" />
+  </visual>
+  <asset>
+    <texture name="retro_adventure_sky" type="skybox" builtin="gradient" rgb1="0.55 0.78 1" rgb2="0.95 0.98 0.72" width="512" height="512" />
+    <texture name="retro_adventure_grass" type="2d" builtin="checker" rgb1="0.62 0.86 0.5" rgb2="0.43 0.73 0.38" width="16" height="16" />
+    <texture name="retro_adventure_wall" type="2d" builtin="checker" rgb1="0.2 0.5 0.48" rgb2="0.11 0.32 0.34" width="12" height="12" />
+    <texture name="retro_adventure_path" type="2d" builtin="checker" rgb1="0.86 0.68 0.38" rgb2="0.65 0.46 0.24" width="10" height="10" />
+    <texture name="retro_adventure_warm" type="2d" builtin="checker" rgb1="0.95 0.5 0.2" rgb2="0.74 0.24 0.12" width="8" height="8" />
+    <texture name="retro_adventure_player" type="2d" builtin="checker" rgb1="0.18 0.48 1" rgb2="0.05 0.18 0.68" width="8" height="8" />
+    <texture name="retro_adventure_hazard" type="2d" builtin="checker" rgb1="1 0.72 0.05" rgb2="0.04 0.05 0.06" width="16" height="16" />
+    <material name="ground" rgba="0.545098 0.839216 0.423529 1" texture="retro_adventure_grass" texrepeat="4 3" texuniform="true" reflectance="0.12" specular="0.18" shininess="0.25" />
+    <material name="wall" rgba="0.156863 0.454902 0.435294 1" texture="retro_adventure_wall" texrepeat="4 1" texuniform="true" reflectance="0.08" specular="0.18" shininess="0.2" />
+    <material name="platform" rgba="0.776471 0.592157 0.298039 1" texture="retro_adventure_path" texrepeat="2 2" texuniform="true" reflectance="0.1" specular="0.22" shininess="0.35" />
+    <material name="ramp" rgba="0.776471 0.592157 0.298039 1" texture="retro_adventure_path" texrepeat="2 1" texuniform="true" reflectance="0.1" specular="0.2" shininess="0.3" />
+    <material name="pushable_box" rgba="0.937255 0.392157 0.188235 1" texture="retro_adventure_warm" texrepeat="1 1" texuniform="true" reflectance="0.08" specular="0.28" shininess="0.45" />
+    <material name="ball" rgba="0.941176 0.784314 0.290196 1" texture="retro_adventure_warm" texrepeat="1 1" texuniform="true" reflectance="0.1" specular="0.35" shininess="0.5" />
+    <material name="cylinder" rgba="0.87451 0.439216 0.188235 1" texture="retro_adventure_warm" texrepeat="1 1" texuniform="true" reflectance="0.08" specular="0.24" shininess="0.35" />
+    <material name="agent" rgba="0.176471 0.45098 1 1" texture="retro_adventure_player" texrepeat="1 1" texuniform="true" reflectance="0.1" specular="0.4" shininess="0.6" />
+    <material name="goal" rgba="0.341176 0.94902 0.529412 0.6" reflectance="0.03" specular="0.15" shininess="0.25" emission="0.12" />
+    <material name="target_region" rgba="0.439216 0.839216 0.909804 0.4" reflectance="0.02" specular="0.16" shininess="0.3" emission="0.08" />
+    <material name="hazard" rgba="1 0.819608 0.231373 0.8" texture="retro_adventure_hazard" texrepeat="6 4" texuniform="true" reflectance="0.03" specular="0.18" shininess="0.35" emission="0.1" />
+    <material name="floor_switch" rgba="0.286275 0.776471 0.898039 0.666667" reflectance="0.05" specular="0.3" shininess="0.55" emission="0.2" />
+    <material name="gate" rgba="0.45098 0.501961 0.435294 1" texture="retro_adventure_wall" texrepeat="2 1" texuniform="true" reflectance="0.08" specular="0.22" shininess="0.3" />
+  </asset>
+  <worldbody>
+    <light name="key_light" pos="-4 -7 10" dir="0.35 0.45 -1" diffuse="1 0.9 0.68" ambient="0.24 0.2 0.15" specular="0.32 0.28 0.18" directional="true" />
+    <light name="fill_light" pos="-5 5 5" diffuse="0.38 0.55 0.75" ambient="0.1 0.12 0.14" specular="0.08 0.1 0.12" />
+    <light name="rim_light" pos="5 -4 6" diffuse="0.7 0.58 0.35" ambient="0.06 0.05 0.03" specular="0.16 0.14 0.08" />
+    <camera name="overview" pos="0 -22.8 9" xyaxes="1 0 0 0 0.367167 0.930155" fovy="45" />
+    <camera name="agent" pos="-3.279 2.38 2.75" xyaxes="0.857493 -0.514496 0 0.18162 0.302701 0.935621" fovy="50" />
+    <camera name="goal" pos="-1.61 -12.38 3.7" xyaxes="0.857493 0.514496 0 -0.18162 0.302701 0.935621" fovy="50" />
+    <geom name="ground" material="ground" type="box" pos="0 0 -0.1" size="12 9 0.1" euler="0 0 0" />
+    <geom name="north_boundary" material="wall" type="box" pos="0 9 0.8" size="12 0.15 0.8" euler="0 0 0" />
+    <geom name="south_boundary" material="wall" type="box" pos="0 -9 0.8" size="12 0.15 0.8" euler="0 0 0" />
+    <geom name="west_boundary" material="wall" type="box" pos="-12 0 0.8" size="0.15 9 0.8" euler="0 0 0" />
+    <geom name="east_boundary" material="wall" type="box" pos="12 0 0.8" size="0.15 9 0.8" euler="0 0 0" />
+    <body name="blue_robot" pos="-0.279 7.38 0.55" euler="0 0 0">
+      <freejoint name="blue_robot_freejoint" />
+      <geom name="blue_robot" material="agent" type="cylinder" pos="0 0 0" size="0.35 0.55" mass="1.5" group="5" />
+    </body>
+    <geom name="charging_goal" material="goal" type="box" pos="-4.61 -7.38 0.95" size="0.7 0.7 0.05" euler="0 0 0" contype="0" conaffinity="0" />
+    <geom name="mid_wall_west" material="wall" type="box" pos="-6.6 0 1.5" size="5.1 0.175 1.5" euler="0 0 0" />
+    <geom name="mid_wall_east" material="wall" type="box" pos="6.6 0 1.5" size="5.1 0.175 1.5" euler="0 0 0" />
+    <body name="center_gate" pos="0 0 1.5" euler="0 0 0" gravcomp="1">
+      <joint name="center_gate_slide" type="slide" axis="0 0 1" range="0 1.5" damping="12" />
+      <geom name="center_gate" material="gate" type="box" pos="0 0 0" size="1.5 0.175 1.5" mass="8" />
+    </body>
+    <geom name="gate_switch" material="floor_switch" type="box" pos="-2.2 1 0.05" size="0.6 0.6 0.05" euler="0 0 0" contype="0" conaffinity="0" />
+    <geom name="broken_paving_hazard" material="hazard" type="box" pos="-2.8 4.5 0.05" size="1.8 1.4 0.05" euler="0 0 0" contype="0" conaffinity="0" />
+    <geom name="goal_platform" material="platform" type="box" pos="-4.61 -7.38 0.45" size="1.7 1.4 0.45" euler="0 0 0" />
+    <geom name="goal_ramp" material="ramp" type="box" pos="-4.61 -4.511608 0.344639" size="1.566046 1.1 0.11" xyaxes="0 -0.957826 0.287348 1 0 0" />
+    <geom name="supply_target_region" material="target_region" type="box" pos="-7 2 0.05" size="0.9 0.9 0.05" euler="0 0 0" contype="0" conaffinity="0" />
+    <body name="supply_crate" pos="5 2 0.55" euler="0 0 0">
+      <freejoint name="supply_crate_freejoint" />
+      <geom name="supply_crate" material="pushable_box" type="box" pos="0 0 0" size="0.55 0.55 0.55" mass="1" />
+    </body>
+    <geom name="climb_tower_lower_step" material="pushable_box" type="box" pos="-1.7 -3.75 0.225" size="0.9 0.9 0.225" euler="0 0 0" />
+    <geom name="climb_tower_upper_step" material="pushable_box" type="box" pos="-1.7 -5.55 0.45" size="0.9 0.9 0.45" euler="0 0 0" />
+    <body name="goal_side_barrel" pos="-7.2 -5.8 0.55" euler="0 0 0">
+      <freejoint name="goal_side_barrel_freejoint" />
+      <geom name="goal_side_barrel" material="cylinder" type="cylinder" pos="0 0 0" size="0.5 0.55" mass="1" />
+    </body>
+    <body name="goal_side_yard_ball" pos="-8.14 -3.48 0.48" euler="0 0 0">
+      <freejoint name="goal_side_yard_ball_freejoint" />
+      <geom name="goal_side_yard_ball" material="ball" type="sphere" pos="0 0 0" size="0.48" mass="1" />
+    </body>
+    <geom name="barrel_ball_planter" material="pushable_box" type="box" pos="-7.67 -4.64 0.175" size="0.35 0.35 0.175" euler="0 0 0" />
+  </worldbody>
+  <actuator>
+    <position name="center_gate_actuator" joint="center_gate_slide" kp="120" kv="18" ctrlrange="0 1.5" />
+  </actuator>
+</mujoco>

@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.0",
+  "review_id": "turn-0004-4605f1dd",
+  "env_id": "Courtyard_Relay",
+  "turn_index": 4,
+  "kind": "revision",
+  "renderer": "threejs_local_asset_scene",
+  "model": "gpt-5.6-sol",
+  "created_at": "2026-07-17T04:50:15.034273+00:00",
+  "status": "passed",
+  "blocking": false,
+  "needs_attention": false,
+  "before": {
+    "spec_hash": "0e20a9eee7f84622d5386b5c654074f36d8260d4e232b42fde0d82779f01ad81",
+    "visual_scene_hash": "54555f1547e599f3f0843a63dcf4d5185db6dda5b9b6ba173c90bd5c6c866b85",
+    "visual_scene_path": "visual_reviews/turn-0004-4605f1dd/before_visual_scene.json",
+    "visual_scene_url": "/generated/Courtyard_Relay/visual_reviews/turn-0004-4605f1dd/before_visual_scene.json?v=1784263576329727550"
+  },
+  "after": {
+    "spec_hash": "ae5335b956b91fc761121f38fa08e4fae210a056bc40673375acd7ad7165ce3d",
+    "visual_scene_hash": "dcbe84357762f797a5bd15353dc2332da2bdfbb0d8cc143a81e0f03c61e6891d"
+  },
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "critical_failures": 0,
+    "advisory_failures": 0,
+    "message": "The requested gate and floor switch are clearly visible in the center opening, with the switch placed on the robot’s side a short distance from the gate. The prior courtyard layout, robot, goal, and dividing wall remain visually unchanged, with no obvious clipping or other regression. The permanent-open behavior and switch linkage cannot be established from static renders."
+  },
+  "checks": [
+    {
+      "id": "gate_present",
+      "category": "edit_fidelity",
+      "passed": true,
+      "severity": "critical",
+      "message": "A barred gate has been added across the centered wall opening and is clearly visible from all after views.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "A dark barred gate spans the central opening in the divider wall."
+        },
+        {
+          "view_id": "reverse",
+          "phase": "after",
+          "observation": "The gate remains visible from the opposite side and appears aligned with the opening."
+        },
+        {
+          "view_id": "layout",
+          "phase": "after",
+          "observation": "The elevated view confirms the gate occupies the centered gap."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "switch_present_and_placed",
+      "category": "edit_fidelity",
+      "passed": true,
+      "severity": "critical",
+      "message": "A single readable floor switch is placed on the robot’s side, shortly in front of the gate and slightly offset laterally.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "The orange rectangular floor switch is visible below and slightly left of the gate, on the same side of the divider as the blue robot."
+        },
+        {
+          "view_id": "layout",
+          "phase": "after",
+          "observation": "The overhead view clearly shows the switch close to the opening without obstructing the gate."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "scene_preservation",
+      "category": "visual_regression",
+      "passed": true,
+      "severity": "critical",
+      "message": "The robot, charging goal, perimeter, divider wall, landscaping, and overall composition remain visually unchanged apart from the requested additions.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "before",
+          "observation": "Baseline scene contains the separated robot and charging goal with the central wall opening."
+        },
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "Existing scene elements retain their apparent positions and appearance after the gate and switch are added."
+        },
+        {
+          "view_id": "reverse",
+          "phase": "after",
+          "observation": "No new clipping, displaced geometry, or unintended additions are apparent from the reverse angle."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "scale_and_cohesion",
+      "category": "presentation",
+      "passed": true,
+      "severity": "advisory",
+      "message": "The gate and switch have plausible low-poly scale, strong color contrast, and fit the courtyard’s established visual style.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "The waist-height barred gate reads clearly against the light wall blocks, while the orange switch is conspicuous on the green floor."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "functional_linkage",
+      "category": "behavior_visibility",
+      "passed": true,
+      "severity": "advisory",
+      "message": "Static styled renders cannot demonstrate that touching the switch permanently opens the vertically sliding gate; there is no visible contradiction to that requested behavior.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "The render establishes the gate and nearby switch but contains no animation or interaction state from which permanent opening behavior could be judged."
+        }
+      ],
+      "repair_hint": ""
+    }
+  ],
+  "reviewed_views": [
+    {
+      "id": "primary",
+      "label": "Submitted camera",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          0.5
+        ],
+        "distance": 22.8,
+        "azimuth": -42.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "primary",
+          "label": "Before - Submitted camera",
+          "path": "visual_reviews/turn-0004-4605f1dd/01_before_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0004-4605f1dd/01_before_primary.png?v=1784263792860191659",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 129842,
+          "sha256": "39bc924fd0eeb6bcb9f8f38fc58591cfbc274d72186e3f5e97ff93cea937cdab"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "primary",
+          "label": "After - Submitted camera",
+          "path": "visual_reviews/turn-0004-4605f1dd/02_after_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0004-4605f1dd/02_after_primary.png?v=1784263792865371490",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 134993,
+          "sha256": "da93a2667e3e83dd7043c49761a9373bdc93297ea40c0c0786a38c2b3dc0d8d2"
+        }
+      }
+    },
+    {
+      "id": "reverse",
+      "label": "Reverse oblique",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 32.4,
+        "azimuth": 138.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "reverse",
+          "label": "Before - Reverse oblique",
+          "path": "visual_reviews/turn-0004-4605f1dd/03_before_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0004-4605f1dd/03_before_reverse.png?v=1784263792869477604",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 117570,
+          "sha256": "6330d4302848cf84ad603d79a42d80e787a49db2f3fa2ac00e50cebfd60e7483"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "reverse",
+          "label": "After - Reverse oblique",
+          "path": "visual_reviews/turn-0004-4605f1dd/04_after_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0004-4605f1dd/04_after_reverse.png?v=1784263792873208632",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 119665,
+          "sha256": "f932e337f87ed5056174958f9ddadabd363085947ced623481d39ed2741652c1"
+        }
+      }
+    },
+    {
+      "id": "layout",
+      "label": "Elevated layout",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 34.992,
+        "azimuth": -42.0,
+        "elevation": 68.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "layout",
+          "label": "Before - Elevated layout",
+          "path": "visual_reviews/turn-0004-4605f1dd/05_before_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0004-4605f1dd/05_before_layout.png?v=1784263792876436823",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 108760,
+          "sha256": "7d7a2deb9a00366aaa2536bc81865330f79e5efca18d2a2897d2532234a67376"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "layout",
+          "label": "After - Elevated layout",
+          "path": "visual_reviews/turn-0004-4605f1dd/06_after_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0004-4605f1dd/06_after_layout.png?v=1784263792879488888",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 111401,
+          "sha256": "b9d4231ce75662e3835e6ef7b2baf55e66d0c8d091a0f7687fd998265eca2e47"
+        }
+      }
+    }
+  ],
+  "intent_context": {
+    "initial_request": "Add exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.",
+    "latest_request": "Put a vertically sliding gate in the center opening. Add one floor switch on the robot's side, a short distance in front of the gate and slightly to its left. Link the switch to the gate so touching the switch permanently opens the gate. Change nothing else.",
+    "prior_user_requests": [
+      "Add a continuous waist-high wall across the middle of the courtyard, from the left boundary to the right boundary, separating the robot from the goal. Leave one centered opening wide enough for the robot to pass through comfortably. The robot must not be able to walk around either end. Do not move the robot or goal.",
+      "Fix the VLM review issues: The wall’s left endpoint passes through the perimeter wall and protrudes outside the courtyard, producing conspicuous geometry clipping."
+    ],
+    "context_truncated": false
+  },
+  "prompt": "You are the visual reviewer for a generated Environment Generation environment.\n\nEnvironment ID: Courtyard_Relay\nReview ID: turn-0004-4605f1dd\n\nOriginal environment request:\nAdd exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.\n\nPrior user revisions, oldest to newest:\n- Add a continuous waist-high wall across the middle of the courtyard, from the left boundary to the right boundary, separating the robot from the goal. Leave one centered opening wide enough for the robot to pass through comfortably. The robot must not be able to walk around either end. Do not move the robot or goal.\n- Fix the VLM review issues: The wall’s left endpoint passes through the perimeter wall and protrudes outside the courtyard, producing conspicuous geometry clipping.\n\nLatest revision under review:\nPut a vertically sliding gate in the center opening. Add one floor switch on the robot's side, a short distance in front of the gate and slightly to its left. Link the switch to the gate so touching the switch permanently opens the gate. Change nothing else.\n\nAttached images, in this exact order:\n1. Before - Submitted camera (view_id=primary, phase=before)\n2. After - Submitted camera (view_id=primary, phase=after)\n3. Before - Reverse oblique (view_id=reverse, phase=before)\n4. After - Reverse oblique (view_id=reverse, phase=after)\n5. Before - Elevated layout (view_id=layout, phase=before)\n6. After - Elevated layout (view_id=layout, phase=after)\n\nThis is a revision review. Images are attached as adjacent before/after pairs. Within each pair the camera is identical. Judge whether the latest requested change appeared and whether the after scene introduced visible regressions. Later user instructions override conflicting earlier instructions.\n\nJudge only what styled renders can establish: prompt and edit fidelity, visibility of essential\nelements, readable 3D layout, plausible visual scale and placement, obvious clipping or floating,\naffordance readability, charging-pad and hazard readability when those objects are present, accidental occlusion, visual regressions,\nasset clipping, hidden-looking blockers, and cohesion with the sunny low-poly robot courtyard universe.\nUse the reverse and elevated views to resolve occlusion in the primary view.\n\nDo not use checks for exact object counts, exact coordinates, simple axis relations, support-contact\nphysics, movement, task solvability, or navigation. Deterministic checks cover those. Do not claim\nthat an image proves physics behavior. Visual-only trees, shrubs, stones, sky, and terrain dressing\nare intentional and should be judged as presentation rather than physics objects.\n\nReturn JSON matching the supplied schema. Use critical severity only for a clear prompt\ncontradiction, missing essential element, unusable-looking scale or placement, major clipping, or\nan edit that visibly failed. Use advisory for polish. Every failed check needs a concrete repair_hint,\nand every evidence entry must name one of primary, reverse, or layout and before or after.\n",
+  "raw_output": "{\"status\":\"passed\",\"summary\":\"The requested gate and floor switch are clearly visible in the center opening, with the switch placed on the robot’s side a short distance from the gate. The prior courtyard layout, robot, goal, and dividing wall remain visually unchanged, with no obvious clipping or other regression. The permanent-open behavior and switch linkage cannot be established from static renders.\",\"checks\":[{\"id\":\"gate_present\",\"category\":\"edit_fidelity\",\"passed\":true,\"severity\":\"critical\",\"message\":\"A barred gate has been added across the centered wall opening and is clearly visible from all after views.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"A dark barred gate spans the central opening in the divider wall.\"},{\"view_id\":\"reverse\",\"phase\":\"after\",\"observation\":\"The gate remains visible from the opposite side and appears aligned with the opening.\"},{\"view_id\":\"layout\",\"phase\":\"after\",\"observation\":\"The elevated view confirms the gate occupies the centered gap.\"}],\"repair_hint\":\"\"},{\"id\":\"switch_present_and_placed\",\"category\":\"edit_fidelity\",\"passed\":true,\"severity\":\"critical\",\"message\":\"A single readable floor switch is placed on the robot’s side, shortly in front of the gate and slightly offset laterally.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"The orange rectangular floor switch is visible below and slightly left of the gate, on the same side of the divider as the blue robot.\"},{\"view_id\":\"layout\",\"phase\":\"after\",\"observation\":\"The overhead view clearly shows the switch close to the opening without obstructing the gate.\"}],\"repair_hint\":\"\"},{\"id\":\"scene_preservation\",\"category\":\"visual_regression\",\"passed\":true,\"severity\":\"critical\",\"message\":\"The robot, charging goal, perimeter, divider wall, landscaping, and overall composition remain visually unchanged apart from the requested additions.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"before\",\"observation\":\"Baseline scene contains the separated robot and charging goal with the central wall opening.\"},{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"Existing scene elements retain their apparent positions and appearance after the gate and switch are added.\"},{\"view_id\":\"reverse\",\"phase\":\"after\",\"observation\":\"No new clipping, displaced geometry, or unintended additions are apparent from the reverse angle.\"}],\"repair_hint\":\"\"},{\"id\":\"scale_and_cohesion\",\"category\":\"presentation\",\"passed\":true,\"severity\":\"advisory\",\"message\":\"The gate and switch have plausible low-poly scale, strong color contrast, and fit the courtyard’s established visual style.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"The waist-height barred gate reads clearly against the light wall blocks, while the orange switch is conspicuous on the green floor.\"}],\"repair_hint\":\"\"},{\"id\":\"functional_linkage\",\"category\":\"behavior_visibility\",\"passed\":true,\"severity\":\"advisory\",\"message\":\"Static styled renders cannot demonstrate that touching the switch permanently opens the vertically sliding gate; there is no visible contradiction to that requested behavior.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"The render establishes the gate and nearby switch but contains no animation or interaction state from which permanent opening behavior could be judged.\"}],\"repair_hint\":\"\"}]}"
+}

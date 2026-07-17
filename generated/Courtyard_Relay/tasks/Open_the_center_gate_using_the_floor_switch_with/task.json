@@ -1,0 +1,1938 @@
+{
+  "schema_version": "1.0",
+  "task_id": "Open_the_center_gate_using_the_floor_switch_with",
+  "env_id": "Courtyard_Relay",
+  "instruction": "Open the center gate using the floor switch without entering the broken-paving hazard.",
+  "status": "validated",
+  "env_spec_hash": "d30a1027c245c3d505c688c55db029657cb0e79f6f018cc93768fb4592ba5ad7",
+  "controller_version": "task_controller_v1",
+  "created_at": "2026-07-17T05:43:09.363193+00:00",
+  "updated_at": "2026-07-17T08:33:51.415611+00:00",
+  "tests": [
+    {
+      "id": "open_gate_without_hazard",
+      "description": "The blue robot enters the floor switch, the linked center gate opens, and the robot never overlaps the broken-paving hazard.",
+      "mode": "all",
+      "conditions": [
+        {
+          "id": "activate_gate_switch",
+          "description": "The blue robot enters the gate switch.",
+          "temporal": "eventually",
+          "predicate": {
+            "type": "overlap",
+            "subject": {
+              "id": "blue_robot"
+            },
+            "subject_quantifier": "all",
+            "target": {
+              "id": "gate_switch"
+            }
+          }
+        },
+        {
+          "id": "center_gate_opens",
+          "description": "The switch-linked center gate reaches the open state.",
+          "temporal": "eventually",
+          "predicate": {
+            "type": "mechanism_state",
+            "mechanism_id": "gate_switch_link",
+            "state": "open",
+            "min_progress": 0.9
+          }
+        },
+        {
+          "id": "avoid_broken_paving",
+          "description": "The blue robot never enters the broken-paving hazard.",
+          "temporal": "never",
+          "predicate": {
+            "type": "overlap",
+            "subject": {
+              "id": "blue_robot"
+            },
+            "subject_quantifier": "all",
+            "target": {
+              "id": "broken_paving_hazard"
+            }
+          }
+        }
+      ],
+      "ordered_condition_ids": [
+        "activate_gate_switch",
+        "center_gate_opens"
+      ],
+      "source": "codex"
+    },
+    {
+      "id": "system_stay_in_bounds",
+      "description": "The agent must remain inside the playable environment.",
+      "mode": "all",
+      "conditions": [
+        {
+          "id": "always_in_bounds",
+          "description": "Agent remains within the play bounds.",
+          "temporal": "always",
+          "predicate": {
+            "type": "in_bounds",
+            "subject": {
+              "semantic_type": "agent"
+            },
+            "subject_quantifier": "any"
+          }
+        }
+      ],
+      "ordered_condition_ids": [],
+      "source": "system"
+    }
+  ],
+  "max_steps": 2400,
+  "oracle": {
+    "attempt_id": "attempt-0001-a31dd0b6",
+    "created_at": "2026-07-17T05:44:17.298521+00:00",
+    "passed": true,
+    "step_count": 830,
+    "report_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/attempts/attempt-0001-a31dd0b6/report.json?v=1784267057298455618",
+    "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/attempts/attempt-0001-a31dd0b6/trajectory.json?v=1784267057297617570",
+    "provenance": "human_recording",
+    "controller_version": "task_controller_v1",
+    "env_spec_hash": "d30a1027c245c3d505c688c55db029657cb0e79f6f018cc93768fb4592ba5ad7",
+    "task_definition_hash": "12a7b2eb257f5866d01663d7010bc65d2f035dd6451fd05eb19f25ecbe092fa3",
+    "action_count": 100,
+    "frames": 830,
+    "actions_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/attempts/attempt-0001-a31dd0b6/actions.json?v=1784267057294819090"
+  },
+  "last_validation": {
+    "status": "passed",
+    "passed": true,
+    "final": true,
+    "step_count": 830,
+    "simulation_time": 8.299999999999867,
+    "summary": {
+      "tests": 2,
+      "passed_tests": 2,
+      "conditions": 4,
+      "passed_conditions": 4
+    },
+    "tests": [
+      {
+        "id": "open_gate_without_hazard",
+        "description": "The blue robot enters the floor switch, the linked center gate opens, and the robot never overlaps the broken-paving hazard.",
+        "mode": "all",
+        "passed": true,
+        "status": "pass",
+        "conditions": [
+          {
+            "id": "activate_gate_switch",
+            "description": "The blue robot enters the gate switch.",
+            "temporal": "eventually",
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "id": "blue_robot"
+              },
+              "subject_quantifier": "all",
+              "target": {
+                "id": "gate_switch"
+              }
+            },
+            "predicate_type": "overlap",
+            "passed": true,
+            "status": "pass",
+            "provisional": false,
+            "first_satisfied_step": 459,
+            "first_satisfied_frame": 459,
+            "metrics": {
+              "frames_observed": 831,
+              "true_frames": 372,
+              "transition_count": 1,
+              "longest_true_streak": 372,
+              "currently_true": true,
+              "final_evaluation": true,
+              "operator": "eventually",
+              "overlapping_pairs": [
+                [
+                  "blue_robot",
+                  "gate_switch"
+                ]
+              ],
+              "matched_subject_ids": [
+                "blue_robot"
+              ],
+              "pair_transition_counts": {
+                "blue_robot->gate_switch": 1
+              },
+              "counts_by_subject": {
+                "blue_robot": 1
+              },
+              "counts_by_target": {
+                "gate_switch": 1
+              }
+            },
+            "witness": {
+              "overlapping_pairs": [
+                [
+                  "blue_robot",
+                  "gate_switch"
+                ]
+              ],
+              "matched_subject_ids": [
+                "blue_robot"
+              ]
+            }
+          },
+          {
+            "id": "center_gate_opens",
+            "description": "The switch-linked center gate reaches the open state.",
+            "temporal": "eventually",
+            "predicate": {
+              "type": "mechanism_state",
+              "mechanism_id": "gate_switch_link",
+              "state": "open",
+              "min_progress": 0.9
+            },
+            "predicate_type": "mechanism_state",
+            "passed": true,
+            "status": "pass",
+            "provisional": false,
+            "first_satisfied_step": 517,
+            "first_satisfied_frame": 517,
+            "metrics": {
+              "frames_observed": 831,
+              "true_frames": 314,
+              "transition_count": 1,
+              "longest_true_streak": 314,
+              "currently_true": true,
+              "final_evaluation": true,
+              "operator": "eventually",
+              "mechanism": {
+                "id": "gate_switch_link",
+                "trigger_id": "gate_switch",
+                "gate_id": "center_gate",
+                "active": true,
+                "progress": 1.0
+              }
+            },
+            "witness": {
+              "mechanism": {
+                "id": "gate_switch_link",
+                "trigger_id": "gate_switch",
+                "gate_id": "center_gate",
+                "active": true,
+                "progress": 0.9110903522054983
+              }
+            }
+          },
+          {
+            "id": "avoid_broken_paving",
+            "description": "The blue robot never enters the broken-paving hazard.",
+            "temporal": "never",
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "id": "blue_robot"
+              },
+              "subject_quantifier": "all",
+              "target": {
+                "id": "broken_paving_hazard"
+              }
+            },
+            "predicate_type": "overlap",
+            "passed": true,
+            "status": "pass",
+            "provisional": false,
+            "first_satisfied_step": 830,
+            "first_satisfied_frame": 830,
+            "metrics": {
+              "frames_observed": 831,
+              "true_frames": 0,
+              "transition_count": 0,
+              "longest_true_streak": 0,
+              "currently_true": false,
+              "final_evaluation": true,
+              "operator": "never",
+              "overlapping_pairs": [],
+              "matched_subject_ids": [],
+              "pair_transition_counts": {},
+              "counts_by_subject": {},
+              "counts_by_target": {}
+            },
+            "witness": {
+              "overlapping_pairs": [],
+              "matched_subject_ids": []
+            }
+          }
+        ],
+        "ordered_condition_ids": [
+          "activate_gate_switch",
+          "center_gate_opens"
+        ],
+        "ordered_steps": [
+          459,
+          517
+        ],
+        "ordered_frames": [
+          459,
+          517
+        ],
+        "order_passed": true
+      },
+      {
+        "id": "system_stay_in_bounds",
+        "description": "The agent must remain inside the playable environment.",
+        "mode": "all",
+        "passed": true,
+        "status": "pass",
+        "conditions": [
+          {
+            "id": "always_in_bounds",
+            "description": "Agent remains within the play bounds.",
+            "temporal": "always",
+            "predicate": {
+              "type": "in_bounds",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any"
+            },
+            "predicate_type": "in_bounds",
+            "passed": true,
+            "status": "pass",
+            "provisional": false,
+            "first_satisfied_step": 830,
+            "first_satisfied_frame": 830,
+            "metrics": {
+              "frames_observed": 831,
+              "true_frames": 831,
+              "transition_count": 1,
+              "longest_true_streak": 831,
+              "currently_true": true,
+              "final_evaluation": true,
+              "operator": "always",
+              "objects": {
+                "blue_robot": true
+              },
+              "bounds": [
+                24.0,
+                18.0,
+                8.0
+              ],
+              "matched_subject_ids": [
+                "blue_robot"
+              ]
+            },
+            "witness": {
+              "objects": {
+                "blue_robot": true
+              },
+              "bounds": [
+                24.0,
+                18.0,
+                8.0
+              ],
+              "matched_subject_ids": [
+                "blue_robot"
+              ]
+            }
+          }
+        ],
+        "ordered_condition_ids": [],
+        "ordered_steps": [],
+        "ordered_frames": [],
+        "order_passed": true
+      }
+    ],
+    "terminal_events": [],
+    "schema_version": "1.0",
+    "controller_version": "task_controller_v1",
+    "env_spec_hash": "d30a1027c245c3d505c688c55db029657cb0e79f6f018cc93768fb4592ba5ad7",
+    "task_definition_hash": "12a7b2eb257f5866d01663d7010bc65d2f035dd6451fd05eb19f25ecbe092fa3",
+    "action_count": 100
+  },
+  "run_summaries": [
+    {
+      "run_id": "run-0001-adc35d81",
+      "created_at": "2026-07-17T05:47:12.288886+00:00",
+      "completed_at": "2026-07-17T05:54:13.292213+00:00",
+      "status": "failed",
+      "passed": false,
+      "stale": false,
+      "step_count": 2139,
+      "action_count": 62,
+      "model": "gpt-5.6-sol",
+      "observation_mode": "styled_first_person_with_proprioception",
+      "report_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/report.json?v=1784267653297474317",
+      "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/trajectory.json?v=1784267653292089942",
+      "evidence_frames": [
+        {
+          "index": 0,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_000.png",
+          "step": 0,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -90.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 1,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_001.png",
+          "step": 738,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -30.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 2,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_002.png",
+          "step": 1204,
+          "reset_count": 1,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 0.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 3,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_003.png",
+          "step": 1751,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 0.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 4,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_004.png",
+          "step": 2047,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 60.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 5,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/evidence/frame_005.png",
+          "step": 2139,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 60.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        }
+      ],
+      "activity_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0001-adc35d81/activity.json?v=1784267653296617935",
+      "activity_count": 199
+    },
+    {
+      "run_id": "run-0002-893fdba8",
+      "created_at": "2026-07-17T08:19:25.620047+00:00",
+      "completed_at": "2026-07-17T08:25:52.213074+00:00",
+      "status": "failed",
+      "passed": false,
+      "stale": false,
+      "step_count": 1499,
+      "action_count": 54,
+      "model": "gpt-5.6-sol",
+      "observation_mode": "styled_first_person_with_proprioception",
+      "report_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/report.json?v=1784276752217024929",
+      "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/trajectory.json?v=1784276752208358283",
+      "evidence_frames": [
+        {
+          "index": 0,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_000.png",
+          "step": 0,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -90.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 1,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_001.png",
+          "step": 249,
+          "reset_count": 1,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -90.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 2,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_002.png",
+          "step": 533,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -90.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 3,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_003.png",
+          "step": 1155,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 60.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 4,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_004.png",
+          "step": 1395,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 84.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 5,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/evidence/frame_005.png",
+          "step": 1499,
+          "reset_count": 2,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 84.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        }
+      ],
+      "activity_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0002-893fdba8/activity.json?v=1784276752215957004",
+      "activity_count": 173
+    },
+    {
+      "run_id": "run-0003-391b6e28",
+      "created_at": "2026-07-17T08:26:50.597811+00:00",
+      "completed_at": "2026-07-17T08:33:51.409162+00:00",
+      "status": "passed",
+      "passed": true,
+      "stale": false,
+      "step_count": 1636,
+      "action_count": 56,
+      "model": "gpt-5.5",
+      "observation_mode": "styled_first_person_with_proprioception",
+      "report_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/report.json?v=1784277231415515522",
+      "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/trajectory.json?v=1784277231409026846",
+      "evidence_frames": [
+        {
+          "index": 0,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_000.png",
+          "step": 0,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -90.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 1,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_001.png",
+          "step": 450,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": -114.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 2,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_002.png",
+          "step": 1026,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 66.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 3,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_003.png",
+          "step": 1258,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 66.0,
+            "elevation": -8.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 4,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_004.png",
+          "step": 1386,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 66.0,
+            "elevation": -24.0,
+            "fov_y_degrees": 90.0
+          }
+        },
+        {
+          "index": 5,
+          "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_005.png",
+          "step": 1636,
+          "reset_count": 0,
+          "renderer": "threejs_styled",
+          "camera": {
+            "azimuth": 6.0,
+            "elevation": -24.0,
+            "fov_y_degrees": 90.0
+          }
+        }
+      ],
+      "activity_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/activity.json?v=1784277231414513056",
+      "activity_count": 210
+    }
+  ],
+  "summary": "Activate the gate switch to open the center gate while never entering the broken-paving hazard.",
+  "task_definition_hash": "12a7b2eb257f5866d01663d7010bc65d2f035dd6451fd05eb19f25ecbe092fa3",
+  "compiler": {
+    "kind": "codex_typed_task_compiler",
+    "model": "gpt-5.6-sol",
+    "attempts": 1,
+    "repair_attempts": 0,
+    "validation_errors": []
+  },
+  "compiler_error": null,
+  "active_oracle_session": null,
+  "oracle_attempts": [
+    {
+      "attempt_id": "attempt-0001-a31dd0b6",
+      "created_at": "2026-07-17T05:44:17.298521+00:00",
+      "passed": true,
+      "step_count": 830,
+      "report_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/attempts/attempt-0001-a31dd0b6/report.json?v=1784267057298455618",
+      "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/attempts/attempt-0001-a31dd0b6/trajectory.json?v=1784267057297617570"
+    }
+  ],
+  "latest_run": {
+    "run_id": "run-0003-391b6e28",
+    "created_at": "2026-07-17T08:26:50.597811+00:00",
+    "completed_at": "2026-07-17T08:33:51.409162+00:00",
+    "status": "passed",
+    "passed": true,
+    "stale": false,
+    "step_count": 1636,
+    "action_count": 56,
+    "model": "gpt-5.5",
+    "observation_mode": "styled_first_person_with_proprioception",
+    "report_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/report.json?v=1784277231415515522",
+    "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/trajectory.json?v=1784277231409026846",
+    "evidence_frames": [
+      {
+        "index": 0,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_000.png",
+        "step": 0,
+        "reset_count": 0,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": -90.0,
+          "elevation": -8.0,
+          "fov_y_degrees": 90.0
+        }
+      },
+      {
+        "index": 1,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_001.png",
+        "step": 450,
+        "reset_count": 0,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": -114.0,
+          "elevation": -8.0,
+          "fov_y_degrees": 90.0
+        }
+      },
+      {
+        "index": 2,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_002.png",
+        "step": 1026,
+        "reset_count": 0,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": 66.0,
+          "elevation": -8.0,
+          "fov_y_degrees": 90.0
+        }
+      },
+      {
+        "index": 3,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_003.png",
+        "step": 1258,
+        "reset_count": 0,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": 66.0,
+          "elevation": -8.0,
+          "fov_y_degrees": 90.0
+        }
+      },
+      {
+        "index": 4,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_004.png",
+        "step": 1386,
+        "reset_count": 0,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": 66.0,
+          "elevation": -24.0,
+          "fov_y_degrees": 90.0
+        }
+      },
+      {
+        "index": 5,
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_005.png",
+        "step": 1636,
+        "reset_count": 0,
+        "renderer": "threejs_styled",
+        "camera": {
+          "azimuth": 6.0,
+          "elevation": -24.0,
+          "fov_y_degrees": 90.0
+        }
+      }
+    ],
+    "activity_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/activity.json?v=1784277231414513056",
+    "activity_count": 210,
+    "activity": [
+      {
+        "sequence": 131,
+        "timestamp": "2026-07-17T08:30:47.255673+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_54",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 8 frames · step 1286.",
+        "isError": false,
+        "step": 1286,
+        "summary": {
+          "status": "success",
+          "step": 1286,
+          "steps_remaining": 1114,
+          "resets_used": 0,
+          "frames_advanced": 8,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0037.png"
+        }
+      },
+      {
+        "sequence": 132,
+        "timestamp": "2026-07-17T08:30:47.255841+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0037.png",
+        "step": 1286,
+        "reset_count": 0
+      },
+      {
+        "sequence": 133,
+        "timestamp": "2026-07-17T08:30:52.987797+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "I’m nearly on top of the switch; the gate still looks barred from here, so I’ll keep pressing forward until the switch is underfoot or I get a mechanism response.",
+        "step": 1286
+      },
+      {
+        "sequence": 134,
+        "timestamp": "2026-07-17T08:30:53.341562+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_56",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 10,
+          "forward": 1
+        },
+        "step": 1286
+      },
+      {
+        "sequence": 135,
+        "timestamp": "2026-07-17T08:30:54.080401+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_56",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 10 frames · step 1296.",
+        "isError": false,
+        "step": 1296,
+        "summary": {
+          "status": "success",
+          "step": 1296,
+          "steps_remaining": 1104,
+          "resets_used": 0,
+          "frames_advanced": 10,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0038.png"
+        }
+      },
+      {
+        "sequence": 136,
+        "timestamp": "2026-07-17T08:30:54.080553+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0038.png",
+        "step": 1296,
+        "reset_count": 0
+      },
+      {
+        "sequence": 137,
+        "timestamp": "2026-07-17T08:31:01.952669+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_57",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 12,
+          "right": -0.8
+        },
+        "step": 1296
+      },
+      {
+        "sequence": 138,
+        "timestamp": "2026-07-17T08:31:02.843306+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_57",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 12 frames · step 1308.",
+        "isError": false,
+        "step": 1308,
+        "summary": {
+          "status": "success",
+          "step": 1308,
+          "steps_remaining": 1092,
+          "resets_used": 0,
+          "frames_advanced": 12,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0039.png"
+        }
+      },
+      {
+        "sequence": 139,
+        "timestamp": "2026-07-17T08:31:02.843465+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0039.png",
+        "step": 1308,
+        "reset_count": 0
+      },
+      {
+        "sequence": 140,
+        "timestamp": "2026-07-17T08:31:07.444141+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "I’m offset beside the switch rather than on it, so I’m correcting laterally toward the pad instead of advancing toward the hazard.",
+        "step": 1308
+      },
+      {
+        "sequence": 141,
+        "timestamp": "2026-07-17T08:31:08.116332+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_59",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 12,
+          "forward": 0.5,
+          "right": -0.5
+        },
+        "step": 1308
+      },
+      {
+        "sequence": 142,
+        "timestamp": "2026-07-17T08:31:09.088659+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_59",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 12 frames · step 1320.",
+        "isError": false,
+        "step": 1320,
+        "summary": {
+          "status": "success",
+          "step": 1320,
+          "steps_remaining": 1080,
+          "resets_used": 0,
+          "frames_advanced": 12,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0040.png"
+        }
+      },
+      {
+        "sequence": 143,
+        "timestamp": "2026-07-17T08:31:09.088960+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0040.png",
+        "step": 1320,
+        "reset_count": 0
+      },
+      {
+        "sequence": 144,
+        "timestamp": "2026-07-17T08:31:14.185165+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "The switch fills the lower center of the view now; I’m taking one more short forward contact to depress it.",
+        "step": 1320
+      },
+      {
+        "sequence": 145,
+        "timestamp": "2026-07-17T08:31:14.587538+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_61",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 10,
+          "forward": 1
+        },
+        "step": 1320
+      },
+      {
+        "sequence": 146,
+        "timestamp": "2026-07-17T08:31:15.374721+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_61",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 10 frames · step 1330.",
+        "isError": false,
+        "step": 1330,
+        "summary": {
+          "status": "success",
+          "step": 1330,
+          "steps_remaining": 1070,
+          "resets_used": 0,
+          "frames_advanced": 10,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0041.png"
+        }
+      },
+      {
+        "sequence": 147,
+        "timestamp": "2026-07-17T08:31:15.375078+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0041.png",
+        "step": 1330,
+        "reset_count": 0
+      },
+      {
+        "sequence": 148,
+        "timestamp": "2026-07-17T08:31:20.488847+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_62",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 16,
+          "forward": 1
+        },
+        "step": 1330
+      },
+      {
+        "sequence": 149,
+        "timestamp": "2026-07-17T08:31:21.674890+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_62",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 16 frames · step 1346.",
+        "isError": false,
+        "step": 1346,
+        "summary": {
+          "status": "success",
+          "step": 1346,
+          "steps_remaining": 1054,
+          "resets_used": 0,
+          "frames_advanced": 16,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0042.png"
+        }
+      },
+      {
+        "sequence": 150,
+        "timestamp": "2026-07-17T08:31:21.675095+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0042.png",
+        "step": 1346,
+        "reset_count": 0
+      },
+      {
+        "sequence": 151,
+        "timestamp": "2026-07-17T08:31:32.802008+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_63",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 12,
+          "look_y": -0.8
+        },
+        "step": 1346
+      },
+      {
+        "sequence": 152,
+        "timestamp": "2026-07-17T08:31:33.748759+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_63",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 12 frames · step 1358.",
+        "isError": false,
+        "step": 1358,
+        "summary": {
+          "status": "success",
+          "step": 1358,
+          "steps_remaining": 1042,
+          "resets_used": 0,
+          "frames_advanced": 12,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0043.png"
+        }
+      },
+      {
+        "sequence": 153,
+        "timestamp": "2026-07-17T08:31:33.748901+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0043.png",
+        "step": 1358,
+        "reset_count": 0
+      },
+      {
+        "sequence": 154,
+        "timestamp": "2026-07-17T08:31:38.454063+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "Looking down confirms the switch is offset slightly left of my current footprint, with the hazard still farther left. I’m sliding diagonally onto the pad while keeping the movement small.",
+        "step": 1358
+      },
+      {
+        "sequence": 155,
+        "timestamp": "2026-07-17T08:31:39.070536+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_65",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 10,
+          "forward": 0.6,
+          "right": -0.6
+        },
+        "step": 1358
+      },
+      {
+        "sequence": 156,
+        "timestamp": "2026-07-17T08:31:40.031830+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_65",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 10 frames · step 1368.",
+        "isError": false,
+        "step": 1368,
+        "summary": {
+          "status": "success",
+          "step": 1368,
+          "steps_remaining": 1032,
+          "resets_used": 0,
+          "frames_advanced": 10,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0044.png"
+        }
+      },
+      {
+        "sequence": 157,
+        "timestamp": "2026-07-17T08:31:40.032024+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0044.png",
+        "step": 1368,
+        "reset_count": 0
+      },
+      {
+        "sequence": 158,
+        "timestamp": "2026-07-17T08:31:45.417194+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "The pad seems slightly raised, so I’m going to hop forward onto it from the safe side rather than keep sliding at floor level.",
+        "step": 1368
+      },
+      {
+        "sequence": 159,
+        "timestamp": "2026-07-17T08:31:45.773377+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_67",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 18,
+          "forward": 1,
+          "jump": true
+        },
+        "step": 1368
+      },
+      {
+        "sequence": 160,
+        "timestamp": "2026-07-17T08:31:47.541579+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_67",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Jumped and advanced 18 frames · step 1386.",
+        "isError": false,
+        "step": 1386,
+        "summary": {
+          "status": "success",
+          "step": 1386,
+          "steps_remaining": 1014,
+          "resets_used": 0,
+          "frames_advanced": 18,
+          "grounded": false,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0045.png"
+        }
+      },
+      {
+        "sequence": 161,
+        "timestamp": "2026-07-17T08:31:47.541741+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0045.png",
+        "step": 1386,
+        "reset_count": 0
+      },
+      {
+        "sequence": 162,
+        "timestamp": "2026-07-17T08:31:51.587607+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_68",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 24,
+          "forward": 0
+        },
+        "step": 1386
+      },
+      {
+        "sequence": 163,
+        "timestamp": "2026-07-17T08:31:53.500110+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_68",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 24 frames · step 1410.",
+        "isError": false,
+        "step": 1410,
+        "summary": {
+          "status": "success",
+          "step": 1410,
+          "steps_remaining": 990,
+          "resets_used": 0,
+          "frames_advanced": 24,
+          "grounded": false,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0046.png"
+        }
+      },
+      {
+        "sequence": 164,
+        "timestamp": "2026-07-17T08:31:53.500249+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0046.png",
+        "step": 1410,
+        "reset_count": 0
+      },
+      {
+        "sequence": 165,
+        "timestamp": "2026-07-17T08:31:59.668023+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "The jump put me airborne longer than expected, but still over the safe switch side. I’m waiting to land before moving again so I don’t drift toward the hazard.",
+        "step": 1410
+      },
+      {
+        "sequence": 166,
+        "timestamp": "2026-07-17T08:32:00.107608+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_70",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 36,
+          "forward": 0
+        },
+        "step": 1410
+      },
+      {
+        "sequence": 167,
+        "timestamp": "2026-07-17T08:32:02.949926+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_70",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 36 frames · step 1446.",
+        "isError": false,
+        "step": 1446,
+        "summary": {
+          "status": "success",
+          "step": 1446,
+          "steps_remaining": 954,
+          "resets_used": 0,
+          "frames_advanced": 36,
+          "grounded": false,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0047.png"
+        }
+      },
+      {
+        "sequence": 168,
+        "timestamp": "2026-07-17T08:32:02.950076+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0047.png",
+        "step": 1446,
+        "reset_count": 0
+      },
+      {
+        "sequence": 169,
+        "timestamp": "2026-07-17T08:32:28.027136+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "The controller reports airborne while I’m effectively over the raised switch, which may mean I’m on its top surface rather than regular ground. I’m making a final tiny center correction on the pad, then I’ll test the gate path.",
+        "step": 1446
+      },
+      {
+        "sequence": 170,
+        "timestamp": "2026-07-17T08:32:29.027489+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_72",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 10,
+          "forward": 0.3,
+          "right": -0.3
+        },
+        "step": 1446
+      },
+      {
+        "sequence": 171,
+        "timestamp": "2026-07-17T08:32:29.904765+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_72",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 10 frames · step 1456.",
+        "isError": false,
+        "step": 1456,
+        "summary": {
+          "status": "success",
+          "step": 1456,
+          "steps_remaining": 944,
+          "resets_used": 0,
+          "frames_advanced": 10,
+          "grounded": false,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0048.png"
+        }
+      },
+      {
+        "sequence": 172,
+        "timestamp": "2026-07-17T08:32:29.904913+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0048.png",
+        "step": 1456,
+        "reset_count": 0
+      },
+      {
+        "sequence": 173,
+        "timestamp": "2026-07-17T08:32:36.722783+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "I’m going to test whether the switch has opened the gate by turning toward the barred opening and moving only a short distance. A collision will tell me the gate is still closed without costing much.",
+        "step": 1456
+      },
+      {
+        "sequence": 174,
+        "timestamp": "2026-07-17T08:32:37.370681+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_74",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 36,
+          "look_x": -1
+        },
+        "step": 1456
+      },
+      {
+        "sequence": 175,
+        "timestamp": "2026-07-17T08:32:40.153981+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_74",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 36 frames · step 1492.",
+        "isError": false,
+        "step": 1492,
+        "summary": {
+          "status": "success",
+          "step": 1492,
+          "steps_remaining": 908,
+          "resets_used": 0,
+          "frames_advanced": 36,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0049.png"
+        }
+      },
+      {
+        "sequence": 176,
+        "timestamp": "2026-07-17T08:32:40.154147+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0049.png",
+        "step": 1492,
+        "reset_count": 0
+      },
+      {
+        "sequence": 177,
+        "timestamp": "2026-07-17T08:32:44.707468+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "The gate still appears physically barred, so if this short move hits it I’ll switch to using a crate or another weight instead of trying to pass through.",
+        "step": 1492
+      },
+      {
+        "sequence": 178,
+        "timestamp": "2026-07-17T08:32:45.331246+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_76",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 18,
+          "forward": 1
+        },
+        "step": 1492
+      },
+      {
+        "sequence": 179,
+        "timestamp": "2026-07-17T08:32:46.936437+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_76",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 18 frames · step 1510.",
+        "isError": false,
+        "step": 1510,
+        "summary": {
+          "status": "success",
+          "step": 1510,
+          "steps_remaining": 890,
+          "resets_used": 0,
+          "frames_advanced": 18,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0050.png"
+        }
+      },
+      {
+        "sequence": 180,
+        "timestamp": "2026-07-17T08:32:46.937107+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0050.png",
+        "step": 1510,
+        "reset_count": 0
+      },
+      {
+        "sequence": 181,
+        "timestamp": "2026-07-17T08:32:52.201993+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "The short gate test did not indicate a pass-through. I’m moving directly sideways onto the switch surface now; the hazard remains well left of this lateral move.",
+        "step": 1510
+      },
+      {
+        "sequence": 182,
+        "timestamp": "2026-07-17T08:32:52.742216+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_78",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 16,
+          "right": -1
+        },
+        "step": 1510
+      },
+      {
+        "sequence": 183,
+        "timestamp": "2026-07-17T08:32:54.161255+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_78",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 16 frames · step 1526.",
+        "isError": false,
+        "step": 1526,
+        "summary": {
+          "status": "success",
+          "step": 1526,
+          "steps_remaining": 874,
+          "resets_used": 0,
+          "frames_advanced": 16,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0051.png"
+        }
+      },
+      {
+        "sequence": 184,
+        "timestamp": "2026-07-17T08:32:54.161406+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0051.png",
+        "step": 1526,
+        "reset_count": 0
+      },
+      {
+        "sequence": 185,
+        "timestamp": "2026-07-17T08:32:58.615758+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "The switch pad is now directly below the camera’s left-front side. I’m continuing a small sideways correction to center on it.",
+        "step": 1526
+      },
+      {
+        "sequence": 186,
+        "timestamp": "2026-07-17T08:32:59.146068+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_80",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 12,
+          "right": -1
+        },
+        "step": 1526
+      },
+      {
+        "sequence": 187,
+        "timestamp": "2026-07-17T08:33:00.160608+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_80",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 12 frames · step 1538.",
+        "isError": false,
+        "step": 1538,
+        "summary": {
+          "status": "success",
+          "step": 1538,
+          "steps_remaining": 862,
+          "resets_used": 0,
+          "frames_advanced": 12,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0052.png"
+        }
+      },
+      {
+        "sequence": 188,
+        "timestamp": "2026-07-17T08:33:00.160754+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0052.png",
+        "step": 1538,
+        "reset_count": 0
+      },
+      {
+        "sequence": 189,
+        "timestamp": "2026-07-17T08:33:07.102915+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "I’m centered over the switch now, so I’m holding position briefly to let the linked gate respond.",
+        "step": 1538
+      },
+      {
+        "sequence": 190,
+        "timestamp": "2026-07-17T08:33:09.727159+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_82",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 30,
+          "forward": 0
+        },
+        "step": 1538
+      },
+      {
+        "sequence": 191,
+        "timestamp": "2026-07-17T08:33:12.183609+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_82",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 30 frames · step 1568.",
+        "isError": false,
+        "step": 1568,
+        "summary": {
+          "status": "success",
+          "step": 1568,
+          "steps_remaining": 832,
+          "resets_used": 0,
+          "frames_advanced": 30,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0053.png"
+        }
+      },
+      {
+        "sequence": 192,
+        "timestamp": "2026-07-17T08:33:12.185681+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0053.png",
+        "step": 1568,
+        "reset_count": 0
+      },
+      {
+        "sequence": 193,
+        "timestamp": "2026-07-17T08:33:23.113587+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "Holding the switch did not end the episode, so the remaining objective is likely to move through the opened center passage. The cyan outline ahead marks a safe floor area near the wall; I’m heading there while staying clear of the broken paving.",
+        "step": 1568
+      },
+      {
+        "sequence": 194,
+        "timestamp": "2026-07-17T08:33:23.418848+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_84",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 24,
+          "forward": 1,
+          "right": -0.6
+        },
+        "step": 1568
+      },
+      {
+        "sequence": 195,
+        "timestamp": "2026-07-17T08:33:25.394512+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_84",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 24 frames · step 1592.",
+        "isError": false,
+        "step": 1592,
+        "summary": {
+          "status": "success",
+          "step": 1592,
+          "steps_remaining": 808,
+          "resets_used": 0,
+          "frames_advanced": 24,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0054.png"
+        }
+      },
+      {
+        "sequence": 196,
+        "timestamp": "2026-07-17T08:33:25.394690+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0054.png",
+        "step": 1592,
+        "reset_count": 0
+      },
+      {
+        "sequence": 197,
+        "timestamp": "2026-07-17T08:33:32.047287+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "The zone-entry cue fired when I reached the switch, so the switch interaction registered. I’m now moving through the opened passage beside the gate, keeping to the safe floor and away from the hazard.",
+        "step": 1592
+      },
+      {
+        "sequence": 198,
+        "timestamp": "2026-07-17T08:33:32.630532+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_86",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 30,
+          "forward": 1,
+          "right": 0.7
+        },
+        "step": 1592
+      },
+      {
+        "sequence": 199,
+        "timestamp": "2026-07-17T08:33:35.120677+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_86",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 30 frames · step 1622.",
+        "isError": false,
+        "step": 1622,
+        "summary": {
+          "status": "success",
+          "step": 1622,
+          "steps_remaining": 778,
+          "resets_used": 0,
+          "frames_advanced": 30,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": false,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0055.png"
+        }
+      },
+      {
+        "sequence": 200,
+        "timestamp": "2026-07-17T08:33:35.120815+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0055.png",
+        "step": 1622,
+        "reset_count": 0
+      },
+      {
+        "sequence": 201,
+        "timestamp": "2026-07-17T08:33:39.709512+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_87",
+        "name": "act_task_run",
+        "label": "Action",
+        "message": "Controlling the robot...",
+        "input": {
+          "frames": 24,
+          "look_x": -1
+        },
+        "step": 1622
+      },
+      {
+        "sequence": 202,
+        "timestamp": "2026-07-17T08:33:40.931524+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_87",
+        "name": "act_task_run",
+        "label": "Result",
+        "message": "Advanced 14 frames · step 1636.",
+        "isError": false,
+        "step": 1636,
+        "summary": {
+          "status": "success",
+          "step": 1636,
+          "steps_remaining": 764,
+          "resets_used": 0,
+          "frames_advanced": 14,
+          "grounded": true,
+          "collision": false,
+          "stopped_on_collision": false,
+          "terminal": true,
+          "frame_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0056.png"
+        }
+      },
+      {
+        "sequence": 203,
+        "timestamp": "2026-07-17T08:33:40.931785+00:00",
+        "event": "task_frame",
+        "type": "frame",
+        "label": "Policy view",
+        "message": "Updated first-person observation.",
+        "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/child_frames/frame_0056.png",
+        "step": 1636,
+        "reset_count": 0
+      },
+      {
+        "sequence": 204,
+        "timestamp": "2026-07-17T08:33:45.430229+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "The episode has reached a terminal passed outcome after the switch was entered and the gate opening registered. I’m stopping the run now.",
+        "step": 1636
+      },
+      {
+        "sequence": 205,
+        "timestamp": "2026-07-17T08:33:45.825225+00:00",
+        "event": "tool_start",
+        "type": "tool_start",
+        "id": "item_89",
+        "name": "stop_task_run",
+        "label": "Action",
+        "message": "Checking the final task result...",
+        "input": {},
+        "step": 1636
+      },
+      {
+        "sequence": 206,
+        "timestamp": "2026-07-17T08:33:45.936135+00:00",
+        "event": "tool_result",
+        "type": "tool_result",
+        "id": "item_89",
+        "name": "stop_task_run",
+        "label": "Result",
+        "message": "Task passed after 1636 steps.",
+        "isError": false,
+        "step": 1636,
+        "summary": {
+          "status": "passed",
+          "step": 1636,
+          "resets_used": 0,
+          "passed": true,
+          "terminal": false
+        }
+      },
+      {
+        "sequence": 207,
+        "timestamp": "2026-07-17T08:33:50.634717+00:00",
+        "event": "task_error",
+        "type": "error",
+        "label": "Agent error",
+        "message": "Agent run exceeded the 420-second limit.",
+        "step": 1636
+      },
+      {
+        "sequence": 208,
+        "timestamp": "2026-07-17T08:33:50.638292+00:00",
+        "event": "text",
+        "type": "agent_message",
+        "label": "Agent note",
+        "message": "I’ll use the environment task tools only, starting with the first observation and then navigating from the visible layout.\nThe initial view shows a walled courtyard/corridor, two crates to the left, and a forward route. I’m going to get grounded and move with medium batches while scanning for the yellow switch, brown center gate, and the broken-paving hazard.\nI’m still in the clear corridor and have passed the crates. No hazard or switch is visible from this angle yet, so I’m going to continue to the far opening and keep the wall as a reference.\nThe far end looks like a left-hand turn around a wall rather than a dead end. I’m aligning into that turn and will use shorter movement there to avoid drifting into any hazard if it appears around the corner.\nThat turn left me facing the side wall, so I’m correcting by sliding along the wall rather than pushing into it. This should reveal the adjacent passage without wasting steps on blocked forward movement.\nThe horizontal look direction is opposite of what I expected here: the wall is dominating the view. I’m going to rotate the other way to reacquire the corridor before moving farther.\nI’ve got the corner back in view. I’m taking a short forward diagonal now; if the route opens past the beige wall, the next frame should show the next courtyard segment.\nThis end appears closed, so I’m treating it as a dead end and turning back. The remaining likely route is around the crate side or a branch I passed while staying tight to the right wall.\nI’m back facing the main corridor. The alternating wall segments on the left look like openings or partitions, so I’m going back toward them and will inspect that side instead of staying at the closed end.\nThe left side opens into a partitioned area near the crates. I’m moving in from the clear green floor and keeping the motion short enough to stop if any black-yellow broken paving appears.\nNow the task objects are visible: a barred brown/black gate area is to the left, and there’s a red/yellow floor feature nearby that may be the hazard or switch zone. I’m going to inspect from a distance before committing to a path.\nThe black-and-yellow broken-paving hazard is clearly on the left. I’m keeping to its right side and approaching the gate/switch area from the open floor, using the crate and fence as landmarks.\nThe low switch is visible just beyond and to the right of the hazard, with clear floor around its right edge. I’ll step onto that switch first; if the gate needs the switch held, I’ll use the nearby crate afterward.\nI’m still to the right of the switch, with the hazard safely left. I’ll close the last bit carefully from the switch’s right side.\nThe route is still clear: hazard left, button ahead slightly right of it. I’m continuing straight toward the button and staying off the hazard’s marked border.\nThe button is now just ahead and slightly to my right, still separated from the hazard. I’m correcting right and taking very short batches to land on it cleanly.\nThe button is directly in front at close range. I’m taking the smallest forward step now to avoid overshooting into the hazard lane.\nI’m nearly on top of the switch; the gate still looks barred from here, so I’ll keep pressing forward until the switch is underfoot or I get a mechanism response.\nI’m offset beside the switch rather than on it, so I’m correcting laterally toward the pad instead of advancing toward the hazard.\nThe switch fills the lower center of the view now; I’m taking one more short forward contact to depress it.\nLooking down confirms the switch is offset slightly left of my current footprint, with the hazard still farther left. I’m sliding diagonally onto the pad while keeping the movement small.\nThe pad seems slightly raised, so I’m going to hop forward onto it from the safe side rather than keep sliding at floor level.\nThe jump put me airborne longer than expected, but still over the safe switch side. I’m waiting to land before moving again so I don’t drift toward the hazard.\nThe controller reports airborne while I’m effectively over the raised switch, which may mean I’m on its top surface rather than regular ground. I’m making a final tiny center correction on the pad, then I’ll test the gate path.\nI’m going to test whether the switch has opened the gate by turning toward the barred opening and moving only a short distance. A collision will tell me the gate is still closed without costing much.\nThe gate still appears physically barred, so if this short move hits it I’ll switch to using a crate or another weight instead of trying to pass through.\nThe short gate test did not indicate a pass-through. I’m moving directly sideways onto the switch surface now; the hazard remains well left of this lateral move.\nThe switch pad is now directly below the camera’s left-front side. I’m continuing a small sideways correction to center on it.\nI’m centered over the switch now, so I’m holding position briefly to let the linked gate respond.\nHolding the switch did not end the episode, so the remaining objective is likely to move through the opened center passage. The cyan outline ahead marks a safe floor area near the wall; I’m heading there while staying clear of the broken paving.\nThe zone-entry cue fired when I reached the switch, so the switch interaction registered. I’m now moving through the opened passage beside the gate, keeping to the safe floor and away from the hazard.\nThe episode has reached a terminal passed outcome after the switch was entered and the gate opening registered. I’m stopping the run now.",
+        "step": 1636
+      },
+      {
+        "sequence": 209,
+        "timestamp": "2026-07-17T08:33:50.641934+00:00",
+        "event": "task_run",
+        "type": "phase",
+        "label": "Task run",
+        "message": "replaying",
+        "run_id": "run-0003-391b6e28",
+        "status": "replaying",
+        "step_count": null,
+        "action_count": 56,
+        "passed": null,
+        "step": 1636
+      },
+      {
+        "sequence": 210,
+        "timestamp": "2026-07-17T08:33:51.414036+00:00",
+        "event": "task_run",
+        "type": "phase",
+        "label": "Task run",
+        "message": "passed",
+        "run_id": "run-0003-391b6e28",
+        "status": "passed",
+        "step_count": 1636,
+        "action_count": 56,
+        "passed": true,
+        "step": 1636
+      }
+    ]
+  }
+}

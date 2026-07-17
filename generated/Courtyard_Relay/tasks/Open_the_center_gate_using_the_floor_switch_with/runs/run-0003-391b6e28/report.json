@@ -1,0 +1,356 @@
+{
+  "status": "passed",
+  "passed": true,
+  "final": true,
+  "step_count": 1636,
+  "simulation_time": 16.359999999999758,
+  "summary": {
+    "tests": 2,
+    "passed_tests": 2,
+    "conditions": 4,
+    "passed_conditions": 4
+  },
+  "tests": [
+    {
+      "id": "open_gate_without_hazard",
+      "description": "The blue robot enters the floor switch, the linked center gate opens, and the robot never overlaps the broken-paving hazard.",
+      "mode": "all",
+      "passed": true,
+      "status": "pass",
+      "conditions": [
+        {
+          "id": "activate_gate_switch",
+          "description": "The blue robot enters the gate switch.",
+          "temporal": "eventually",
+          "predicate": {
+            "type": "overlap",
+            "subject": {
+              "id": "blue_robot"
+            },
+            "subject_quantifier": "all",
+            "target": {
+              "id": "gate_switch"
+            }
+          },
+          "predicate_type": "overlap",
+          "passed": true,
+          "status": "pass",
+          "provisional": false,
+          "first_satisfied_step": 1581,
+          "first_satisfied_frame": 1581,
+          "metrics": {
+            "frames_observed": 1637,
+            "true_frames": 56,
+            "transition_count": 1,
+            "longest_true_streak": 56,
+            "currently_true": true,
+            "final_evaluation": true,
+            "operator": "eventually",
+            "overlapping_pairs": [
+              [
+                "blue_robot",
+                "gate_switch"
+              ]
+            ],
+            "matched_subject_ids": [
+              "blue_robot"
+            ],
+            "pair_transition_counts": {
+              "blue_robot->gate_switch": 1
+            },
+            "counts_by_subject": {
+              "blue_robot": 1
+            },
+            "counts_by_target": {
+              "gate_switch": 1
+            }
+          },
+          "witness": {
+            "overlapping_pairs": [
+              [
+                "blue_robot",
+                "gate_switch"
+              ]
+            ],
+            "matched_subject_ids": [
+              "blue_robot"
+            ]
+          }
+        },
+        {
+          "id": "center_gate_opens",
+          "description": "The switch-linked center gate reaches the open state.",
+          "temporal": "eventually",
+          "predicate": {
+            "type": "mechanism_state",
+            "mechanism_id": "gate_switch_link",
+            "state": "open",
+            "min_progress": 0.9
+          },
+          "predicate_type": "mechanism_state",
+          "passed": true,
+          "status": "pass",
+          "provisional": false,
+          "first_satisfied_step": 1636,
+          "first_satisfied_frame": 1636,
+          "metrics": {
+            "frames_observed": 1637,
+            "true_frames": 1,
+            "transition_count": 1,
+            "longest_true_streak": 1,
+            "currently_true": true,
+            "final_evaluation": true,
+            "operator": "eventually",
+            "mechanism": {
+              "id": "gate_switch_link",
+              "trigger_id": "gate_switch",
+              "gate_id": "center_gate",
+              "active": true,
+              "progress": 0.9141430658065927
+            }
+          },
+          "witness": {
+            "mechanism": {
+              "id": "gate_switch_link",
+              "trigger_id": "gate_switch",
+              "gate_id": "center_gate",
+              "active": true,
+              "progress": 0.9141430658065927
+            }
+          }
+        },
+        {
+          "id": "avoid_broken_paving",
+          "description": "The blue robot never enters the broken-paving hazard.",
+          "temporal": "never",
+          "predicate": {
+            "type": "overlap",
+            "subject": {
+              "id": "blue_robot"
+            },
+            "subject_quantifier": "all",
+            "target": {
+              "id": "broken_paving_hazard"
+            }
+          },
+          "predicate_type": "overlap",
+          "passed": true,
+          "status": "pass",
+          "provisional": false,
+          "first_satisfied_step": 1636,
+          "first_satisfied_frame": 1636,
+          "metrics": {
+            "frames_observed": 1637,
+            "true_frames": 0,
+            "transition_count": 0,
+            "longest_true_streak": 0,
+            "currently_true": false,
+            "final_evaluation": true,
+            "operator": "never",
+            "overlapping_pairs": [],
+            "matched_subject_ids": [],
+            "pair_transition_counts": {},
+            "counts_by_subject": {},
+            "counts_by_target": {}
+          },
+          "witness": {
+            "overlapping_pairs": [],
+            "matched_subject_ids": []
+          }
+        }
+      ],
+      "ordered_condition_ids": [
+        "activate_gate_switch",
+        "center_gate_opens"
+      ],
+      "ordered_steps": [
+        1581,
+        1636
+      ],
+      "ordered_frames": [
+        1581,
+        1636
+      ],
+      "order_passed": true
+    },
+    {
+      "id": "system_stay_in_bounds",
+      "description": "The agent must remain inside the playable environment.",
+      "mode": "all",
+      "passed": true,
+      "status": "pass",
+      "conditions": [
+        {
+          "id": "always_in_bounds",
+          "description": "Agent remains within the play bounds.",
+          "temporal": "always",
+          "predicate": {
+            "type": "in_bounds",
+            "subject": {
+              "semantic_type": "agent"
+            },
+            "subject_quantifier": "any"
+          },
+          "predicate_type": "in_bounds",
+          "passed": true,
+          "status": "pass",
+          "provisional": false,
+          "first_satisfied_step": 1636,
+          "first_satisfied_frame": 1636,
+          "metrics": {
+            "frames_observed": 1637,
+            "true_frames": 1637,
+            "transition_count": 1,
+            "longest_true_streak": 1637,
+            "currently_true": true,
+            "final_evaluation": true,
+            "operator": "always",
+            "objects": {
+              "blue_robot": true
+            },
+            "bounds": [
+              24.0,
+              18.0,
+              8.0
+            ],
+            "matched_subject_ids": [
+              "blue_robot"
+            ]
+          },
+          "witness": {
+            "objects": {
+              "blue_robot": true
+            },
+            "bounds": [
+              24.0,
+              18.0,
+              8.0
+            ],
+            "matched_subject_ids": [
+              "blue_robot"
+            ]
+          }
+        }
+      ],
+      "ordered_condition_ids": [],
+      "ordered_steps": [],
+      "ordered_frames": [],
+      "order_passed": true
+    }
+  ],
+  "terminal_events": [],
+  "schema_version": "1.0",
+  "controller_version": "task_controller_v1",
+  "env_spec_hash": "d30a1027c245c3d505c688c55db029657cb0e79f6f018cc93768fb4592ba5ad7",
+  "task_definition_hash": "12a7b2eb257f5866d01663d7010bc65d2f035dd6451fd05eb19f25ecbe092fa3",
+  "action_count": 56,
+  "child_summary": "I’ll use the environment task tools only, starting with the first observation and then navigating from the visible layout.\nThe initial view shows a walled courtyard/corridor, two crates to the left, and a forward route. I’m going to get grounded and move with medium batches while scanning for the yellow switch, brown center gate, and the broken-paving hazard.\nI’m still in the clear corridor and have passed the crates. No hazard or switch is visible from this angle yet, so I’m going to continue to the far opening and keep the wall as a reference.\nThe far end looks like a left-hand turn around a wall rather than a dead end. I’m aligning into that turn and will use shorter movement there to avoid drifting into any hazard if it appears around the corner.\nThat turn left me facing the side wall, so I’m correcting by sliding along the wall rather than pushing into it. This should reveal the adjacent passage without wasting steps on blocked forward movement.\nThe horizontal look direction is opposite of what I expected here: the wall is dominating the view. I’m going to rotate the other way to reacquire the corridor before moving farther.\nI’ve got the corner back in view. I’m taking a short forward diagonal now; if the route opens past the beige wall, the next frame should show the next courtyard segment.\nThis end appears closed, so I’m treating it as a dead end and turning back. The remaining likely route is around the crate side or a branch I passed while staying tight to the right wall.\nI’m back facing the main corridor. The alternating wall segments on the left look like openings or partitions, so I’m going back toward them and will inspect that side instead of staying at the closed end.\nThe left side opens into a partitioned area near the crates. I’m moving in from the clear green floor and keeping the motion short enough to stop if any black-yellow broken paving appears.\nNow the task objects are visible: a barred brown/black gate area is to the left, and there’s a red/yellow floor feature nearby that may be the hazard or switch zone. I’m going to inspect from a distance before committing to a path.\nThe black-and-yellow broken-paving hazard is clearly on the left. I’m keeping to its right side and approaching the gate/switch area from the open floor, using the crate and fence as landmarks.\nThe low switch is visible just beyond and to the right of the hazard, with clear floor around its right edge. I’ll step onto that switch first; if the gate needs the switch held, I’ll use the nearby crate afterward.\nI’m still to the right of the switch, with the hazard safely left. I’ll close the last bit carefully from the switch’s right side.\nThe route is still clear: hazard left, button ahead slightly right of it. I’m continuing straight toward the button and staying off the hazard’s marked border.\nThe button is now just ahead and slightly to my right, still separated from the hazard. I’m correcting right and taking very short batches to land on it cleanly.\nThe button is directly in front at close range. I’m taking the smallest forward step now to avoid overshooting into the hazard lane.\nI’m nearly on top of the switch; the gate still looks barred from here, so I’ll keep pressing forward until the switch is underfoot or I get a mechanism response.\nI’m offset beside the switch rather than on it, so I’m correcting laterally toward the pad instead of advancing toward the hazard.\nThe switch fills the lower center of the view now; I’m taking one more short forward contact to depress it.\nLooking down confirms the switch is offset slightly left of my current footprint, with the hazard still farther left. I’m sliding diagonally onto the pad while keeping the movement small.\nThe pad seems slightly raised, so I’m going to hop forward onto it from the safe side rather than keep sliding at floor level.\nThe jump put me airborne longer than expected, but still over the safe switch side. I’m waiting to land before moving again so I don’t drift toward the hazard.\nThe controller reports airborne while I’m effectively over the raised switch, which may mean I’m on its top surface rather than regular ground. I’m making a final tiny center correction on the pad, then I’ll test the gate path.\nI’m going to test whether the switch has opened the gate by turning toward the barred opening and moving only a short distance. A collision will tell me the gate is still closed without costing much.\nThe gate still appears physically barred, so if this short move hits it I’ll switch to using a crate or another weight instead of trying to pass through.\nThe short gate test did not indicate a pass-through. I’m moving directly sideways onto the switch surface now; the hazard remains well left of this lateral move.\nThe switch pad is now directly below the camera’s left-front side. I’m continuing a small sideways correction to center on it.\nI’m centered over the switch now, so I’m holding position briefly to let the linked gate respond.\nHolding the switch did not end the episode, so the remaining objective is likely to move through the opened center passage. The cyan outline ahead marks a safe floor area near the wall; I’m heading there while staying clear of the broken paving.\nThe zone-entry cue fired when I reached the switch, so the switch interaction registered. I’m now moving through the opened passage beside the gate, keeping to the safe floor and away from the hazard.\nThe episode has reached a terminal passed outcome after the switch was entered and the gate opening registered. I’m stopping the run now.",
+  "child_exit_code": 124,
+  "child_stderr": [
+    "2026-07-17T08:30:54.083713Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:31:02.846423Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:31:09.092094Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:31:15.379640Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:31:21.680623Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:31:33.752178Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:31:40.035343Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:31:47.545840Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:31:53.503846Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:32:02.954078Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:32:29.909953Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:32:40.157857Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:32:46.963958Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:33:00.164260Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:33:12.187903Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:33:25.398638Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:33:35.124709Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:33:40.935658Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "2026-07-17T08:33:45.939051Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5",
+    "Child task run exceeded 420 seconds."
+  ],
+  "run_id": "run-0003-391b6e28",
+  "task_id": "Open_the_center_gate_using_the_floor_switch_with",
+  "env_id": "Courtyard_Relay",
+  "model": "gpt-5.5",
+  "observation_mode": "styled_first_person_with_proprioception",
+  "completed_at": "2026-07-17T08:33:51.409162+00:00",
+  "trajectory_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/trajectory.json?v=1784277231409026846",
+  "actions_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/actions.json?v=1784277230641060217",
+  "evidence_frames": [
+    {
+      "index": 0,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_000.png",
+      "step": 0,
+      "reset_count": 0,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": -90.0,
+        "elevation": -8.0,
+        "fov_y_degrees": 90.0
+      }
+    },
+    {
+      "index": 1,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_001.png",
+      "step": 450,
+      "reset_count": 0,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": -114.0,
+        "elevation": -8.0,
+        "fov_y_degrees": 90.0
+      }
+    },
+    {
+      "index": 2,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_002.png",
+      "step": 1026,
+      "reset_count": 0,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": 66.0,
+        "elevation": -8.0,
+        "fov_y_degrees": 90.0
+      }
+    },
+    {
+      "index": 3,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_003.png",
+      "step": 1258,
+      "reset_count": 0,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": 66.0,
+        "elevation": -8.0,
+        "fov_y_degrees": 90.0
+      }
+    },
+    {
+      "index": 4,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_004.png",
+      "step": 1386,
+      "reset_count": 0,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": 66.0,
+        "elevation": -24.0,
+        "fov_y_degrees": 90.0
+      }
+    },
+    {
+      "index": 5,
+      "url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/evidence/frame_005.png",
+      "step": 1636,
+      "reset_count": 0,
+      "renderer": "threejs_styled",
+      "camera": {
+        "azimuth": 6.0,
+        "elevation": -24.0,
+        "fov_y_degrees": 90.0
+      }
+    }
+  ],
+  "activity_url": "/generated/Courtyard_Relay/tasks/Open_the_center_gate_using_the_floor_switch_with/runs/run-0003-391b6e28/activity.json?v=1784277231414513056",
+  "activity_count": 210,
+  "stale": false
+}

@@ -1,0 +1,247 @@
+{
+  "status": "passed",
+  "passed": true,
+  "final": true,
+  "step_count": 830,
+  "simulation_time": 8.299999999999867,
+  "summary": {
+    "tests": 2,
+    "passed_tests": 2,
+    "conditions": 4,
+    "passed_conditions": 4
+  },
+  "tests": [
+    {
+      "id": "open_gate_without_hazard",
+      "description": "The blue robot enters the floor switch, the linked center gate opens, and the robot never overlaps the broken-paving hazard.",
+      "mode": "all",
+      "passed": true,
+      "status": "pass",
+      "conditions": [
+        {
+          "id": "activate_gate_switch",
+          "description": "The blue robot enters the gate switch.",
+          "temporal": "eventually",
+          "predicate": {
+            "type": "overlap",
+            "subject": {
+              "id": "blue_robot"
+            },
+            "subject_quantifier": "all",
+            "target": {
+              "id": "gate_switch"
+            }
+          },
+          "predicate_type": "overlap",
+          "passed": true,
+          "status": "pass",
+          "provisional": false,
+          "first_satisfied_step": 459,
+          "first_satisfied_frame": 459,
+          "metrics": {
+            "frames_observed": 831,
+            "true_frames": 372,
+            "transition_count": 1,
+            "longest_true_streak": 372,
+            "currently_true": true,
+            "final_evaluation": true,
+            "operator": "eventually",
+            "overlapping_pairs": [
+              [
+                "blue_robot",
+                "gate_switch"
+              ]
+            ],
+            "matched_subject_ids": [
+              "blue_robot"
+            ],
+            "pair_transition_counts": {
+              "blue_robot->gate_switch": 1
+            },
+            "counts_by_subject": {
+              "blue_robot": 1
+            },
+            "counts_by_target": {
+              "gate_switch": 1
+            }
+          },
+          "witness": {
+            "overlapping_pairs": [
+              [
+                "blue_robot",
+                "gate_switch"
+              ]
+            ],
+            "matched_subject_ids": [
+              "blue_robot"
+            ]
+          }
+        },
+        {
+          "id": "center_gate_opens",
+          "description": "The switch-linked center gate reaches the open state.",
+          "temporal": "eventually",
+          "predicate": {
+            "type": "mechanism_state",
+            "mechanism_id": "gate_switch_link",
+            "state": "open",
+            "min_progress": 0.9
+          },
+          "predicate_type": "mechanism_state",
+          "passed": true,
+          "status": "pass",
+          "provisional": false,
+          "first_satisfied_step": 517,
+          "first_satisfied_frame": 517,
+          "metrics": {
+            "frames_observed": 831,
+            "true_frames": 314,
+            "transition_count": 1,
+            "longest_true_streak": 314,
+            "currently_true": true,
+            "final_evaluation": true,
+            "operator": "eventually",
+            "mechanism": {
+              "id": "gate_switch_link",
+              "trigger_id": "gate_switch",
+              "gate_id": "center_gate",
+              "active": true,
+              "progress": 1.0
+            }
+          },
+          "witness": {
+            "mechanism": {
+              "id": "gate_switch_link",
+              "trigger_id": "gate_switch",
+              "gate_id": "center_gate",
+              "active": true,
+              "progress": 0.9110903522054983
+            }
+          }
+        },
+        {
+          "id": "avoid_broken_paving",
+          "description": "The blue robot never enters the broken-paving hazard.",
+          "temporal": "never",
+          "predicate": {
+            "type": "overlap",
+            "subject": {
+              "id": "blue_robot"
+            },
+            "subject_quantifier": "all",
+            "target": {
+              "id": "broken_paving_hazard"
+            }
+          },
+          "predicate_type": "overlap",
+          "passed": true,
+          "status": "pass",
+          "provisional": false,
+          "first_satisfied_step": 830,
+          "first_satisfied_frame": 830,
+          "metrics": {
+            "frames_observed": 831,
+            "true_frames": 0,
+            "transition_count": 0,
+            "longest_true_streak": 0,
+            "currently_true": false,
+            "final_evaluation": true,
+            "operator": "never",
+            "overlapping_pairs": [],
+            "matched_subject_ids": [],
+            "pair_transition_counts": {},
+            "counts_by_subject": {},
+            "counts_by_target": {}
+          },
+          "witness": {
+            "overlapping_pairs": [],
+            "matched_subject_ids": []
+          }
+        }
+      ],
+      "ordered_condition_ids": [
+        "activate_gate_switch",
+        "center_gate_opens"
+      ],
+      "ordered_steps": [
+        459,
+        517
+      ],
+      "ordered_frames": [
+        459,
+        517
+      ],
+      "order_passed": true
+    },
+    {
+      "id": "system_stay_in_bounds",
+      "description": "The agent must remain inside the playable environment.",
+      "mode": "all",
+      "passed": true,
+      "status": "pass",
+      "conditions": [
+        {
+          "id": "always_in_bounds",
+          "description": "Agent remains within the play bounds.",
+          "temporal": "always",
+          "predicate": {
+            "type": "in_bounds",
+            "subject": {
+              "semantic_type": "agent"
+            },
+            "subject_quantifier": "any"
+          },
+          "predicate_type": "in_bounds",
+          "passed": true,
+          "status": "pass",
+          "provisional": false,
+          "first_satisfied_step": 830,
+          "first_satisfied_frame": 830,
+          "metrics": {
+            "frames_observed": 831,
+            "true_frames": 831,
+            "transition_count": 1,
+            "longest_true_streak": 831,
+            "currently_true": true,
+            "final_evaluation": true,
+            "operator": "always",
+            "objects": {
+              "blue_robot": true
+            },
+            "bounds": [
+              24.0,
+              18.0,
+              8.0
+            ],
+            "matched_subject_ids": [
+              "blue_robot"
+            ]
+          },
+          "witness": {
+            "objects": {
+              "blue_robot": true
+            },
+            "bounds": [
+              24.0,
+              18.0,
+              8.0
+            ],
+            "matched_subject_ids": [
+              "blue_robot"
+            ]
+          }
+        }
+      ],
+      "ordered_condition_ids": [],
+      "ordered_steps": [],
+      "ordered_frames": [],
+      "order_passed": true
+    }
+  ],
+  "terminal_events": [],
+  "schema_version": "1.0",
+  "controller_version": "task_controller_v1",
+  "env_spec_hash": "d30a1027c245c3d505c688c55db029657cb0e79f6f018cc93768fb4592ba5ad7",
+  "task_definition_hash": "12a7b2eb257f5866d01663d7010bc65d2f035dd6451fd05eb19f25ecbe092fa3",
+  "action_count": 100
+}

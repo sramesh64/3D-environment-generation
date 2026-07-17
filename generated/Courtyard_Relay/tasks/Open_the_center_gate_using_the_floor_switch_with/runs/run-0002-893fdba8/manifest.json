@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "controller_version": "task_controller_v1",
+  "run_id": "run-0002-893fdba8",
+  "task_id": "Open_the_center_gate_using_the_floor_switch_with",
+  "env_id": "Courtyard_Relay",
+  "created_at": "2026-07-17T08:19:25.620047+00:00",
+  "status": "failed",
+  "pid": null,
+  "env_spec_hash": "d30a1027c245c3d505c688c55db029657cb0e79f6f018cc93768fb4592ba5ad7",
+  "task_definition_hash": "12a7b2eb257f5866d01663d7010bc65d2f035dd6451fd05eb19f25ecbe092fa3",
+  "model": "gpt-5.6-sol",
+  "observation_mode": "styled_first_person_with_proprioception",
+  "completed_at": "2026-07-17T08:25:52.213074+00:00",
+  "stale": false
+}

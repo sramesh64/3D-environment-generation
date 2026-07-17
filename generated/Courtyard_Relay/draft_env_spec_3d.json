@@ -1,0 +1,705 @@
+{
+  "schema_version": "1.1",
+  "id": "Courtyard_Relay",
+  "description": "A robot courtyard with a blue robot, an elevated charging goal reached by a wooden ramp beyond a switch-operated center gate, a broken-paving hazard with a wide bypass, and a pushable supply crate aligned with a cyan delivery target along a straight hazard-free lane on the robot side.",
+  "world_size": [
+    30.0,
+    24.0,
+    10.0
+  ],
+  "gravity": [
+    0.0,
+    0.0,
+    -9.81
+  ],
+  "theme": "robot_courtyard",
+  "cameras": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "position": [
+        0.0,
+        -22.799999999999997,
+        9.0
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fov": 45.0
+    },
+    {
+      "id": "agent",
+      "label": "Agent",
+      "position": [
+        -3.279,
+        2.38,
+        2.75
+      ],
+      "target": [
+        -0.279,
+        7.38,
+        0.55
+      ],
+      "fov": 50.0
+    },
+    {
+      "id": "goal",
+      "label": "Goal",
+      "position": [
+        -1.6100000000000003,
+        -12.379999999999999,
+        3.7
+      ],
+      "target": [
+        -4.61,
+        -7.38,
+        1.5
+      ],
+      "fov": 50.0
+    }
+  ],
+  "objects": [
+    {
+      "id": "ground",
+      "semantic_type": "ground",
+      "shape": "box",
+      "body_type": "static",
+      "position": [
+        0.0,
+        0.0,
+        -0.1
+      ],
+      "size": [
+        24.0,
+        18.0,
+        0.2
+      ],
+      "yaw": 0.0,
+      "label": "Ground",
+      "tags": [
+        "floor",
+        "walkable"
+      ],
+      "color": "#8BD66C",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_ground",
+        "variant": "grass_pavers"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "north_boundary",
+      "semantic_type": "wall",
+      "shape": "box",
+      "body_type": "static",
+      "position": [
+        0.0,
+        9.0,
+        0.8
+      ],
+      "size": [
+        24.0,
+        0.3,
+        1.6
+      ],
+      "yaw": 0.0,
+      "label": "Wall",
+      "tags": [
+        "barrier",
+        "boundary"
+      ],
+      "color": "#28746F",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_boundary",
+        "variant": "plain"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "south_boundary",
+      "semantic_type": "wall",
+      "shape": "box",
+      "body_type": "static",
+      "position": [
+        0.0,
+        -9.0,
+        0.8
+      ],
+      "size": [
+        24.0,
+        0.3,
+        1.6
+      ],
+      "yaw": 0.0,
+      "label": "Wall",
+      "tags": [
+        "barrier",
+        "boundary"
+      ],
+      "color": "#28746F",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_boundary",
+        "variant": "plain"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "west_boundary",
+      "semantic_type": "wall",
+      "shape": "box",
+      "body_type": "static",
+      "position": [
+        -12.0,
+        0.0,
+        0.8
+      ],
+      "size": [
+        0.3,
+        18.0,
+        1.6
+      ],
+      "yaw": 0.0,
+      "label": "Wall",
+      "tags": [
+        "barrier",
+        "boundary"
+      ],
+      "color": "#28746F",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_boundary",
+        "variant": "plain"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "east_boundary",
+      "semantic_type": "wall",
+      "shape": "box",
+      "body_type": "static",
+      "position": [
+        12.0,
+        0.0,
+        0.8
+      ],
+      "size": [
+        0.3,
+        18.0,
+        1.6
+      ],
+      "yaw": 0.0,
+      "label": "Wall",
+      "tags": [
+        "barrier",
+        "boundary"
+      ],
+      "color": "#28746F",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_boundary",
+        "variant": "plain"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "blue_robot",
+      "semantic_type": "agent",
+      "shape": "cylinder",
+      "body_type": "dynamic",
+      "position": [
+        -0.279,
+        7.38,
+        0.55
+      ],
+      "size": [
+        0.7,
+        0.7,
+        1.1
+      ],
+      "yaw": 0.0,
+      "label": "Agent spawn",
+      "tags": [
+        "agent",
+        "spawn"
+      ],
+      "color": "#2D73FF",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_robot"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "charging_goal",
+      "semantic_type": "goal",
+      "shape": "box",
+      "body_type": "sensor",
+      "position": [
+        -4.61,
+        -7.38,
+        1.5
+      ],
+      "size": [
+        1.4,
+        1.4,
+        1.2
+      ],
+      "yaw": 0.0,
+      "label": "Goal zone",
+      "tags": [
+        "goal",
+        "sensor"
+      ],
+      "color": "#57F287",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_goal_pad"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "mid_wall_west",
+      "semantic_type": "wall",
+      "shape": "box",
+      "body_type": "static",
+      "position": [
+        -6.6,
+        0.0,
+        1.5
+      ],
+      "size": [
+        10.2,
+        0.35,
+        3.0
+      ],
+      "yaw": 0.0,
+      "label": "Wall",
+      "tags": [
+        "barrier"
+      ],
+      "color": "#28746F",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_boundary",
+        "variant": "stone"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "mid_wall_east",
+      "semantic_type": "wall",
+      "shape": "box",
+      "body_type": "static",
+      "position": [
+        6.6,
+        0.0,
+        1.5
+      ],
+      "size": [
+        10.2,
+        0.35,
+        3.0
+      ],
+      "yaw": 0.0,
+      "label": "Wall",
+      "tags": [
+        "barrier"
+      ],
+      "color": "#28746F",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_boundary",
+        "variant": "stone"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "center_gate",
+      "semantic_type": "gate",
+      "shape": "box",
+      "body_type": "mechanism",
+      "position": [
+        0.0,
+        0.0,
+        1.5
+      ],
+      "size": [
+        3.0,
+        0.35,
+        3.0
+      ],
+      "yaw": 0.0,
+      "label": "Sliding gate",
+      "tags": [
+        "barrier",
+        "gate",
+        "mechanism"
+      ],
+      "color": "#73806F",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_gate"
+      },
+      "metadata": {
+        "travel": 1.5
+      }
+    },
+    {
+      "id": "gate_switch",
+      "semantic_type": "floor_switch",
+      "shape": "box",
+      "body_type": "sensor",
+      "position": [
+        -2.2,
+        1.0,
+        0.06
+      ],
+      "size": [
+        1.2,
+        1.2,
+        0.12
+      ],
+      "yaw": 0.0,
+      "label": "Floor switch",
+      "tags": [
+        "trigger",
+        "sensor",
+        "mechanism"
+      ],
+      "color": "#49C6E5",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_floor_switch"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "broken_paving_hazard",
+      "semantic_type": "hazard",
+      "shape": "box",
+      "body_type": "sensor",
+      "position": [
+        -2.8,
+        4.5,
+        0.075
+      ],
+      "size": [
+        3.6,
+        2.8,
+        0.15
+      ],
+      "yaw": 0.0,
+      "label": "Hazard zone",
+      "tags": [
+        "hazard",
+        "sensor"
+      ],
+      "color": "#D9365E",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_hazard",
+        "variant": "broken_paving"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "goal_platform",
+      "semantic_type": "platform",
+      "shape": "box",
+      "body_type": "static",
+      "position": [
+        -4.61,
+        -7.38,
+        0.45
+      ],
+      "size": [
+        3.4,
+        2.8,
+        0.9
+      ],
+      "yaw": 0.0,
+      "label": "Platform",
+      "tags": [
+        "walkable"
+      ],
+      "color": "#C6974C",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_platform",
+        "variant": "wood"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "goal_ramp",
+      "semantic_type": "ramp",
+      "shape": "ramp",
+      "body_type": "static",
+      "position": [
+        -4.6099999999925005,
+        -4.5116082674122975,
+        0.3446391086256734
+      ],
+      "size": [
+        3.0,
+        2.2,
+        0.22
+      ],
+      "yaw": -1.57079632679,
+      "label": "Ramp",
+      "tags": [
+        "walkable",
+        "incline"
+      ],
+      "color": "#C6974C",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_ramp",
+        "variant": "wood"
+      },
+      "metadata": {
+        "geometry_version": 2,
+        "rise": 0.9,
+        "low_end": [
+          -4.61,
+          -2.98,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "supply_target_region",
+      "semantic_type": "target_region",
+      "shape": "box",
+      "body_type": "sensor",
+      "position": [
+        -7.0,
+        2.0,
+        0.1
+      ],
+      "size": [
+        1.8,
+        1.8,
+        0.2
+      ],
+      "yaw": 0.0,
+      "label": "Target region",
+      "tags": [
+        "target",
+        "delivery",
+        "sensor"
+      ],
+      "color": "#70D6E8",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_target_region"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "supply_crate",
+      "semantic_type": "pushable_box",
+      "shape": "box",
+      "body_type": "dynamic",
+      "position": [
+        5.0,
+        2.0,
+        0.55
+      ],
+      "size": [
+        1.1,
+        1.1,
+        1.1
+      ],
+      "yaw": 0.0,
+      "label": "Pushable box",
+      "tags": [
+        "pushable"
+      ],
+      "color": "#EF6430",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_pushable_crate"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "climb_tower_lower_step",
+      "semantic_type": "static_box",
+      "shape": "box",
+      "body_type": "static",
+      "position": [
+        -1.7,
+        -3.75,
+        0.225
+      ],
+      "size": [
+        1.8,
+        1.8,
+        0.45
+      ],
+      "yaw": 0.0,
+      "label": "Static box",
+      "tags": [
+        "box",
+        "crate",
+        "anchored",
+        "structure"
+      ],
+      "color": "#D68A3A",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_static_prop",
+        "variant": "crate"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "climb_tower_upper_step",
+      "semantic_type": "static_box",
+      "shape": "box",
+      "body_type": "static",
+      "position": [
+        -1.7,
+        -5.55,
+        0.45
+      ],
+      "size": [
+        1.8,
+        1.8,
+        0.9
+      ],
+      "yaw": 0.0,
+      "label": "Static box",
+      "tags": [
+        "box",
+        "crate",
+        "anchored",
+        "structure"
+      ],
+      "color": "#D68A3A",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_static_prop",
+        "variant": "crate"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "goal_side_barrel",
+      "semantic_type": "cylinder",
+      "shape": "cylinder",
+      "body_type": "dynamic",
+      "position": [
+        -7.2,
+        -5.8,
+        0.55
+      ],
+      "size": [
+        1.0,
+        1.0,
+        1.1
+      ],
+      "yaw": 0.0,
+      "label": "Cylinder",
+      "tags": [
+        "pushable",
+        "rolling"
+      ],
+      "color": "#DF7030",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_barrel"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "goal_side_yard_ball",
+      "semantic_type": "ball",
+      "shape": "sphere",
+      "body_type": "dynamic",
+      "position": [
+        -8.14,
+        -3.48,
+        0.48
+      ],
+      "size": [
+        0.96,
+        0.96,
+        0.96
+      ],
+      "yaw": 0.0,
+      "label": "Ball",
+      "tags": [
+        "pushable",
+        "rolling"
+      ],
+      "color": "#F0C84A",
+      "visible": true,
+      "metadata": {}
+    },
+    {
+      "id": "barrel_ball_planter",
+      "semantic_type": "static_box",
+      "shape": "box",
+      "body_type": "static",
+      "position": [
+        -7.67,
+        -4.64,
+        0.175
+      ],
+      "size": [
+        0.7,
+        0.7,
+        0.35
+      ],
+      "yaw": 0.0,
+      "label": "Static box",
+      "tags": [
+        "box",
+        "crate",
+        "anchored",
+        "structure"
+      ],
+      "color": "#D68A3A",
+      "visible": true,
+      "appearance": {
+        "asset_id": "courtyard_static_prop",
+        "variant": "planter"
+      },
+      "metadata": {}
+    }
+  ],
+  "metadata": {
+    "generator": "environment_generation_semantic_builder_v1",
+    "coordinate_system": "z_up",
+    "dimension_units": "meters"
+  },
+  "game": {
+    "mode": "reach_goal",
+    "agent_id": "blue_robot",
+    "goal_id": "charging_goal",
+    "play_bounds": [
+      24.0,
+      18.0,
+      8.0
+    ],
+    "reset_on": [
+      "out_of_bounds"
+    ]
+  },
+  "generation": null,
+  "mechanisms": [
+    {
+      "id": "gate_switch_link",
+      "trigger_id": "gate_switch",
+      "gate_id": "center_gate",
+      "mode": "latch_open"
+    }
+  ]
+}

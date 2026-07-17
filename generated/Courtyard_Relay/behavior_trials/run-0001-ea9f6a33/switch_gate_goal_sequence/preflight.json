@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "controller_version": "controller_v3",
+  "status": "ready",
+  "configured_steps_per_attempt": 900,
+  "effective_steps_per_attempt": 900,
+  "max_attempts": 1,
+  "navigation": {
+    "primary_target_id": "gate_switch",
+    "target_ids": [
+      "gate_switch",
+      "charging_goal"
+    ],
+    "initial_camera_azimuth": 16.756899930443826,
+    "initial_camera_elevation": -4.206029689347683,
+    "initial_distance_xy": 5.71293,
+    "estimated_trial_travel_distance_xy": 13.13259,
+    "minimum_travel_steps": 470,
+    "recommended_steps_per_attempt": 900,
+    "effective_steps_per_attempt": 900,
+    "primary_target": {
+      "id": "gate_switch",
+      "semantic_type": "floor_switch",
+      "body_type": "sensor",
+      "position": [
+        -2.2,
+        1.0,
+        0.06
+      ],
+      "size": [
+        1.2,
+        1.2,
+        0.12
+      ]
+    }
+  },
+  "stability": {
+    "probe_steps": 0,
+    "seconds": 0.0,
+    "targets": []
+  },
+  "issues": [],
+  "warnings": [],
+  "repair_hints": []
+}

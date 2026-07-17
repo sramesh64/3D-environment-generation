@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0",
+  "review_id": "turn-0002-c1ed5d40",
+  "env_id": "Courtyard_Relay",
+  "turn_index": 2,
+  "kind": "revision",
+  "renderer": "threejs_local_asset_scene",
+  "model": "gpt-5.6-sol",
+  "created_at": "2026-07-17T04:42:20.497034+00:00",
+  "status": "failed",
+  "blocking": false,
+  "needs_attention": true,
+  "before": {
+    "spec_hash": "f0e9c512dfc7e545c313c563aa78852f195879729c128745727114d3a76e034a",
+    "visual_scene_hash": "d2893afeac8e7c483c94eabb8a352662d03d2692d7c527f35c6070f4ad05e175",
+    "visual_scene_path": "visual_reviews/turn-0002-c1ed5d40/before_visual_scene.json",
+    "visual_scene_url": "/generated/Courtyard_Relay/visual_reviews/turn-0002-c1ed5d40/before_visual_scene.json?v=1784263225924120336"
+  },
+  "after": {
+    "spec_hash": "aeb32b455be81e441a49661af0ede49d773b13fd83816fda29f2b2f1fa447979",
+    "visual_scene_hash": "d2711bbb6499c80667f9d4b6034a572dc4a9acf6867039e74e017e8d5c463136"
+  },
+  "summary": {
+    "total": 4,
+    "passed": 3,
+    "critical_failures": 1,
+    "advisory_failures": 0,
+    "message": "The requested dividing wall and centered pass-through opening are clearly present, and the robot and charging goal remain visually unchanged. However, the wall’s left endpoint visibly clips through and protrudes beyond the courtyard boundary, creating a major visible regression."
+  },
+  "checks": [
+    {
+      "id": "wall_layout",
+      "category": "prompt_fidelity",
+      "passed": true,
+      "severity": "critical",
+      "message": "A waist-high segmented wall spans the middle of the courtyard with a centered opening that appears comfortably wider than the robot.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "Two aligned wall sections divide the courtyard and leave a clear central passage."
+        },
+        {
+          "view_id": "layout",
+          "phase": "after",
+          "observation": "The elevated view clearly shows the wall crossing the full courtyard width with an approximately centered opening."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "subject_preservation",
+      "category": "revision_fidelity",
+      "passed": true,
+      "severity": "critical",
+      "message": "The blue robot and charging goal retain their prior visible placements on opposite sides of the courtyard.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "before",
+          "observation": "Robot is in the bottom-right region and charging goal is in the top-left region."
+        },
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "Both elements appear in the same visible locations after the edit."
+        }
+      ],
+      "repair_hint": ""
+    },
+    {
+      "id": "endpoint_clipping",
+      "category": "visual_regression",
+      "passed": false,
+      "severity": "critical",
+      "message": "The wall’s left endpoint passes through the perimeter wall and protrudes outside the courtyard, producing conspicuous geometry clipping.",
+      "evidence": [
+        {
+          "view_id": "primary",
+          "phase": "after",
+          "observation": "At the lower-left boundary, several divider blocks visibly intersect the perimeter and extend into the exterior terrain."
+        },
+        {
+          "view_id": "reverse",
+          "phase": "after",
+          "observation": "The near-left endpoint visibly cuts through the enclosing wall rather than terminating cleanly against its inner face."
+        },
+        {
+          "view_id": "layout",
+          "phase": "after",
+          "observation": "The elevated view confirms the divider extends beyond the courtyard enclosure at the left end."
+        }
+      ],
+      "repair_hint": "Shorten and align the left wall section so it terminates flush against the inner face of the courtyard boundary, with no blocks intersecting or protruding through the perimeter."
+    },
+    {
+      "id": "scene_cohesion",
+      "category": "presentation",
+      "passed": true,
+      "severity": "advisory",
+      "message": "The low-poly block construction and muted alternating tones remain cohesive with the sunny courtyard style.",
+      "evidence": [
+        {
+          "view_id": "reverse",
+          "phase": "after",
+          "observation": "The divider has a readable low-poly form and consistent scale across the courtyard."
+        }
+      ],
+      "repair_hint": ""
+    }
+  ],
+  "reviewed_views": [
+    {
+      "id": "primary",
+      "label": "Submitted camera",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          0.5
+        ],
+        "distance": 22.8,
+        "azimuth": -42.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "primary",
+          "label": "Before - Submitted camera",
+          "path": "visual_reviews/turn-0002-c1ed5d40/01_before_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0002-c1ed5d40/01_before_primary.png?v=1784263321487133995",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 115423,
+          "sha256": "eec6eb413b0f6042ab7660c806c8fad1df42c60f8b583ac7762968ee82a0e82e"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "primary",
+          "label": "After - Submitted camera",
+          "path": "visual_reviews/turn-0002-c1ed5d40/02_after_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0002-c1ed5d40/02_after_primary.png?v=1784263321489201594",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 129925,
+          "sha256": "e5c5f043bde183646adf55a14322a305a2ac8b88f234d7beac6140072cfae6fe"
+        }
+      }
+    },
+    {
+      "id": "reverse",
+      "label": "Reverse oblique",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 32.4,
+        "azimuth": 138.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "reverse",
+          "label": "Before - Reverse oblique",
+          "path": "visual_reviews/turn-0002-c1ed5d40/03_before_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0002-c1ed5d40/03_before_reverse.png?v=1784263321491126859",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 108737,
+          "sha256": "6cde2d0a451ec6b2d432f23bae9f6928cb9b2f7fe73a72c77904eca4f4d7c280"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "reverse",
+          "label": "After - Reverse oblique",
+          "path": "visual_reviews/turn-0002-c1ed5d40/04_after_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0002-c1ed5d40/04_after_reverse.png?v=1784263321493129874",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 117524,
+          "sha256": "fee294616f4e5486d0b96d7df287ecb18f91c8ad29c2260f646a5f99657469ad"
+        }
+      }
+    },
+    {
+      "id": "layout",
+      "label": "Elevated layout",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 34.992,
+        "azimuth": -42.0,
+        "elevation": 68.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "layout",
+          "label": "Before - Elevated layout",
+          "path": "visual_reviews/turn-0002-c1ed5d40/05_before_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0002-c1ed5d40/05_before_layout.png?v=1784263321494931763",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 98040,
+          "sha256": "a071319c82652881152521c293ab7378c39b3b35b628f6d90c2a5ee6ac34d65e"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "layout",
+          "label": "After - Elevated layout",
+          "path": "visual_reviews/turn-0002-c1ed5d40/06_after_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0002-c1ed5d40/06_after_layout.png?v=1784263321496772568",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 108842,
+          "sha256": "074523f182ec42d1e870a474b6e75eac2d51e8bd7db330680bcdc4c43c71b507"
+        }
+      }
+    }
+  ],
+  "intent_context": {
+    "initial_request": "Add exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.",
+    "latest_request": "Add a continuous waist-high wall across the middle of the courtyard, from the left boundary to the right boundary, separating the robot from the goal. Leave one centered opening wide enough for the robot to pass through comfortably. The robot must not be able to walk around either end. Do not move the robot or goal.",
+    "prior_user_requests": [],
+    "context_truncated": false
+  },
+  "prompt": "You are the visual reviewer for a generated Environment Generation environment.\n\nEnvironment ID: Courtyard_Relay\nReview ID: turn-0002-c1ed5d40\n\nOriginal environment request:\nAdd exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.\n\nPrior user revisions, oldest to newest:\n- None\n\nLatest revision under review:\nAdd a continuous waist-high wall across the middle of the courtyard, from the left boundary to the right boundary, separating the robot from the goal. Leave one centered opening wide enough for the robot to pass through comfortably. The robot must not be able to walk around either end. Do not move the robot or goal.\n\nAttached images, in this exact order:\n1. Before - Submitted camera (view_id=primary, phase=before)\n2. After - Submitted camera (view_id=primary, phase=after)\n3. Before - Reverse oblique (view_id=reverse, phase=before)\n4. After - Reverse oblique (view_id=reverse, phase=after)\n5. Before - Elevated layout (view_id=layout, phase=before)\n6. After - Elevated layout (view_id=layout, phase=after)\n\nThis is a revision review. Images are attached as adjacent before/after pairs. Within each pair the camera is identical. Judge whether the latest requested change appeared and whether the after scene introduced visible regressions. Later user instructions override conflicting earlier instructions.\n\nJudge only what styled renders can establish: prompt and edit fidelity, visibility of essential\nelements, readable 3D layout, plausible visual scale and placement, obvious clipping or floating,\naffordance readability, charging-pad and hazard readability when those objects are present, accidental occlusion, visual regressions,\nasset clipping, hidden-looking blockers, and cohesion with the sunny low-poly robot courtyard universe.\nUse the reverse and elevated views to resolve occlusion in the primary view.\n\nDo not use checks for exact object counts, exact coordinates, simple axis relations, support-contact\nphysics, movement, task solvability, or navigation. Deterministic checks cover those. Do not claim\nthat an image proves physics behavior. Visual-only trees, shrubs, stones, sky, and terrain dressing\nare intentional and should be judged as presentation rather than physics objects.\n\nReturn JSON matching the supplied schema. Use critical severity only for a clear prompt\ncontradiction, missing essential element, unusable-looking scale or placement, major clipping, or\nan edit that visibly failed. Use advisory for polish. Every failed check needs a concrete repair_hint,\nand every evidence entry must name one of primary, reverse, or layout and before or after.\n",
+  "raw_output": "{\"status\":\"failed\",\"summary\":\"The requested dividing wall and centered pass-through opening are clearly present, and the robot and charging goal remain visually unchanged. However, the wall’s left endpoint visibly clips through and protrudes beyond the courtyard boundary, creating a major visible regression.\",\"checks\":[{\"id\":\"wall_layout\",\"category\":\"prompt_fidelity\",\"passed\":true,\"severity\":\"critical\",\"message\":\"A waist-high segmented wall spans the middle of the courtyard with a centered opening that appears comfortably wider than the robot.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"Two aligned wall sections divide the courtyard and leave a clear central passage.\"},{\"view_id\":\"layout\",\"phase\":\"after\",\"observation\":\"The elevated view clearly shows the wall crossing the full courtyard width with an approximately centered opening.\"}],\"repair_hint\":\"\"},{\"id\":\"subject_preservation\",\"category\":\"revision_fidelity\",\"passed\":true,\"severity\":\"critical\",\"message\":\"The blue robot and charging goal retain their prior visible placements on opposite sides of the courtyard.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"before\",\"observation\":\"Robot is in the bottom-right region and charging goal is in the top-left region.\"},{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"Both elements appear in the same visible locations after the edit.\"}],\"repair_hint\":\"\"},{\"id\":\"endpoint_clipping\",\"category\":\"visual_regression\",\"passed\":false,\"severity\":\"critical\",\"message\":\"The wall’s left endpoint passes through the perimeter wall and protrudes outside the courtyard, producing conspicuous geometry clipping.\",\"evidence\":[{\"view_id\":\"primary\",\"phase\":\"after\",\"observation\":\"At the lower-left boundary, several divider blocks visibly intersect the perimeter and extend into the exterior terrain.\"},{\"view_id\":\"reverse\",\"phase\":\"after\",\"observation\":\"The near-left endpoint visibly cuts through the enclosing wall rather than terminating cleanly against its inner face.\"},{\"view_id\":\"layout\",\"phase\":\"after\",\"observation\":\"The elevated view confirms the divider extends beyond the courtyard enclosure at the left end.\"}],\"repair_hint\":\"Shorten and align the left wall section so it terminates flush against the inner face of the courtyard boundary, with no blocks intersecting or protruding through the perimeter.\"},{\"id\":\"scene_cohesion\",\"category\":\"presentation\",\"passed\":true,\"severity\":\"advisory\",\"message\":\"The low-poly block construction and muted alternating tones remain cohesive with the sunny courtyard style.\",\"evidence\":[{\"view_id\":\"reverse\",\"phase\":\"after\",\"observation\":\"The divider has a readable low-poly form and consistent scale across the courtyard.\"}],\"repair_hint\":\"\"}]}"
+}

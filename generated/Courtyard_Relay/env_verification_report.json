@@ -1,0 +1,254 @@
+{
+  "schema_version": "1.0",
+  "env_id": "Courtyard_Relay",
+  "plan_created_at": "2026-07-17T05:24:18.466938+00:00",
+  "created_at": "2026-07-17T05:24:21.897108+00:00",
+  "operation_count": 39,
+  "plan_draft_hash": "9ae8a61412b9b4e3266768a0e957e88d59761a6648f3afc888cd93b7ee64c66a",
+  "draft_hash": "9ae8a61412b9b4e3266768a0e957e88d59761a6648f3afc888cd93b7ee64c66a",
+  "status": "passed",
+  "blocking": false,
+  "summary": {
+    "total": 13,
+    "passed": 13,
+    "critical_failures": 0,
+    "advisory_failures": 0
+  },
+  "results": [
+    {
+      "id": "system_game_contract",
+      "type": "game_contract",
+      "severity": "critical",
+      "description": "The generated courtyard has a valid, reachable reach-goal game contract.",
+      "passed": true,
+      "status": "pass",
+      "message": "Robot courtyard game contract is valid.",
+      "metrics": {
+        "issues": []
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "system_one_agent",
+      "type": "object_count",
+      "severity": "critical",
+      "description": "The courtyard contains exactly one controllable robot.",
+      "passed": true,
+      "status": "pass",
+      "message": "Found 1 matching object(s).",
+      "metrics": {
+        "count": 1,
+        "matched_ids": [
+          "blue_robot"
+        ]
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "system_one_goal",
+      "type": "object_count",
+      "severity": "critical",
+      "description": "The courtyard contains exactly one charging-pad goal.",
+      "passed": true,
+      "status": "pass",
+      "message": "Found 1 matching object(s).",
+      "metrics": {
+        "count": 1,
+        "matched_ids": [
+          "charging_goal"
+        ]
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "system_agent_supported",
+      "type": "support_contact",
+      "severity": "critical",
+      "description": "The robot starts supported by a walkable courtyard surface.",
+      "passed": true,
+      "status": "pass",
+      "message": "All selected objects are supported by a static surface.",
+      "metrics": {
+        "checked_ids": [
+          "blue_robot"
+        ],
+        "supported_ids": [
+          "blue_robot"
+        ],
+        "surface_ids": [
+          "ground",
+          "goal_platform",
+          "goal_ramp"
+        ],
+        "failures": []
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "system_passive_stability",
+      "type": "physics_probe",
+      "severity": "critical",
+      "description": "The generated MuJoCo scene remains stable when allowed to settle.",
+      "passed": true,
+      "status": "pass",
+      "message": "Physics probe 'passive_settles' passed.",
+      "metrics": {
+        "probe": "passive_settles",
+        "passed": true,
+        "body_ids": [
+          "blue_robot",
+          "supply_crate",
+          "goal_side_barrel",
+          "goal_side_yard_ball"
+        ],
+        "max_speed": 0.0024,
+        "max_displacement": 0.0004,
+        "min_z": 0.4794,
+        "issue": ""
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "west_divider_gate_side",
+      "type": "spatial_relation",
+      "severity": "critical",
+      "description": "The west divider remains on the west side of the centered gate.",
+      "passed": true,
+      "status": "pass",
+      "message": "Spatial relation 'left_of' is satisfied.",
+      "metrics": {
+        "subject_ids": [
+          "mid_wall_west"
+        ],
+        "target_ids": [
+          "center_gate"
+        ],
+        "distances": {}
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "east_divider_gate_side",
+      "type": "spatial_relation",
+      "severity": "critical",
+      "description": "The east divider remains on the east side of the centered gate.",
+      "passed": true,
+      "status": "pass",
+      "message": "Spatial relation 'right_of' is satisfied.",
+      "metrics": {
+        "subject_ids": [
+          "mid_wall_east"
+        ],
+        "target_ids": [
+          "center_gate"
+        ],
+        "distances": {}
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "west_divider_meets_perimeter",
+      "type": "spatial_relation",
+      "severity": "critical",
+      "description": "The west divider remains close enough to the west perimeter to block passage without protruding.",
+      "passed": true,
+      "status": "pass",
+      "message": "Spatial relation 'near' is satisfied.",
+      "metrics": {
+        "subject_ids": [
+          "mid_wall_west"
+        ],
+        "target_ids": [
+          "west_boundary"
+        ],
+        "distances": {
+          "mid_wall_west->west_boundary": 5.4452
+        }
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "east_divider_meets_perimeter",
+      "type": "spatial_relation",
+      "severity": "critical",
+      "description": "The east divider remains close enough to the east perimeter to block passage without protruding.",
+      "passed": true,
+      "status": "pass",
+      "message": "Spatial relation 'near' is satisfied.",
+      "metrics": {
+        "subject_ids": [
+          "mid_wall_east"
+        ],
+        "target_ids": [
+          "east_boundary"
+        ],
+        "distances": {
+          "mid_wall_east->east_boundary": 5.4452
+        }
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "center_gate_preserved",
+      "type": "object_count",
+      "severity": "critical",
+      "description": "The existing centered sliding gate remains present exactly once.",
+      "passed": true,
+      "status": "pass",
+      "message": "Found 1 matching object(s).",
+      "metrics": {
+        "count": 1,
+        "matched_ids": [
+          "center_gate"
+        ]
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "west_divider_preserved",
+      "type": "object_count",
+      "severity": "critical",
+      "description": "The west divider segment remains present exactly once.",
+      "passed": true,
+      "status": "pass",
+      "message": "Found 1 matching object(s).",
+      "metrics": {
+        "count": 1,
+        "matched_ids": [
+          "mid_wall_west"
+        ]
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "east_divider_preserved",
+      "type": "object_count",
+      "severity": "critical",
+      "description": "The east divider segment remains present exactly once.",
+      "passed": true,
+      "status": "pass",
+      "message": "Found 1 matching object(s).",
+      "metrics": {
+        "count": 1,
+        "matched_ids": [
+          "mid_wall_east"
+        ]
+      },
+      "repair_hints": []
+    },
+    {
+      "id": "reach_goal_contract_preserved",
+      "type": "game_contract",
+      "severity": "critical",
+      "description": "The blue robot still uses the charging goal as the reach-goal contract.",
+      "passed": true,
+      "status": "pass",
+      "message": "Robot courtyard game contract is valid.",
+      "metrics": {
+        "issues": []
+      },
+      "repair_hints": []
+    }
+  ],
+  "next_action": "Environment verification passed. Continue validation and finalization."
+}

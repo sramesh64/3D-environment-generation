@@ -1,0 +1,835 @@
+{
+  "schema_version": "1.0",
+  "review_id": "turn-0001-a41cf938",
+  "env_id": "Courtyard_Relay",
+  "turn_index": 1,
+  "kind": "initial",
+  "renderer": "threejs_local_asset_scene",
+  "model": "gpt-5.6-sol",
+  "status": "completed",
+  "created_at": "2026-07-17T04:36:42.340944+00:00",
+  "updated_at": "2026-07-17T04:39:27.367817+00:00",
+  "intent_context": {
+    "initial_request": "Add exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.",
+    "latest_request": "Add exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.",
+    "prior_user_requests": [],
+    "context_truncated": false
+  },
+  "submitted_view_context": {
+    "version": 2,
+    "capture_kind": "structured_before_generation",
+    "captured_at": "2026-07-17T04:36:42.234Z",
+    "route": "create",
+    "preview_mode": "visual",
+    "scene": {
+      "baseline": "empty_courtyard",
+      "object_count": 5,
+      "object_ids": [
+        "ground",
+        "north_boundary",
+        "south_boundary",
+        "west_boundary",
+        "east_boundary"
+      ]
+    },
+    "viewport": {
+      "width": 515,
+      "height": 280,
+      "device_pixel_ratio": 2
+    },
+    "coordinate_conventions": {
+      "world_right": "+x",
+      "world_left": "-x",
+      "world_forward": "+y",
+      "world_back": "-y",
+      "world_up": "+z",
+      "default_unqualified_left_right": "screen_space_current_preview"
+    },
+    "screen_space": {
+      "camera": {
+        "projection": "perspective",
+        "fov_y_degrees": 45,
+        "aspect": 1.839,
+        "near": 0.1,
+        "far": 1000,
+        "position": [
+          -12.022,
+          13.352,
+          14.537
+        ],
+        "target": [
+          0,
+          0,
+          0.5
+        ],
+        "azimuth_degrees": -42,
+        "elevation_degrees": 38,
+        "distance": 22.8
+      },
+      "playable_area": {
+        "surface_id": "ground",
+        "semantic_type": "ground",
+        "top_z": 0,
+        "world_corners": [
+          [
+            -12,
+            -9,
+            0
+          ],
+          [
+            12,
+            -9,
+            0
+          ],
+          [
+            12,
+            9,
+            0
+          ],
+          [
+            -12,
+            9,
+            0
+          ]
+        ],
+        "screen_polygon_uv": [
+          [
+            0.055,
+            0.567
+          ],
+          [
+            0.555,
+            0.199
+          ],
+          [
+            0.906,
+            0.478
+          ],
+          [
+            0.335,
+            1
+          ]
+        ],
+        "bounds_uv": {
+          "left": 0.055,
+          "top": 0.199,
+          "right": 0.906,
+          "bottom": 1
+        }
+      },
+      "regions": {
+        "top_left": {
+          "bounds_uv": {
+            "left": 0.106,
+            "right": 0.356,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "top_center": {
+          "bounds_uv": {
+            "left": 0.356,
+            "right": 0.605,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "top_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.855,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center_left": {
+          "bounds_uv": {
+            "left": 0.106,
+            "right": 0.356,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center": {
+          "bounds_uv": {
+            "left": 0.356,
+            "right": 0.605,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.855,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_left": {
+          "bounds_uv": {
+            "left": 0.106,
+            "right": 0.356,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_center": {
+          "bounds_uv": {
+            "left": 0.356,
+            "right": 0.605,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.855,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        }
+      },
+      "projected_objects": [
+        {
+          "id": "ground",
+          "semantic_type": "ground",
+          "center_world": [
+            0,
+            0,
+            -0.1
+          ],
+          "center_uv": [
+            0.5,
+            0.525
+          ],
+          "bounds_uv": {
+            "left": 0.055,
+            "top": 0.199,
+            "right": 0.906,
+            "bottom": 1.497
+          },
+          "visible": true
+        },
+        {
+          "id": "north_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            0,
+            9,
+            0.8
+          ],
+          "center_uv": [
+            0.728,
+            0.77
+          ],
+          "bounds_uv": {
+            "left": 0.315,
+            "top": 0.409,
+            "right": 0.928,
+            "bottom": 1.506
+          },
+          "visible": true
+        },
+        {
+          "id": "south_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            0,
+            -9,
+            0.8
+          ],
+          "center_uv": [
+            0.358,
+            0.312
+          ],
+          "bounds_uv": {
+            "left": 0.033,
+            "top": 0.143,
+            "right": 0.558,
+            "bottom": 0.571
+          },
+          "visible": true
+        },
+        {
+          "id": "west_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            -12,
+            0,
+            0.8
+          ],
+          "center_uv": [
+            0.141,
+            0.849
+          ],
+          "bounds_uv": {
+            "left": 0.029,
+            "top": 0.494,
+            "right": 0.342,
+            "bottom": 1.505
+          },
+          "visible": true
+        },
+        {
+          "id": "east_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            12,
+            0,
+            0.8
+          ],
+          "center_uv": [
+            0.702,
+            0.284
+          ],
+          "bounds_uv": {
+            "left": 0.553,
+            "top": 0.143,
+            "right": 0.925,
+            "bottom": 0.481
+          },
+          "visible": true
+        }
+      ],
+      "source": "threejs_visual_camera",
+      "reliable": true
+    },
+    "visual": {
+      "rendered": true,
+      "azimuth_degrees": -42,
+      "elevation_degrees": 38,
+      "distance": 22.8,
+      "default_distance": 22.8,
+      "zoom_percent": 100,
+      "pan_x_world": 0,
+      "pan_z_world": 0,
+      "target": [
+        0,
+        0,
+        0.5
+      ],
+      "screen_right_world_xy": [
+        0.743,
+        0.669
+      ],
+      "screen_left_world_xy": [
+        -0.743,
+        -0.669
+      ],
+      "camera": {
+        "projection": "perspective",
+        "fov_y_degrees": 45,
+        "aspect": 1.839,
+        "near": 0.1,
+        "far": 1000,
+        "position": [
+          -12.022,
+          13.352,
+          14.537
+        ],
+        "target": [
+          0,
+          0,
+          0.5
+        ],
+        "azimuth_degrees": -42,
+        "elevation_degrees": 38,
+        "distance": 22.8
+      },
+      "playable_area": {
+        "surface_id": "ground",
+        "semantic_type": "ground",
+        "top_z": 0,
+        "world_corners": [
+          [
+            -12,
+            -9,
+            0
+          ],
+          [
+            12,
+            -9,
+            0
+          ],
+          [
+            12,
+            9,
+            0
+          ],
+          [
+            -12,
+            9,
+            0
+          ]
+        ],
+        "screen_polygon_uv": [
+          [
+            0.055,
+            0.567
+          ],
+          [
+            0.555,
+            0.199
+          ],
+          [
+            0.906,
+            0.478
+          ],
+          [
+            0.335,
+            1
+          ]
+        ],
+        "bounds_uv": {
+          "left": 0.055,
+          "top": 0.199,
+          "right": 0.906,
+          "bottom": 1
+        }
+      },
+      "regions": {
+        "top_left": {
+          "bounds_uv": {
+            "left": 0.106,
+            "right": 0.356,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "top_center": {
+          "bounds_uv": {
+            "left": 0.356,
+            "right": 0.605,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "top_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.855,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center_left": {
+          "bounds_uv": {
+            "left": 0.106,
+            "right": 0.356,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center": {
+          "bounds_uv": {
+            "left": 0.356,
+            "right": 0.605,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.855,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_left": {
+          "bounds_uv": {
+            "left": 0.106,
+            "right": 0.356,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_center": {
+          "bounds_uv": {
+            "left": 0.356,
+            "right": 0.605,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.855,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        }
+      },
+      "projected_objects": [
+        {
+          "id": "ground",
+          "semantic_type": "ground",
+          "center_world": [
+            0,
+            0,
+            -0.1
+          ],
+          "center_uv": [
+            0.5,
+            0.525
+          ],
+          "bounds_uv": {
+            "left": 0.055,
+            "top": 0.199,
+            "right": 0.906,
+            "bottom": 1.497
+          },
+          "visible": true
+        },
+        {
+          "id": "north_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            0,
+            9,
+            0.8
+          ],
+          "center_uv": [
+            0.728,
+            0.77
+          ],
+          "bounds_uv": {
+            "left": 0.315,
+            "top": 0.409,
+            "right": 0.928,
+            "bottom": 1.506
+          },
+          "visible": true
+        },
+        {
+          "id": "south_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            0,
+            -9,
+            0.8
+          ],
+          "center_uv": [
+            0.358,
+            0.312
+          ],
+          "bounds_uv": {
+            "left": 0.033,
+            "top": 0.143,
+            "right": 0.558,
+            "bottom": 0.571
+          },
+          "visible": true
+        },
+        {
+          "id": "west_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            -12,
+            0,
+            0.8
+          ],
+          "center_uv": [
+            0.141,
+            0.849
+          ],
+          "bounds_uv": {
+            "left": 0.029,
+            "top": 0.494,
+            "right": 0.342,
+            "bottom": 1.505
+          },
+          "visible": true
+        },
+        {
+          "id": "east_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            12,
+            0,
+            0.8
+          ],
+          "center_uv": [
+            0.702,
+            0.284
+          ],
+          "bounds_uv": {
+            "left": 0.553,
+            "top": 0.143,
+            "right": 0.925,
+            "bottom": 0.481
+          },
+          "visible": true
+        }
+      ]
+    }
+  },
+  "required_view_ids": [
+    "primary",
+    "reverse",
+    "layout"
+  ],
+  "image_size": [
+    960,
+    540
+  ],
+  "before": {
+    "spec_hash": "0c15edf5b12e02c6cf4306a6f51711eb1ca286cb88b7de0ec2ec24062cd98141",
+    "visual_scene_hash": "e59796beed7ead0474dfa4e305abbb109f2f67cc3585dd4c15ca4a8d16434917",
+    "visual_scene_path": "visual_reviews/turn-0001-a41cf938/before_visual_scene.json",
+    "visual_scene_url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/before_visual_scene.json?v=1784263002340624850"
+  },
+  "after": {
+    "spec_hash": "f0e9c512dfc7e545c313c563aa78852f195879729c128745727114d3a76e034a",
+    "visual_scene_hash": "d2893afeac8e7c483c94eabb8a352662d03d2692d7c527f35c6070f4ad05e175"
+  },
+  "reviewed_views": [
+    {
+      "id": "primary",
+      "label": "Submitted camera",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          0.5
+        ],
+        "distance": 22.8,
+        "azimuth": -42.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "primary",
+          "label": "Before - Submitted camera",
+          "path": "visual_reviews/turn-0001-a41cf938/01_before_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/01_before_primary.png?v=1784263149419022096",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 111213,
+          "sha256": "0e1ff70c83626eda46a6b36cd2c8ca83c9442e3bcd2af1325c2258847bdc7b6b"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "primary",
+          "label": "After - Submitted camera",
+          "path": "visual_reviews/turn-0001-a41cf938/02_after_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/02_after_primary.png?v=1784263149421276530",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 115423,
+          "sha256": "eec6eb413b0f6042ab7660c806c8fad1df42c60f8b583ac7762968ee82a0e82e"
+        }
+      }
+    },
+    {
+      "id": "reverse",
+      "label": "Reverse oblique",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 32.4,
+        "azimuth": 138.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "reverse",
+          "label": "Before - Reverse oblique",
+          "path": "visual_reviews/turn-0001-a41cf938/03_before_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/03_before_reverse.png?v=1784263149423697548",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 106345,
+          "sha256": "2964977265757a77c2326e0e0148d67e9373597ba9ab2e55fd8e28dc29963e52"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "reverse",
+          "label": "After - Reverse oblique",
+          "path": "visual_reviews/turn-0001-a41cf938/04_after_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/04_after_reverse.png?v=1784263149425563146",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 108737,
+          "sha256": "6cde2d0a451ec6b2d432f23bae9f6928cb9b2f7fe73a72c77904eca4f4d7c280"
+        }
+      }
+    },
+    {
+      "id": "layout",
+      "label": "Elevated layout",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 34.992,
+        "azimuth": -42.0,
+        "elevation": 68.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "layout",
+          "label": "Before - Elevated layout",
+          "path": "visual_reviews/turn-0001-a41cf938/05_before_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/05_before_layout.png?v=1784263149427654620",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 96137,
+          "sha256": "401590bf47d1fa376dffc8266395bbc52ece1d9f11d4b3cc665c16cde2734f21"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "layout",
+          "label": "After - Elevated layout",
+          "path": "visual_reviews/turn-0001-a41cf938/06_after_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/06_after_layout.png?v=1784263149429820303",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 98040,
+          "sha256": "a071319c82652881152521c293ab7378c39b3b35b628f6d90c2a5ee6ac34d65e"
+        }
+      }
+    }
+  ],
+  "error": "",
+  "styled_preview": {
+    "path": "preview_styled.png",
+    "url": "/generated/Courtyard_Relay/preview_styled.png?v=1784263149430275765",
+    "mime_type": "image/png",
+    "width": 960,
+    "height": 540,
+    "bytes": 115423,
+    "sha256": "eec6eb413b0f6042ab7660c806c8fad1df42c60f8b583ac7762968ee82a0e82e",
+    "spec_hash": "f0e9c512dfc7e545c313c563aa78852f195879729c128745727114d3a76e034a",
+    "visual_scene_hash": "d2893afeac8e7c483c94eabb8a352662d03d2692d7c527f35c6070f4ad05e175",
+    "source_review_id": "turn-0001-a41cf938",
+    "camera": {
+      "target": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "distance": 22.8,
+      "azimuth": -42.0,
+      "elevation": 38.0,
+      "panX": 0.0,
+      "panY": 0.0
+    },
+    "created_at": "2026-07-17T04:39:09.430417+00:00"
+  },
+  "report_path": "visual_reviews/turn-0001-a41cf938/report.json",
+  "report_url": "/generated/Courtyard_Relay/visual_reviews/turn-0001-a41cf938/report.json?v=1784263167367603307"
+}

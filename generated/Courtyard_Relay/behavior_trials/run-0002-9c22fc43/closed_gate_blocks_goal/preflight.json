@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "controller_version": "controller_v3",
+  "status": "ready",
+  "configured_steps_per_attempt": 500,
+  "effective_steps_per_attempt": 812,
+  "max_attempts": 1,
+  "navigation": {
+    "primary_target_id": "charging_goal",
+    "target_ids": [
+      "charging_goal"
+    ],
+    "initial_camera_azimuth": 16.353175412362603,
+    "initial_camera_elevation": 3.5340582257971302,
+    "initial_distance_xy": 14.3323,
+    "estimated_trial_travel_distance_xy": 14.3323,
+    "minimum_travel_steps": 512,
+    "recommended_steps_per_attempt": 812,
+    "effective_steps_per_attempt": 812,
+    "primary_target": {
+      "id": "charging_goal",
+      "semantic_type": "goal",
+      "body_type": "sensor",
+      "position": [
+        -4.61,
+        -7.38,
+        1.5
+      ],
+      "size": [
+        1.4,
+        1.4,
+        1.2
+      ]
+    }
+  },
+  "stability": {
+    "probe_steps": 0,
+    "seconds": 0.0,
+    "targets": []
+  },
+  "issues": [],
+  "warnings": [
+    "Expanded each attempt from 500 to 812 steps so the agent can reach the primary target and still interact with it."
+  ],
+  "repair_hints": []
+}

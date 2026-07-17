@@ -1,0 +1,139 @@
+{
+  "id": "switch_gate_goal_sequence",
+  "instruction": "Touch the floor switch, pass through the opened center gate, ascend the ramp, and enter the charging goal.",
+  "expected_outcome": "should_succeed",
+  "severity": "critical",
+  "max_steps": 900,
+  "max_resets": 0,
+  "objective": {
+    "mode": "all",
+    "checks": [
+      {
+        "id": "touch_gate_switch",
+        "description": "The blue robot enters the gate switch region to open the gate.",
+        "temporal": "count",
+        "predicate": {
+          "type": "overlap",
+          "subject": {
+            "semantic_type": "agent"
+          },
+          "subject_quantifier": "any",
+          "target": {
+            "id": "gate_switch"
+          }
+        },
+        "min_count": 1,
+        "predicate_type": "overlap",
+        "type": "overlap"
+      },
+      {
+        "id": "enter_charging_goal",
+        "description": "The blue robot crosses the opened gate and enters the charging goal.",
+        "temporal": "count",
+        "predicate": {
+          "type": "overlap",
+          "subject": {
+            "semantic_type": "agent"
+          },
+          "subject_quantifier": "any",
+          "target": {
+            "id": "charging_goal"
+          }
+        },
+        "min_count": 1,
+        "predicate_type": "overlap",
+        "type": "overlap"
+      }
+    ],
+    "ordered_check_ids": [
+      "touch_gate_switch",
+      "enter_charging_goal"
+    ]
+  },
+  "constraints": {
+    "mode": "all",
+    "checks": [],
+    "ordered_check_ids": []
+  },
+  "allow_target_motion": false,
+  "environment_request": "Fix the VLM review issues: trim both raised divider endpoints so they terminate flush against the courtyard perimeter inner faces without penetrating or protruding; change nothing else.",
+  "scene_description": "A robot courtyard with a blue robot, an elevated charging goal reached by a wooden ramp beyond a switch-operated center gate, a broken-paving hazard with a wide bypass, and a pushable supply crate aligned with a cyan delivery target along a straight hazard-free lane on the robot side.",
+  "fallback": false,
+  "configured_max_steps": 900,
+  "max_steps_per_attempt": 900,
+  "max_total_steps": 900,
+  "navigation": {
+    "primary_target_id": "gate_switch",
+    "target_ids": [
+      "gate_switch",
+      "charging_goal"
+    ],
+    "initial_camera_azimuth": 16.756899930443826,
+    "initial_camera_elevation": -4.206029689347683,
+    "initial_distance_xy": 5.71293,
+    "estimated_trial_travel_distance_xy": 13.13259,
+    "minimum_travel_steps": 470,
+    "recommended_steps_per_attempt": 900,
+    "effective_steps_per_attempt": 900,
+    "primary_target": {
+      "id": "gate_switch",
+      "semantic_type": "floor_switch",
+      "body_type": "sensor",
+      "position": [
+        -2.2,
+        1.0,
+        0.06
+      ],
+      "size": [
+        1.2,
+        1.2,
+        0.12
+      ]
+    }
+  },
+  "preflight": {
+    "schema_version": "1.0",
+    "controller_version": "controller_v3",
+    "status": "ready",
+    "configured_steps_per_attempt": 900,
+    "effective_steps_per_attempt": 900,
+    "max_attempts": 1,
+    "navigation": {
+      "primary_target_id": "gate_switch",
+      "target_ids": [
+        "gate_switch",
+        "charging_goal"
+      ],
+      "initial_camera_azimuth": 16.756899930443826,
+      "initial_camera_elevation": -4.206029689347683,
+      "initial_distance_xy": 5.71293,
+      "estimated_trial_travel_distance_xy": 13.13259,
+      "minimum_travel_steps": 470,
+      "recommended_steps_per_attempt": 900,
+      "effective_steps_per_attempt": 900,
+      "primary_target": {
+        "id": "gate_switch",
+        "semantic_type": "floor_switch",
+        "body_type": "sensor",
+        "position": [
+          -2.2,
+          1.0,
+          0.06
+        ],
+        "size": [
+          1.2,
+          1.2,
+          0.12
+        ]
+      }
+    },
+    "stability": {
+      "probe_steps": 0,
+      "seconds": 0.0,
+      "targets": []
+    },
+    "issues": [],
+    "warnings": [],
+    "repair_hints": []
+  }
+}

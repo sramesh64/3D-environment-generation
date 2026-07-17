@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0",
+  "env_id": "Courtyard_Relay",
+  "prompt": "Fix the VLM review issues: trim both raised divider endpoints so they terminate flush against the courtyard perimeter inner faces without penetrating or protruding; change nothing else.",
+  "operation_count": 39,
+  "created_at": "2026-07-17T05:24:18.466938+00:00",
+  "checks": [
+    {
+      "id": "system_game_contract",
+      "type": "game_contract",
+      "severity": "critical",
+      "description": "The generated courtyard has a valid, reachable reach-goal game contract."
+    },
+    {
+      "id": "system_one_agent",
+      "type": "object_count",
+      "severity": "critical",
+      "description": "The courtyard contains exactly one controllable robot.",
+      "selector": {
+        "semantic_type": "agent"
+      },
+      "exact": 1
+    },
+    {
+      "id": "system_one_goal",
+      "type": "object_count",
+      "severity": "critical",
+      "description": "The courtyard contains exactly one charging-pad goal.",
+      "selector": {
+        "semantic_type": "goal"
+      },
+      "exact": 1
+    },
+    {
+      "id": "system_agent_supported",
+      "type": "support_contact",
+      "severity": "critical",
+      "description": "The robot starts supported by a walkable courtyard surface.",
+      "selector": {
+        "id": "blue_robot"
+      },
+      "surface_selector": {
+        "tag": "walkable"
+      },
+      "max_gap": 0.18,
+      "penetration_tolerance": 0.08,
+      "min_xy_overlap": 0.04
+    },
+    {
+      "id": "system_passive_stability",
+      "type": "physics_probe",
+      "severity": "critical",
+      "description": "The generated MuJoCo scene remains stable when allowed to settle.",
+      "probe": "passive_settles"
+    },
+    {
+      "id": "west_divider_gate_side",
+      "type": "spatial_relation",
+      "severity": "critical",
+      "description": "The west divider remains on the west side of the centered gate.",
+      "subject": {
+        "id": "mid_wall_west"
+      },
+      "relation": "left_of",
+      "margin": 0.0,
+      "target": {
+        "id": "center_gate"
+      }
+    },
+    {
+      "id": "east_divider_gate_side",
+      "type": "spatial_relation",
+      "severity": "critical",
+      "description": "The east divider remains on the east side of the centered gate.",
+      "subject": {
+        "id": "mid_wall_east"
+      },
+      "relation": "right_of",
+      "margin": 0.0,
+      "target": {
+        "id": "center_gate"
+      }
+    },
+    {
+      "id": "west_divider_meets_perimeter",
+      "type": "spatial_relation",
+      "severity": "critical",
+      "description": "The west divider remains close enough to the west perimeter to block passage without protruding.",
+      "subject": {
+        "id": "mid_wall_west"
+      },
+      "relation": "near",
+      "margin": 0.0,
+      "target": {
+        "id": "west_boundary"
+      },
+      "max_distance": 5.5
+    },
+    {
+      "id": "east_divider_meets_perimeter",
+      "type": "spatial_relation",
+      "severity": "critical",
+      "description": "The east divider remains close enough to the east perimeter to block passage without protruding.",
+      "subject": {
+        "id": "mid_wall_east"
+      },
+      "relation": "near",
+      "margin": 0.0,
+      "target": {
+        "id": "east_boundary"
+      },
+      "max_distance": 5.5
+    },
+    {
+      "id": "center_gate_preserved",
+      "type": "object_count",
+      "severity": "critical",
+      "description": "The existing centered sliding gate remains present exactly once.",
+      "selector": {
+        "id": "center_gate"
+      },
+      "exact": 1
+    },
+    {
+      "id": "west_divider_preserved",
+      "type": "object_count",
+      "severity": "critical",
+      "description": "The west divider segment remains present exactly once.",
+      "selector": {
+        "id": "mid_wall_west"
+      },
+      "exact": 1
+    },
+    {
+      "id": "east_divider_preserved",
+      "type": "object_count",
+      "severity": "critical",
+      "description": "The east divider segment remains present exactly once.",
+      "selector": {
+        "id": "mid_wall_east"
+      },
+      "exact": 1
+    },
+    {
+      "id": "reach_goal_contract_preserved",
+      "type": "game_contract",
+      "severity": "critical",
+      "description": "The blue robot still uses the charging goal as the reach-goal contract."
+    }
+  ],
+  "draft_hash": "9ae8a61412b9b4e3266768a0e957e88d59761a6648f3afc888cd93b7ee64c66a"
+}

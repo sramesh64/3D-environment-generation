@@ -1,0 +1,139 @@
+{
+  "id": "closed_gate_blocks_goal",
+  "instruction": "Attempt to enter the charging goal without touching the floor switch.",
+  "expected_outcome": "should_not_succeed",
+  "severity": "critical",
+  "max_steps": 812,
+  "max_resets": 0,
+  "objective": {
+    "mode": "all",
+    "checks": [
+      {
+        "id": "enter_goal_without_opening_gate",
+        "description": "The blue robot enters the charging goal while the center gate remains closed.",
+        "temporal": "count",
+        "predicate": {
+          "type": "overlap",
+          "subject": {
+            "semantic_type": "agent"
+          },
+          "subject_quantifier": "any",
+          "target": {
+            "id": "charging_goal"
+          }
+        },
+        "min_count": 1,
+        "predicate_type": "overlap",
+        "type": "overlap"
+      }
+    ],
+    "ordered_check_ids": [
+      "enter_goal_without_opening_gate"
+    ]
+  },
+  "constraints": {
+    "mode": "all",
+    "checks": [
+      {
+        "id": "avoid_gate_switch",
+        "description": "The blue robot never enters the floor switch region during the closed-gate attempt.",
+        "temporal": "count",
+        "predicate": {
+          "type": "overlap",
+          "subject": {
+            "semantic_type": "agent"
+          },
+          "subject_quantifier": "any",
+          "target": {
+            "id": "gate_switch"
+          }
+        },
+        "max_count": 0,
+        "predicate_type": "overlap",
+        "type": "overlap"
+      }
+    ],
+    "ordered_check_ids": []
+  },
+  "allow_target_motion": false,
+  "environment_request": "Fix the VLM review issues: trim both raised divider endpoints so they terminate flush against the courtyard perimeter inner faces without penetrating or protruding; change nothing else.",
+  "scene_description": "A robot courtyard with a blue robot, an elevated charging goal reached by a wooden ramp beyond a switch-operated center gate, a broken-paving hazard with a wide bypass, and a pushable supply crate aligned with a cyan delivery target along a straight hazard-free lane on the robot side.",
+  "fallback": false,
+  "configured_max_steps": 500,
+  "max_steps_per_attempt": 812,
+  "max_total_steps": 812,
+  "navigation": {
+    "primary_target_id": "charging_goal",
+    "target_ids": [
+      "charging_goal"
+    ],
+    "initial_camera_azimuth": 16.353175412362603,
+    "initial_camera_elevation": 3.5340582257971302,
+    "initial_distance_xy": 14.3323,
+    "estimated_trial_travel_distance_xy": 14.3323,
+    "minimum_travel_steps": 512,
+    "recommended_steps_per_attempt": 812,
+    "effective_steps_per_attempt": 812,
+    "primary_target": {
+      "id": "charging_goal",
+      "semantic_type": "goal",
+      "body_type": "sensor",
+      "position": [
+        -4.61,
+        -7.38,
+        1.5
+      ],
+      "size": [
+        1.4,
+        1.4,
+        1.2
+      ]
+    }
+  },
+  "preflight": {
+    "schema_version": "1.0",
+    "controller_version": "controller_v3",
+    "status": "ready",
+    "configured_steps_per_attempt": 500,
+    "effective_steps_per_attempt": 812,
+    "max_attempts": 1,
+    "navigation": {
+      "primary_target_id": "charging_goal",
+      "target_ids": [
+        "charging_goal"
+      ],
+      "initial_camera_azimuth": 16.353175412362603,
+      "initial_camera_elevation": 3.5340582257971302,
+      "initial_distance_xy": 14.3323,
+      "estimated_trial_travel_distance_xy": 14.3323,
+      "minimum_travel_steps": 512,
+      "recommended_steps_per_attempt": 812,
+      "effective_steps_per_attempt": 812,
+      "primary_target": {
+        "id": "charging_goal",
+        "semantic_type": "goal",
+        "body_type": "sensor",
+        "position": [
+          -4.61,
+          -7.38,
+          1.5
+        ],
+        "size": [
+          1.4,
+          1.4,
+          1.2
+        ]
+      }
+    },
+    "stability": {
+      "probe_steps": 0,
+      "seconds": 0.0,
+      "targets": []
+    },
+    "issues": [],
+    "warnings": [
+      "Expanded each attempt from 500 to 812 steps so the agent can reach the primary target and still interact with it."
+    ],
+    "repair_hints": []
+  }
+}

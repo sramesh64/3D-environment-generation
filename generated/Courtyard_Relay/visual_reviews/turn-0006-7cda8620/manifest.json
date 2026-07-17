@@ -1,0 +1,1149 @@
+{
+  "schema_version": "1.0",
+  "review_id": "turn-0006-7cda8620",
+  "env_id": "Courtyard_Relay",
+  "turn_index": 6,
+  "kind": "revision",
+  "renderer": "threejs_local_asset_scene",
+  "model": "gpt-5.6-sol",
+  "status": "completed",
+  "created_at": "2026-07-17T04:54:50.212985+00:00",
+  "updated_at": "2026-07-17T04:57:50.532545+00:00",
+  "intent_context": {
+    "initial_request": "Add exactly one blue robot in the bottom-right quarter and one charging goal in the top-left quarter. Place them far apart across the courtyard. Leave the center empty and add nothing else.",
+    "latest_request": "On the goal side of the wall, add a raised brown platform beneath the charging goal and a brown ramp ascending to it from the gate side. Make the platform high enough to feel meaningfully elevated but comfortably reachable by the ramp. Move the goal only as needed to center it on the platform. Preserve a clear route from the gate to the ramp and goal.",
+    "prior_user_requests": [
+      "Add a continuous waist-high wall across the middle of the courtyard, from the left boundary to the right boundary, separating the robot from the goal. Leave one centered opening wide enough for the robot to pass through comfortably. The robot must not be able to walk around either end. Do not move the robot or goal.",
+      "Fix the VLM review issues: The wall’s left endpoint passes through the perimeter wall and protrudes outside the courtyard, producing conspicuous geometry clipping.",
+      "Put a vertically sliding gate in the center opening. Add one floor switch on the robot's side, a short distance in front of the gate and slightly to its left. Link the switch to the gate so touching the switch permanently opens the gate. Change nothing else.",
+      "Add a broken-paving hazard between the robot and the switch. Leave a clearly traversable, comfortably wide route around the right side of the hazard. The hazard must not overlap the robot, switch, gate, or walls."
+    ],
+    "context_truncated": false
+  },
+  "submitted_view_context": {
+    "version": 2,
+    "capture_kind": "structured_before_edit",
+    "captured_at": "2026-07-17T04:54:50.121Z",
+    "route": "env",
+    "preview_mode": "visual",
+    "scene": {
+      "env_id": "Courtyard_Relay",
+      "object_count": 12,
+      "object_ids": [
+        "ground",
+        "north_boundary",
+        "south_boundary",
+        "west_boundary",
+        "east_boundary",
+        "blue_robot",
+        "charging_goal",
+        "mid_wall_west",
+        "mid_wall_east",
+        "center_gate",
+        "gate_switch",
+        "broken_paving_hazard"
+      ]
+    },
+    "viewport": {
+      "width": 816,
+      "height": 440,
+      "device_pixel_ratio": 2
+    },
+    "coordinate_conventions": {
+      "world_right": "+x",
+      "world_left": "-x",
+      "world_forward": "+y",
+      "world_back": "-y",
+      "world_up": "+z",
+      "default_unqualified_left_right": "screen_space_current_preview"
+    },
+    "screen_space": {
+      "azimuth_degrees": -42,
+      "screen_right_world_xy": [
+        0.743,
+        0.669
+      ],
+      "screen_left_world_xy": [
+        -0.743,
+        -0.669
+      ],
+      "source": "threejs_visual_camera",
+      "reliable": true,
+      "camera": {
+        "projection": "perspective",
+        "fov_y_degrees": 45,
+        "aspect": 1.853,
+        "near": 0.1,
+        "far": 1000,
+        "position": [
+          -12.022,
+          13.352,
+          14.537
+        ],
+        "target": [
+          0,
+          0,
+          0.5
+        ],
+        "azimuth_degrees": -42,
+        "elevation_degrees": 38,
+        "distance": 22.8
+      },
+      "playable_area": {
+        "surface_id": "ground",
+        "semantic_type": "ground",
+        "top_z": 0,
+        "world_corners": [
+          [
+            -12,
+            -9,
+            0
+          ],
+          [
+            12,
+            -9,
+            0
+          ],
+          [
+            12,
+            9,
+            0
+          ],
+          [
+            -12,
+            9,
+            0
+          ]
+        ],
+        "screen_polygon_uv": [
+          [
+            0.059,
+            0.567
+          ],
+          [
+            0.554,
+            0.199
+          ],
+          [
+            0.903,
+            0.478
+          ],
+          [
+            0.336,
+            1
+          ]
+        ],
+        "bounds_uv": {
+          "left": 0.059,
+          "top": 0.199,
+          "right": 0.903,
+          "bottom": 1
+        }
+      },
+      "regions": {
+        "top_left": {
+          "bounds_uv": {
+            "left": 0.11,
+            "right": 0.357,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "top_center": {
+          "bounds_uv": {
+            "left": 0.357,
+            "right": 0.605,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "top_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.852,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center_left": {
+          "bounds_uv": {
+            "left": 0.11,
+            "right": 0.357,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center": {
+          "bounds_uv": {
+            "left": 0.357,
+            "right": 0.605,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.852,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_left": {
+          "bounds_uv": {
+            "left": 0.11,
+            "right": 0.357,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_center": {
+          "bounds_uv": {
+            "left": 0.357,
+            "right": 0.605,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.852,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        }
+      },
+      "projected_objects": [
+        {
+          "id": "ground",
+          "semantic_type": "ground",
+          "center_world": [
+            0,
+            0,
+            -0.1
+          ],
+          "center_uv": [
+            0.5,
+            0.525
+          ],
+          "bounds_uv": {
+            "left": 0.059,
+            "top": 0.199,
+            "right": 0.903,
+            "bottom": 1.497
+          },
+          "visible": true
+        },
+        {
+          "id": "north_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            0,
+            9,
+            0.8
+          ],
+          "center_uv": [
+            0.726,
+            0.77
+          ],
+          "bounds_uv": {
+            "left": 0.316,
+            "top": 0.409,
+            "right": 0.924,
+            "bottom": 1.506
+          },
+          "visible": true
+        },
+        {
+          "id": "south_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            0,
+            -9,
+            0.8
+          ],
+          "center_uv": [
+            0.359,
+            0.312
+          ],
+          "bounds_uv": {
+            "left": 0.037,
+            "top": 0.143,
+            "right": 0.558,
+            "bottom": 0.571
+          },
+          "visible": true
+        },
+        {
+          "id": "west_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            -12,
+            0,
+            0.8
+          ],
+          "center_uv": [
+            0.143,
+            0.849
+          ],
+          "bounds_uv": {
+            "left": 0.033,
+            "top": 0.494,
+            "right": 0.344,
+            "bottom": 1.505
+          },
+          "visible": true
+        },
+        {
+          "id": "east_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            12,
+            0,
+            0.8
+          ],
+          "center_uv": [
+            0.701,
+            0.284
+          ],
+          "bounds_uv": {
+            "left": 0.552,
+            "top": 0.143,
+            "right": 0.921,
+            "bottom": 0.481
+          },
+          "visible": true
+        },
+        {
+          "id": "blue_robot",
+          "semantic_type": "agent",
+          "center_world": [
+            -0.279,
+            7.38,
+            0.55
+          ],
+          "center_uv": [
+            0.668,
+            0.728
+          ],
+          "bounds_uv": {
+            "left": 0.648,
+            "top": 0.679,
+            "right": 0.69,
+            "bottom": 0.777
+          },
+          "visible": true
+        },
+        {
+          "id": "charging_goal",
+          "semantic_type": "goal",
+          "center_world": [
+            -4.61,
+            -7.38,
+            0.6
+          ],
+          "center_uv": [
+            0.279,
+            0.424
+          ],
+          "bounds_uv": {
+            "left": 0.249,
+            "top": 0.373,
+            "right": 0.308,
+            "bottom": 0.476
+          },
+          "visible": true
+        },
+        {
+          "id": "mid_wall_west",
+          "semantic_type": "wall",
+          "center_world": [
+            -6.675,
+            0,
+            0.55
+          ],
+          "center_uv": [
+            0.332,
+            0.67
+          ],
+          "bounds_uv": {
+            "left": 0.143,
+            "top": 0.504,
+            "right": 0.471,
+            "bottom": 0.886
+          },
+          "visible": true
+        },
+        {
+          "id": "mid_wall_east",
+          "semantic_type": "wall",
+          "center_world": [
+            6.75,
+            0,
+            0.55
+          ],
+          "center_uv": [
+            0.624,
+            0.371
+          ],
+          "bounds_uv": {
+            "left": 0.527,
+            "top": 0.27,
+            "right": 0.705,
+            "bottom": 0.493
+          },
+          "visible": true
+        },
+        {
+          "id": "center_gate",
+          "semantic_type": "gate",
+          "center_world": [
+            0,
+            0,
+            0.55
+          ],
+          "center_uv": [
+            0.5,
+            0.498
+          ],
+          "bounds_uv": {
+            "left": 0.463,
+            "top": 0.439,
+            "right": 0.535,
+            "bottom": 0.559
+          },
+          "visible": true
+        },
+        {
+          "id": "gate_switch",
+          "semantic_type": "floor_switch",
+          "center_world": [
+            -2.2,
+            1,
+            0.06
+          ],
+          "center_uv": [
+            0.471,
+            0.597
+          ],
+          "bounds_uv": {
+            "left": 0.445,
+            "top": 0.563,
+            "right": 0.496,
+            "bottom": 0.633
+          },
+          "visible": true
+        },
+        {
+          "id": "broken_paving_hazard",
+          "semantic_type": "hazard",
+          "center_world": [
+            -2.8,
+            4.5,
+            0.075
+          ],
+          "center_uv": [
+            0.532,
+            0.726
+          ],
+          "bounds_uv": {
+            "left": 0.453,
+            "top": 0.623,
+            "right": 0.61,
+            "bottom": 0.85
+          },
+          "visible": true
+        }
+      ]
+    },
+    "visual": {
+      "rendered": true,
+      "azimuth_degrees": -42,
+      "elevation_degrees": 38,
+      "distance": 22.8,
+      "default_distance": 22.8,
+      "zoom_percent": 100,
+      "pan_x_world": 0,
+      "pan_z_world": 0,
+      "target": [
+        0,
+        0,
+        0.5
+      ],
+      "screen_right_world_xy": [
+        0.743,
+        0.669
+      ],
+      "screen_left_world_xy": [
+        -0.743,
+        -0.669
+      ],
+      "camera": {
+        "projection": "perspective",
+        "fov_y_degrees": 45,
+        "aspect": 1.853,
+        "near": 0.1,
+        "far": 1000,
+        "position": [
+          -12.022,
+          13.352,
+          14.537
+        ],
+        "target": [
+          0,
+          0,
+          0.5
+        ],
+        "azimuth_degrees": -42,
+        "elevation_degrees": 38,
+        "distance": 22.8
+      },
+      "playable_area": {
+        "surface_id": "ground",
+        "semantic_type": "ground",
+        "top_z": 0,
+        "world_corners": [
+          [
+            -12,
+            -9,
+            0
+          ],
+          [
+            12,
+            -9,
+            0
+          ],
+          [
+            12,
+            9,
+            0
+          ],
+          [
+            -12,
+            9,
+            0
+          ]
+        ],
+        "screen_polygon_uv": [
+          [
+            0.059,
+            0.567
+          ],
+          [
+            0.554,
+            0.199
+          ],
+          [
+            0.903,
+            0.478
+          ],
+          [
+            0.336,
+            1
+          ]
+        ],
+        "bounds_uv": {
+          "left": 0.059,
+          "top": 0.199,
+          "right": 0.903,
+          "bottom": 1
+        }
+      },
+      "regions": {
+        "top_left": {
+          "bounds_uv": {
+            "left": 0.11,
+            "right": 0.357,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "top_center": {
+          "bounds_uv": {
+            "left": 0.357,
+            "right": 0.605,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "top_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.852,
+            "top": 0.247,
+            "bottom": 0.482
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center_left": {
+          "bounds_uv": {
+            "left": 0.11,
+            "right": 0.357,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center": {
+          "bounds_uv": {
+            "left": 0.357,
+            "right": 0.605,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "center_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.852,
+            "top": 0.482,
+            "bottom": 0.717
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_left": {
+          "bounds_uv": {
+            "left": 0.11,
+            "right": 0.357,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_center": {
+          "bounds_uv": {
+            "left": 0.357,
+            "right": 0.605,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        },
+        "bottom_right": {
+          "bounds_uv": {
+            "left": 0.605,
+            "right": 0.852,
+            "top": 0.717,
+            "bottom": 0.952
+          },
+          "anchor": {
+            "surface_id": "ground",
+            "world_position": [],
+            "screen_uv": []
+          }
+        }
+      },
+      "projected_objects": [
+        {
+          "id": "ground",
+          "semantic_type": "ground",
+          "center_world": [
+            0,
+            0,
+            -0.1
+          ],
+          "center_uv": [
+            0.5,
+            0.525
+          ],
+          "bounds_uv": {
+            "left": 0.059,
+            "top": 0.199,
+            "right": 0.903,
+            "bottom": 1.497
+          },
+          "visible": true
+        },
+        {
+          "id": "north_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            0,
+            9,
+            0.8
+          ],
+          "center_uv": [
+            0.726,
+            0.77
+          ],
+          "bounds_uv": {
+            "left": 0.316,
+            "top": 0.409,
+            "right": 0.924,
+            "bottom": 1.506
+          },
+          "visible": true
+        },
+        {
+          "id": "south_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            0,
+            -9,
+            0.8
+          ],
+          "center_uv": [
+            0.359,
+            0.312
+          ],
+          "bounds_uv": {
+            "left": 0.037,
+            "top": 0.143,
+            "right": 0.558,
+            "bottom": 0.571
+          },
+          "visible": true
+        },
+        {
+          "id": "west_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            -12,
+            0,
+            0.8
+          ],
+          "center_uv": [
+            0.143,
+            0.849
+          ],
+          "bounds_uv": {
+            "left": 0.033,
+            "top": 0.494,
+            "right": 0.344,
+            "bottom": 1.505
+          },
+          "visible": true
+        },
+        {
+          "id": "east_boundary",
+          "semantic_type": "wall",
+          "center_world": [
+            12,
+            0,
+            0.8
+          ],
+          "center_uv": [
+            0.701,
+            0.284
+          ],
+          "bounds_uv": {
+            "left": 0.552,
+            "top": 0.143,
+            "right": 0.921,
+            "bottom": 0.481
+          },
+          "visible": true
+        },
+        {
+          "id": "blue_robot",
+          "semantic_type": "agent",
+          "center_world": [
+            -0.279,
+            7.38,
+            0.55
+          ],
+          "center_uv": [
+            0.668,
+            0.728
+          ],
+          "bounds_uv": {
+            "left": 0.648,
+            "top": 0.679,
+            "right": 0.69,
+            "bottom": 0.777
+          },
+          "visible": true
+        },
+        {
+          "id": "charging_goal",
+          "semantic_type": "goal",
+          "center_world": [
+            -4.61,
+            -7.38,
+            0.6
+          ],
+          "center_uv": [
+            0.279,
+            0.424
+          ],
+          "bounds_uv": {
+            "left": 0.249,
+            "top": 0.373,
+            "right": 0.308,
+            "bottom": 0.476
+          },
+          "visible": true
+        },
+        {
+          "id": "mid_wall_west",
+          "semantic_type": "wall",
+          "center_world": [
+            -6.675,
+            0,
+            0.55
+          ],
+          "center_uv": [
+            0.332,
+            0.67
+          ],
+          "bounds_uv": {
+            "left": 0.143,
+            "top": 0.504,
+            "right": 0.471,
+            "bottom": 0.886
+          },
+          "visible": true
+        },
+        {
+          "id": "mid_wall_east",
+          "semantic_type": "wall",
+          "center_world": [
+            6.75,
+            0,
+            0.55
+          ],
+          "center_uv": [
+            0.624,
+            0.371
+          ],
+          "bounds_uv": {
+            "left": 0.527,
+            "top": 0.27,
+            "right": 0.705,
+            "bottom": 0.493
+          },
+          "visible": true
+        },
+        {
+          "id": "center_gate",
+          "semantic_type": "gate",
+          "center_world": [
+            0,
+            0,
+            0.55
+          ],
+          "center_uv": [
+            0.5,
+            0.498
+          ],
+          "bounds_uv": {
+            "left": 0.463,
+            "top": 0.439,
+            "right": 0.535,
+            "bottom": 0.559
+          },
+          "visible": true
+        },
+        {
+          "id": "gate_switch",
+          "semantic_type": "floor_switch",
+          "center_world": [
+            -2.2,
+            1,
+            0.06
+          ],
+          "center_uv": [
+            0.471,
+            0.597
+          ],
+          "bounds_uv": {
+            "left": 0.445,
+            "top": 0.563,
+            "right": 0.496,
+            "bottom": 0.633
+          },
+          "visible": true
+        },
+        {
+          "id": "broken_paving_hazard",
+          "semantic_type": "hazard",
+          "center_world": [
+            -2.8,
+            4.5,
+            0.075
+          ],
+          "center_uv": [
+            0.532,
+            0.726
+          ],
+          "bounds_uv": {
+            "left": 0.453,
+            "top": 0.623,
+            "right": 0.61,
+            "bottom": 0.85
+          },
+          "visible": true
+        }
+      ]
+    },
+    "physics_debug": {
+      "zoom": 1,
+      "pan_x_pixels": 0,
+      "pan_y_pixels": 0,
+      "orbit_index": 0,
+      "orbit_frame_count": 0
+    },
+    "submitted_image": {
+      "width": 960,
+      "height": 518,
+      "mime_type": "image/png",
+      "capture_kind": "exact_authored_before_view"
+    }
+  },
+  "required_view_ids": [
+    "primary",
+    "reverse",
+    "layout"
+  ],
+  "image_size": [
+    960,
+    540
+  ],
+  "before": {
+    "spec_hash": "831474e85a6d463e12e6f6e2951c7b09ac6749a8153116c130218f271e57bf3d",
+    "visual_scene_hash": "e049df058be22a4f4af43a49a7d4ee73165ea20647a96a75aa263975d6ce4956",
+    "visual_scene_path": "visual_reviews/turn-0006-7cda8620/before_visual_scene.json",
+    "visual_scene_url": "/generated/Courtyard_Relay/visual_reviews/turn-0006-7cda8620/before_visual_scene.json?v=1784264090212589265"
+  },
+  "after": {
+    "spec_hash": "5e0807549f6bb38c1af836e5bc6d5de153be0ca098aa6c481fdbd03fcbd39a6e",
+    "visual_scene_hash": "3d349d7182f79faf03df9cab18eabdafb2751e75a27893862138d5f631ff24d2"
+  },
+  "reviewed_views": [
+    {
+      "id": "primary",
+      "label": "Submitted camera",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          0.5
+        ],
+        "distance": 22.8,
+        "azimuth": -42.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "primary",
+          "label": "Before - Submitted camera",
+          "path": "visual_reviews/turn-0006-7cda8620/01_before_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0006-7cda8620/01_before_primary.png?v=1784264252139891698",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 142655,
+          "sha256": "da0c5c4dc239a4a3fc9b6090d8fce09fa18172b2cd17bd7ac951069692f1ea52"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "primary",
+          "label": "After - Submitted camera",
+          "path": "visual_reviews/turn-0006-7cda8620/02_after_primary.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0006-7cda8620/02_after_primary.png?v=1784264252142384634",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 155568,
+          "sha256": "ebd2b597e9763419b4b8712ed2fa589bbfb784e4889a2a211c83af187d433ced"
+        }
+      }
+    },
+    {
+      "id": "reverse",
+      "label": "Reverse oblique",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 32.4,
+        "azimuth": 138.0,
+        "elevation": 38.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "reverse",
+          "label": "Before - Reverse oblique",
+          "path": "visual_reviews/turn-0006-7cda8620/03_before_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0006-7cda8620/03_before_reverse.png?v=1784264252144523691",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 122434,
+          "sha256": "9a709c1919f31f1931fa360851510bc29357fbd33b571e00745b83a084086f33"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "reverse",
+          "label": "After - Reverse oblique",
+          "path": "visual_reviews/turn-0006-7cda8620/04_after_reverse.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0006-7cda8620/04_after_reverse.png?v=1784264252146886584",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 130200,
+          "sha256": "115cc320cc206f6c3d03b2410359f4362af2565fe7c8b62689528392152d8154"
+        }
+      }
+    },
+    {
+      "id": "layout",
+      "label": "Elevated layout",
+      "camera": {
+        "target": [
+          0.0,
+          0.0,
+          2.119
+        ],
+        "distance": 34.992,
+        "azimuth": -42.0,
+        "elevation": 68.0,
+        "panX": 0.0,
+        "panY": 0.0
+      },
+      "images": {
+        "before": {
+          "phase": "before",
+          "view_id": "layout",
+          "label": "Before - Elevated layout",
+          "path": "visual_reviews/turn-0006-7cda8620/05_before_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0006-7cda8620/05_before_layout.png?v=1784264252148874433",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 114755,
+          "sha256": "6fbf41441def40821c6cee4dbb6d40e9603fb3ee4a6131c730871e33e25b4558"
+        },
+        "after": {
+          "phase": "after",
+          "view_id": "layout",
+          "label": "After - Elevated layout",
+          "path": "visual_reviews/turn-0006-7cda8620/06_after_layout.png",
+          "url": "/generated/Courtyard_Relay/visual_reviews/turn-0006-7cda8620/06_after_layout.png?v=1784264252150848239",
+          "mime_type": "image/png",
+          "width": 960,
+          "height": 540,
+          "bytes": 123888,
+          "sha256": "06b1c1814830c8e61df1f78ca878ce5df3e96115fe3d9de14f0ca2ac12a2a8d8"
+        }
+      }
+    }
+  ],
+  "error": "",
+  "styled_preview": {
+    "path": "preview_styled.png",
+    "url": "/generated/Courtyard_Relay/preview_styled.png?v=1784264252151062324",
+    "mime_type": "image/png",
+    "width": 960,
+    "height": 540,
+    "bytes": 155568,
+    "sha256": "ebd2b597e9763419b4b8712ed2fa589bbfb784e4889a2a211c83af187d433ced",
+    "spec_hash": "5e0807549f6bb38c1af836e5bc6d5de153be0ca098aa6c481fdbd03fcbd39a6e",
+    "visual_scene_hash": "3d349d7182f79faf03df9cab18eabdafb2751e75a27893862138d5f631ff24d2",
+    "source_review_id": "turn-0006-7cda8620",
+    "camera": {
+      "target": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "distance": 22.8,
+      "azimuth": -42.0,
+      "elevation": 38.0,
+      "panX": 0.0,
+      "panY": 0.0
+    },
+    "created_at": "2026-07-17T04:57:32.151432+00:00"
+  },
+  "report_path": "visual_reviews/turn-0006-7cda8620/report.json",
+  "report_url": "/generated/Courtyard_Relay/visual_reviews/turn-0006-7cda8620/report.json?v=1784264270532206363"
+}

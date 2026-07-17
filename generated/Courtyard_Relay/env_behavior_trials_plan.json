@@ -1,0 +1,137 @@
+{
+  "schema_version": "2.0",
+  "controller_version": "controller_v3",
+  "env_id": "Courtyard_Relay",
+  "prompt": "Fix the VLM review issues: trim both raised divider endpoints so they terminate flush against the courtyard perimeter inner faces without penetrating or protruding; change nothing else.",
+  "operation_count": 39,
+  "draft_hash": "9ae8a61412b9b4e3266768a0e957e88d59761a6648f3afc888cd93b7ee64c66a",
+  "created_at": "2026-07-17T05:24:30.502086+00:00",
+  "fallback": false,
+  "decision": "preserved",
+  "decision_reason": "This revision only trims static divider endpoints at the perimeter by a non-traversable visual seam; it does not change the gate opening, switch linkage, route semantics, agent, goal, or any tested affordance.",
+  "source_turn_id": "session-88cbff1abc5f1149",
+  "source_prompt_hash": "73d585c0e99293de1f5caf51d91d360658aefe0e5adcc0fd6f83acc32590da49",
+  "intent_summary": "Demonstrate that the robot opens the tall center gate with the floor switch before crossing to the charging goal, and cannot reach the goal while avoiding the switch.",
+  "trials": [
+    {
+      "id": "switch_gate_goal_sequence",
+      "instruction": "Touch the floor switch, pass through the opened center gate, ascend the ramp, and enter the charging goal.",
+      "expected_outcome": "should_succeed",
+      "severity": "critical",
+      "max_steps": 900,
+      "max_resets": 0,
+      "objective": {
+        "mode": "all",
+        "checks": [
+          {
+            "id": "touch_gate_switch",
+            "description": "The blue robot enters the gate switch region to open the gate.",
+            "temporal": "count",
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any",
+              "target": {
+                "id": "gate_switch"
+              }
+            },
+            "min_count": 1,
+            "predicate_type": "overlap",
+            "type": "overlap"
+          },
+          {
+            "id": "enter_charging_goal",
+            "description": "The blue robot crosses the opened gate and enters the charging goal.",
+            "temporal": "count",
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any",
+              "target": {
+                "id": "charging_goal"
+              }
+            },
+            "min_count": 1,
+            "predicate_type": "overlap",
+            "type": "overlap"
+          }
+        ],
+        "ordered_check_ids": [
+          "touch_gate_switch",
+          "enter_charging_goal"
+        ]
+      },
+      "constraints": {
+        "mode": "all",
+        "checks": [],
+        "ordered_check_ids": []
+      },
+      "allow_target_motion": false
+    },
+    {
+      "id": "closed_gate_blocks_goal",
+      "instruction": "Attempt to enter the charging goal without touching the floor switch.",
+      "expected_outcome": "should_not_succeed",
+      "severity": "critical",
+      "max_steps": 500,
+      "max_resets": 0,
+      "objective": {
+        "mode": "all",
+        "checks": [
+          {
+            "id": "enter_goal_without_opening_gate",
+            "description": "The blue robot enters the charging goal while the center gate remains closed.",
+            "temporal": "count",
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any",
+              "target": {
+                "id": "charging_goal"
+              }
+            },
+            "min_count": 1,
+            "predicate_type": "overlap",
+            "type": "overlap"
+          }
+        ],
+        "ordered_check_ids": [
+          "enter_goal_without_opening_gate"
+        ]
+      },
+      "constraints": {
+        "mode": "all",
+        "checks": [
+          {
+            "id": "avoid_gate_switch",
+            "description": "The blue robot never enters the floor switch region during the closed-gate attempt.",
+            "temporal": "count",
+            "predicate": {
+              "type": "overlap",
+              "subject": {
+                "semantic_type": "agent"
+              },
+              "subject_quantifier": "any",
+              "target": {
+                "id": "gate_switch"
+              }
+            },
+            "max_count": 0,
+            "predicate_type": "overlap",
+            "type": "overlap"
+          }
+        ],
+        "ordered_check_ids": []
+      },
+      "allow_target_motion": false
+    }
+  ],
+  "preserved_from_turn_id": "turn-0012-4b510165",
+  "preserved_from_prompt_hash": "df2b1f56349162d143260002770d9c04baf9f8b162976b87c4984a844af1ea46"
+}
